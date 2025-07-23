@@ -1,16 +1,29 @@
 {
   "name": "adjaycent",
   "version": "1.0.0",
-  "main": "index.js",
+  "source": "src/main.ts",
+  "main": "dist/main.js",
   "type": "module",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "A small utility library for finding the closest element y in any direction to element x.",
   "devDependencies": {
+    "@parcel/packager-ts": "^2.15.4",
+    "@parcel/transformer-typescript-types": "^2.15.4",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
+    "parcel": "^2.15.4",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
