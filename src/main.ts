@@ -1,3 +1,4 @@
+import { findElements, omitStartingElement } from "./utilities"
 
 type FindArguments = {
 	startingElement: HTMLElement,
@@ -9,10 +10,9 @@ type FindArguments = {
 export const find = (args: FindArguments) => {
 
 
-	// gather all elements that match criteria
-	const otherElements = document.querySelector(args.cssSelectorForTargetElements)
+	const viableElements = findElements(args.cssSelectorForTargetElements)
 
-	// Omit startingElement
+	const otherElements = omitStartingElement(args.startingElement, viableElements)
 
 	/* Filter elements according to strategy
 	 * 
