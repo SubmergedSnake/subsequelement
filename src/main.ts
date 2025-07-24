@@ -1,18 +1,15 @@
-import { findElements, omitStartingElement } from "./utilities"
-
-type FindArguments = {
-	startingElement: HTMLElement,
-	cssSelectorForTargetElements: string,
-	direction: 'up' | 'down' | 'left' | 'right',
-	strategy: 'strict' | 'flow'
-}
+import { filterElementsInDirection, findElements, omitStartingElement } from "./utilities"
+import type { FindArguments } from "./types"
 
 export const find = (args: FindArguments) => {
+	const { cssSelectorForTargetElements, direction, startingElement } = args
 
+	const viableElements = findElements(cssSelectorForTargetElements)
 
-	const viableElements = findElements(args.cssSelectorForTargetElements)
+	const otherElements = omitStartingElement(startingElement, viableElements)
 
-	const otherElements = omitStartingElement(args.startingElement, viableElements)
+	const elementsInDirection = filterElementsInDirection(startingElement, viableElements, direction)
+
 
 	/* Filter elements according to strategy
 	 * 
