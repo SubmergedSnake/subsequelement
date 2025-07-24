@@ -15,5 +15,6 @@ export default {
   transform: {
     ...tsJestTransformCfg,
   },
+  testMatch: ["**/tests/**/*.test.ts"]
 } as Config;
 

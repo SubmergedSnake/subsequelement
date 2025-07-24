@@ -7,10 +7,11 @@
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
   "scripts": {
-    "serve": "parcel test/index.html",
+    "serve": "parcel tests/index.html",
     "watch": "parcel watch",
     "build": "parcel build",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "e2e": "playwright test --grep @find"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@parcel/packager-ts": "^2.15.4",
     "@parcel/transformer-typescript-types": "^2.15.4",
+    "@playwright/test": "^1.54.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.1.0",
     "jest": "^30.0.5",
