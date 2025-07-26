@@ -1,3 +1,7 @@
+export type ImplementsGetBoundingClientRect = {
+	id: string,
+	getBoundingClientRect: () => Omit<DOMRect, 'x' | 'y'>
+}
 
 export enum Direction {
 	UP = 'UP',
@@ -11,7 +15,7 @@ export enum Strategy {
 	FLOW = 'FLOW'
 }
 
-export type FindArguments = {
+export type AdjaycentArgs = {
 	startingElement: HTMLElement,
 	cssSelectorForTargetElements: string,
 	direction: keyof typeof Direction

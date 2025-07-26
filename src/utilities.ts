@@ -1,6 +1,6 @@
-import { Direction, FindArguments, Strategy } from "../src/types"
+import { Direction, AdjaycentArgs, Strategy } from "../src/types"
 
-export const validateArgs = (args: FindArguments) => {
+export const validateArgs = (args: AdjaycentArgs) => {
 	const { cssSelectorForTargetElements, strategy, direction, startingElement } = args
 
 	const hasStartingElement = startingElement instanceof HTMLElement
@@ -18,14 +18,11 @@ export const findElements = (cssSelector: string): HTMLElement[] => {
 	return Array.from(document.querySelectorAll(cssSelector))
 }
 
-export const filterElementsByDirection = (startingElement: HTMLElement, otherElements: HTMLElement[], direction: FindArguments['direction']) => {
-
-}
 
 export const omitStartingElement = (startingElement: HTMLElement, viableElements: HTMLElement[]): HTMLElement[] => {
 	return viableElements.filter(e => e !== startingElement)
 }
 
-export const filterUsingStrategy = (strategy: FindArguments['strategy'], startingElement: HTMLElement, otherElements: HTMLElement[]) => {
+export const filterUsingStrategy = (strategy: AdjaycentArgs['strategy'], startingElement: HTMLElement, otherElements: HTMLElement[]) => {
 
 }

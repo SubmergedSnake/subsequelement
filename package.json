@@ -11,7 +11,7 @@
     "watch": "parcel watch",
     "build": "parcel build",
     "test": "jest --watch",
-    "e2e": "playwright test --grep @find"
+    "e2e:adjaycent": "playwright test --grep @adjaycent"
   },
   "keywords": [],
   "author": "",

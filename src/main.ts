@@ -1,7 +1,7 @@
-import { filterElementsByDirection, findElements, omitStartingElement, validateArgs } from "./utilities"
-import { Direction, Strategy, type FindArguments } from "./types"
+import { findElements, omitStartingElement, validateArgs } from "./utilities"
+import { Direction, Strategy, type AdjaycentArgs } from "./types"
 
-export const find = (args: FindArguments) => {
+export const adjaycent = (args: AdjaycentArgs) => {
 
 	validateArgs(args)
 
@@ -11,8 +11,8 @@ export const find = (args: FindArguments) => {
 
 	const otherElements = omitStartingElement(startingElement, viableElements)
 
-	const elementsInDirection = filterElementsByDirection(startingElement, viableElements, direction)
 
+	return "foobarbazbingbong"
 
 	/* Filter elements according to strategy
 	 * 

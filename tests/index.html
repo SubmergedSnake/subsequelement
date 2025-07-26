@@ -1,7 +1,13 @@
-<html>
+<!DOCTYPE html>
   <head>
     <meta charset="UTF-8" />
-    <script type="module" src="../src/main.ts"></script>
+    <script type="module">
+      import { adjaycent } from "../src/main.ts";
+      document.addEventListener("DOMContentLoaded", (event) => {
+        console.log("DOM fully loaded and parsed");
+        window.adjaycent = adjaycent
+      });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../tests/app.css" />
     <title>Adjaycent test bed</title>
