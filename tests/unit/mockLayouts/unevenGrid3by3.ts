@@ -42,8 +42,8 @@ export const unevenGrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 325,
 			left: 225,
-			bottom: 300,
-			top: 200
+			bottom: 450,
+			top: 350
 		})
 	},
 	{
@@ -69,8 +69,8 @@ export const unevenGrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 475,
 			left: 375,
-			bottom: 325,
-			top: 225
+			bottom: 400,
+			top: 300
 		})
 	},
 	{

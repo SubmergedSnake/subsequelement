@@ -8,7 +8,6 @@ const haveColumnarOverlap = (startingElement: ImplementsGetBoundingClientRect, o
 	const otherWidth = otherRight - otherLeft
 
 	const combinedHorizontalSpan = Math.abs(Math.min(startingLeft, otherLeft) - Math.max(startingRight, otherRight))
-	console.log(`combined horizontal span for elements ${startingElement.id} and ${otherElement.id}`, combinedHorizontalSpan)
 
 	const overLaps = startingWidth + otherWidth > combinedHorizontalSpan
 	return overLaps

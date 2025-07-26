@@ -21,6 +21,5 @@ test('adjaycent works', {
     const element = adjaycent(args)
     return element
   })
-  console.log("Returned element id: ", elementId)
 });
 
