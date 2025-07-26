@@ -19,8 +19,8 @@ const haveRowOverlap = (startingElement: ImplementsGetBoundingClientRect, otherE
 	const { top: otherTop, bottom: otherBottom } = otherElement.getBoundingClientRect()
 	const { top: startingTop, bottom: startingBottom } = startingElement.getBoundingClientRect()
 
-	const startingHeight = startingTop - startingBottom
-	const otherHeight = otherTop - otherBottom
+	const startingHeight = startingBottom - startingTop
+	const otherHeight = otherBottom - otherTop
 
 	const combinedVerticalSpan = Math.abs(Math.min(startingTop, otherTop) - Math.max(startingBottom, otherBottom))
 
@@ -41,7 +41,7 @@ export const findOverlappingElements = (startingElement: ImplementsGetBoundingCl
 		const elementsHaveRowOverlap = haveRowOverlap(startingElement, otherElement)
 
 
-		return elementsHaveColumnarOverlap// || elementsHaveRowOverlap
+		return elementsHaveColumnarOverlap || elementsHaveRowOverlap
 
 	}
 	)
