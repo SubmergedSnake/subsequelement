@@ -1,6 +1,6 @@
 export type ImplementsGetBoundingClientRect = {
 	id: string,
-	getBoundingClientRect: () => Omit<DOMRect, 'x' | 'y'>
+	getBoundingClientRect: () => Omit<DOMRect, 'x' | 'y' | 'toJSON' | 'width' | 'height'>
 }
 
 export enum Direction {
