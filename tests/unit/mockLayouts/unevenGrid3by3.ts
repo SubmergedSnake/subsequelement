@@ -1,11 +1,9 @@
 import { ImplementsGetBoundingClientRect } from "../../../src/types";
 
-export const simplegrid3by3 = [
+export const unevenGrid3by3 = [
 	{
 		id: 'one',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 100,
 			left: 0,
 			bottom: 100,
@@ -15,8 +13,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'two',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 100,
 			left: 0,
 			bottom: 200,
@@ -26,8 +22,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'three',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 100,
 			left: 0,
 			bottom: 300,
@@ -37,8 +31,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'four',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 200,
 			left: 100,
 			bottom: 100,
@@ -48,8 +40,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'five',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 200,
 			left: 100,
 			bottom: 200,
@@ -59,8 +49,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'six',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 200,
 			left: 100,
 			bottom: 300,
@@ -70,8 +58,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'seven',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 300,
 			left: 200,
 			bottom: 100,
@@ -81,8 +67,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'eight',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 300,
 			left: 200,
 			bottom: 200,
@@ -92,8 +76,6 @@ export const simplegrid3by3 = [
 	{
 		id: 'nine',
 		getBoundingClientRect: () => ({
-			height: 100,
-			width: 100,
 			right: 300,
 			left: 200,
 			bottom: 300,
