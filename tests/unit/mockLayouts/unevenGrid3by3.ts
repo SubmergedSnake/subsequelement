@@ -15,17 +15,17 @@ export const unevenGrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 100,
 			left: 0,
-			bottom: 200,
-			top: 100
+			bottom: 400,
+			top: 300
 		})
 	},
 	{
 		id: 'three',
 		getBoundingClientRect: () => ({
-			right: 100,
-			left: 0,
-			bottom: 300,
-			top: 200
+			right: 150,
+			left: 50,
+			bottom: 500,
+			top: 400
 		})
 	},
 	{
@@ -33,53 +33,53 @@ export const unevenGrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 200,
 			left: 100,
-			bottom: 100,
-			top: 0
+			bottom: 150,
+			top: 50
 		})
 	},
 	{
 		id: 'five',
 		getBoundingClientRect: () => ({
-			right: 200,
-			left: 100,
-			bottom: 200,
-			top: 100
+			right: 325,
+			left: 225,
+			bottom: 300,
+			top: 200
 		})
 	},
 	{
 		id: 'six',
 		getBoundingClientRect: () => ({
-			right: 200,
-			left: 100,
-			bottom: 300,
-			top: 200
+			right: 300,
+			left: 200,
+			bottom: 550,
+			top: 450
 		})
 	},
 	{
 		id: 'seven',
 		getBoundingClientRect: () => ({
-			right: 300,
-			left: 200,
-			bottom: 100,
-			top: 0
+			right: 450,
+			left: 350,
+			bottom: 125,
+			top: 25
 		})
 	},
 	{
 		id: 'eight',
 		getBoundingClientRect: () => ({
-			right: 300,
-			left: 200,
-			bottom: 200,
-			top: 100
+			right: 475,
+			left: 375,
+			bottom: 325,
+			top: 225
 		})
 	},
 	{
 		id: 'nine',
 		getBoundingClientRect: () => ({
-			right: 300,
-			left: 200,
-			bottom: 300,
-			top: 200
+			right: 625,
+			left: 525,
+			bottom: 550,
+			top: 450
 		})
 	},
 

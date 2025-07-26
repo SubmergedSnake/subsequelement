@@ -1,10 +1,32 @@
 import { ImplementsGetBoundingClientRect } from "./types";
 
-const haveVerticalOverlap = (startingElementRange: { left: number, right: number }, otherElementRange: { left: number, right: number }) =>
-	startingElementRange.left >= otherElementRange.left && startingElementRange.right <= otherElementRange.right;
+const haveColumnarOverlap = (startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect) => {
+	const { left: otherLeft, right: otherRight } = otherElement.getBoundingClientRect()
+	const { left: startingLeft, right: startingRight } = startingElement.getBoundingClientRect()
 
-const haveHorizontalOverlap = (startingElementRange: { top: number, bottom: number }, otherElementRange: { top: number, bottom: number }) =>
-	startingElementRange.top >= otherElementRange.top && startingElementRange.bottom <= otherElementRange.bottom;
+	const startingWidth = startingRight - startingLeft
+	const otherWidth = otherRight - otherLeft
+
+	const combinedHorizontalSpan = Math.abs(Math.min(startingLeft, otherLeft) - Math.max(startingRight, otherRight))
+	console.log(`combined horizontal span for elements ${startingElement.id} and ${otherElement.id}`, combinedHorizontalSpan)
+
+	const overLaps = startingWidth + otherWidth > combinedHorizontalSpan
+	return overLaps
+
+}
+
+const haveRowOverlap = (startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect) => {
+	const { top: otherTop, bottom: otherBottom } = otherElement.getBoundingClientRect()
+	const { top: startingTop, bottom: startingBottom } = startingElement.getBoundingClientRect()
+
+	const startingHeight = startingTop - startingBottom
+	const otherHeight = otherTop - otherBottom
+
+	const combinedVerticalSpan = Math.abs(Math.min(startingTop, otherTop) - Math.max(startingBottom, otherBottom))
+
+	const overLaps = startingHeight + otherHeight > combinedVerticalSpan
+	return overLaps
+}
 
 export const findOverlappingElements = (startingElement: ImplementsGetBoundingClientRect,
 	otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
@@ -14,14 +36,12 @@ export const findOverlappingElements = (startingElement: ImplementsGetBoundingCl
 
 	const overlappingElements = otherElements.filter(otherElement => {
 
-		const { left: otherLeft, top: otherTop, right: otherRight, bottom: otherBottom }
-			= otherElement.getBoundingClientRect()
+		const elementsHaveColumnarOverlap = haveColumnarOverlap(startingElement, otherElement)
 
-		const elementsOverlapVertically = haveVerticalOverlap({ left: startingLeft, right: startingRight }, { left: otherLeft, right: otherRight })
-		const elementsOverlapHorizontally = haveHorizontalOverlap({ top: startingTop, bottom: startingBottom }, { top: otherTop, bottom: otherBottom })
+		const elementsHaveRowOverlap = haveRowOverlap(startingElement, otherElement)
 
 
-		return elementsOverlapVertically || elementsOverlapHorizontally
+		return elementsHaveColumnarOverlap// || elementsHaveRowOverlap
 
 	}
 	)
