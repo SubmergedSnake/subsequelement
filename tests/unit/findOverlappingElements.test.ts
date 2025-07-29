@@ -21,25 +21,25 @@ describe('findOverlappingElements', () => {
 		* |_____||_____||_____|
 		*/
 
-		test('item one as starting element returns correct overlapping elements', () => {
+		test('starting element one returns two, three, four and seven', () => {
 			const [one, ...others] = simplegrid3by3
 			const overlappingIds = findOverlappingElements(one, others).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['two', 'three', 'four', 'seven'].sort())
 		})
 
-		test('item two as starting element returns correct overlapping elements', () => {
+		test('starting element two returns one, three, five and eight', () => {
 			const [one, two, ...others] = simplegrid3by3
 			const overlappingIds = findOverlappingElements(two, [one, ...others]).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['one', 'three', 'five', 'eight'].sort())
 		})
 
-		test('item three as starting element returns correct overlapping elements', () => {
+		test('starting element three returns one, two, six and nine', () => {
 			const [one, two, three, ...others] = simplegrid3by3
 			const overlappingIds = findOverlappingElements(three, [one, two, ...others]).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['one', 'two', 'six', 'nine'].sort())
 		})
 
-		test('item five as starting element returns correct overlapping elements', () => {
+		test('starting element five returns two, four, six and eight', () => {
 			const [one, two, three, four, five, ...others] = simplegrid3by3
 			const overlappingIds = findOverlappingElements(five, [one, two, three, four, ...others]).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['two', 'four', 'six', 'eight'].sort())
@@ -69,25 +69,25 @@ describe('findOverlappingElements', () => {
 		*
 		*/
 
-		test('item one as starting element returns correct overlapping elements', () => {
+		test('starting element one returns two, three, four and seven', () => {
 			const [one, ...others] = unevenGrid3by3
 			const overlappingIds = findOverlappingElements(one, others).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['two', 'three', 'four', 'seven'].sort())
 		})
 
-		test('item two as starting element returns correct overlapping elements', () => {
+		test('starting element two returns one, three, five and eight', () => {
 			const [one, two, ...others] = unevenGrid3by3
 			const overlappingIds = findOverlappingElements(two, [one, ...others]).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['one', 'three', 'five', 'eight'].sort())
 		})
 
-		test('item three as starting element returns correct overlapping elements', () => {
+		test('starting element three returns one, four, two, five six and nine', () => {
 			const [one, two, three, ...others] = unevenGrid3by3
 			const overlappingIds = findOverlappingElements(three, [one, two, ...others]).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['one', 'four', 'two', 'five', 'six', 'nine'].sort())
 		})
 
-		test('item five as starting element returns correct overlapping elements', () => {
+		test('starting element five returns two, three, six and eight', () => {
 			const [one, two, three, four, five, ...others] = unevenGrid3by3
 			const overlappingIds = findOverlappingElements(five, [one, two, three, four, ...others]).map(e => e.id)
 			expect(overlappingIds.sort()).toEqual(['two', 'three', 'six', 'eight'].sort())
