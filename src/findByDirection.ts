@@ -15,3 +15,5 @@ export const findBelow = (startingElement: ImplementsGetBoundingClientRect, othe
 export const findAbove = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
 	return otherElements.filter(oe => oe.getBoundingClientRect().bottom <= startingElement.getBoundingClientRect().top)
 }
+
+
