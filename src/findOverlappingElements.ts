@@ -30,18 +30,10 @@ const haveRowOverlap = (startingElement: ImplementsGetBoundingClientRect, otherE
 export const findOverlappingElements = (startingElement: ImplementsGetBoundingClientRect,
 	otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
 
-	const { left: startingLeft, top: startingTop, right: startingRight, bottom: startingBottom }
-		= startingElement.getBoundingClientRect()
-
 	const overlappingElements = otherElements.filter(otherElement => {
-
 		const elementsHaveColumnarOverlap = haveColumnarOverlap(startingElement, otherElement)
-
 		const elementsHaveRowOverlap = haveRowOverlap(startingElement, otherElement)
-
-
 		return elementsHaveColumnarOverlap || elementsHaveRowOverlap
-
 	}
 	)
 
