@@ -22,8 +22,8 @@ export const unevenGrid3by3 = [
 	{
 		id: 'three',
 		getBoundingClientRect: () => ({
-			right: 150,
-			left: 50,
+			right: 250,
+			left: 150,
 			bottom: 500,
 			top: 400
 		})
