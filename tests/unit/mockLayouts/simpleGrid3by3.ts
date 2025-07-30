@@ -1,5 +1,20 @@
 import { ImplementsGetBoundingClientRect } from "../../../src/types";
 
+/* simplegrid3by3 layout
+*  _____  _____  _____  
+* |     ||     ||     |
+* |one  ||four ||seven|
+* |_____||_____||_____|
+*  _____  _____ ______ 
+* |     ||     ||     |
+* |two  ||five ||eight|
+* |_____||_____||_____|
+*  _____  _____  _____ 
+* |     ||     ||     |
+* |three||six  ||nine |
+* |_____||_____||_____|
+*/
+
 export const simplegrid3by3 = [
 	{
 		id: 'one',

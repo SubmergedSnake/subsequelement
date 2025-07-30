@@ -6,21 +6,6 @@ describe('findOverlappingElements', () => {
 
 	describe('simplegrid3by3', () => {
 
-		/* simplegrid3by3 layout
-		*  _____  _____  _____  
-		* |     ||     ||     |
-		* |one  ||four ||seven|
-		* |_____||_____||_____|
-		*  _____  _____ ______ 
-		* |     ||     ||     |
-		* |two  ||five ||eight|
-		* |_____||_____||_____|
-		*  _____  _____  _____ 
-		* |     ||     ||     |
-		* |three||six  ||nine |
-		* |_____||_____||_____|
-		*/
-
 		test('starting element one returns two, three, four and seven', () => {
 			const [one, ...others] = simplegrid3by3
 			const overlappingIds = findOverlappingElements(one, others).map(e => e.id)
@@ -48,26 +33,6 @@ describe('findOverlappingElements', () => {
 	})
 
 	describe('unevengrid3by3', () => {
-
-		/* unevengrid3by3 layout 
-		*  ___
-		* |   |                       _____ 
-		* |one|     _____            |     |
-		* |___|    |     |           |seven|
-		*          |four |           |_____|
-		*          |_____|
-		*  ___                         _____ 
-		* |   |             _____     |     |
-		* |two|            |     |    |eight|
-		* |___|            |five |    |_____|
-		*       _____      |_____|
-		*      |     |
-		*      |three|     ___                    _____ 
-		*      |_____|    |   |                  |     |
-		*                 |six|                  |nine |
-		*                 |___|                  |_____|
-		*
-		*/
 
 		test('starting element one returns two, four and seven', () => {
 			const [one, ...others] = unevenGrid3by3

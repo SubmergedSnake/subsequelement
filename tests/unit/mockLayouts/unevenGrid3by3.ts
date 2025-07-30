@@ -1,5 +1,25 @@
 import { ImplementsGetBoundingClientRect } from "../../../src/types";
 
+/* unevengrid3by3 layout 
+*  ___
+* |   |                       _____ 
+* |one|     _____            |     |
+* |___|    |     |           |seven|
+*          |four |           |_____|
+*          |_____|
+*  ___                         _____ 
+* |   |             _____     |     |
+* |two|            |     |    |eight|
+* |___|            |five |    |_____|
+*       _____      |_____|
+*      |     |
+*      |three|     ___                    _____ 
+*      |_____|    |   |                  |     |
+*                 |six|                  |nine |
+*                 |___|                  |_____|
+*
+*/
+
 export const unevenGrid3by3 = [
 	{
 		id: 'one',
