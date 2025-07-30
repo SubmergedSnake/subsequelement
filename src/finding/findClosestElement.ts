@@ -2,6 +2,7 @@ import { findAbove, findBelow, findLeft, findRight } from "./findByDirection";
 import { ClosestPoint, findClosestPointRelativeToStartingElement } from "./findClosestPointRelativeToStartingElement";
 import { findOverlappingElements } from "./findOverlappingElements";
 import { Direction, ImplementsGetBoundingClientRect, Strategy } from "../types";
+import { getNewStartingPoint } from "./getNewStartingPoint";
 
 export const findClosestElement =
 	(startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[], direction: Direction, strategy: Strategy)
@@ -30,7 +31,11 @@ export const findClosestElement =
 				break;
 		}
 
-		const elementsWithDistances: (ImplementsGetBoundingClientRect & ClosestPoint)[] = validElements.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
+		let elementsWithDistances: (ImplementsGetBoundingClientRect & ClosestPoint)[] = validElements.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
+		if (elementsWithDistances.length === 0) {
+			const phantomElement = getNewStartingPoint(startingElement, validElements, direction)
+			elementsWithDistances = validElements.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(phantomElement, e) }))
+		}
 		return elementsWithDistances.reduce((acc, curr) => curr.distance < acc.distance ? curr : acc)
 
 	}
