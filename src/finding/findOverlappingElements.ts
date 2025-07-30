@@ -1,4 +1,4 @@
-import { ImplementsGetBoundingClientRect } from "./types";
+import { ImplementsGetBoundingClientRect } from "../types";
 
 const haveColumnarOverlap = (startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect) => {
 	const { left: otherLeft, right: otherRight } = otherElement.getBoundingClientRect()

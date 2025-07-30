@@ -1,4 +1,4 @@
-import { ImplementsGetBoundingClientRect } from "./types";
+import { ImplementsGetBoundingClientRect } from "../types";
 
 export type ClosestPoint = {
 	corner: { x: number, y: number }

@@ -1,6 +1,6 @@
-import { findAbove, findBelow, findLeft, findRight } from "../../src/findByDirection"
-import { simplegrid3by3 } from "./mockLayouts//simpleGrid3by3"
-import { unevenGrid3by3 } from "./mockLayouts/unevenGrid3by3"
+import { findRight, findLeft, findAbove, findBelow } from "../../../src/finding/findByDirection"
+import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
+import { unevenGrid3by3 } from "../mockLayouts/unevenGrid3by3"
 
 describe('findByDirection', () => {
 

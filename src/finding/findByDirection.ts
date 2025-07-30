@@ -1,4 +1,4 @@
-import { ImplementsGetBoundingClientRect } from "./types";
+import { ImplementsGetBoundingClientRect } from "../types"
 
 export const findRight = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
 	return otherElements.filter(oe => oe.getBoundingClientRect().left >= startingElement.getBoundingClientRect().right)

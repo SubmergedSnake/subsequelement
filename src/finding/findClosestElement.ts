@@ -1,7 +1,7 @@
 import { findAbove, findBelow, findLeft, findRight } from "./findByDirection";
 import { ClosestPoint, findClosestPointRelativeToStartingElement } from "./findClosestPointRelativeToStartingElement";
 import { findOverlappingElements } from "./findOverlappingElements";
-import { Direction, ImplementsGetBoundingClientRect, Strategy } from "./types";
+import { Direction, ImplementsGetBoundingClientRect, Strategy } from "../types";
 
 export const findClosestElement =
 	(startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[], direction: Direction, strategy: Strategy)

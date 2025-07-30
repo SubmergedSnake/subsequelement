@@ -1,6 +1,6 @@
-import { findClosestPointRelativeToStartingElement } from "../../src/findClosestPointRelativeToStartingElement"
-import { simplegrid3by3 } from "./mockLayouts/simpleGrid3by3"
-import { unevenGrid3by3 } from "./mockLayouts/unevenGrid3by3"
+import { findClosestPointRelativeToStartingElement } from "../../../src/finding/findClosestPointRelativeToStartingElement"
+import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
+import { unevenGrid3by3 } from "../mockLayouts/unevenGrid3by3"
 
 describe('findClosestPointRelativeToStartingElement', () => {
 

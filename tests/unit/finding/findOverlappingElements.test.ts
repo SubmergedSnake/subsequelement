@@ -1,6 +1,6 @@
-import { findOverlappingElements } from "../../src/findOverlappingElements"
-import { simplegrid3by3 } from "./mockLayouts//simpleGrid3by3"
-import { unevenGrid3by3 } from "./mockLayouts/unevenGrid3by3"
+import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
+import { unevenGrid3by3 } from "../mockLayouts/unevenGrid3by3"
+import { findOverlappingElements } from "../../../src/finding/findOverlappingElements"
 
 describe('findOverlappingElements', () => {
 
@@ -51,40 +51,40 @@ describe('findOverlappingElements', () => {
 
 		/* unevengrid3by3 layout 
 		*  ___
-		* |   |                    _____ 
-		* |one|  _____            |     |
-		* |___| |     |           |seven|
-		*       |four |           |_____|
-		*       |_____|
-		*  ___                      _____ 
-		* |   |          _____     |     |
-		* |two|         |     |    |eight|
-		* |___|         |five |    |_____|
-		*    _____      |_____|
-		*   |     |
-		*   |three|     ___                    _____ 
-		*   |_____|    |   |                  |     |
-		*              |six|                  |nine |
-		*              |___|                  |_____|
+		* |   |                       _____ 
+		* |one|     _____            |     |
+		* |___|    |     |           |seven|
+		*          |four |           |_____|
+		*          |_____|
+		*  ___                         _____ 
+		* |   |             _____     |     |
+		* |two|            |     |    |eight|
+		* |___|            |five |    |_____|
+		*       _____      |_____|
+		*      |     |
+		*      |three|     ___                    _____ 
+		*      |_____|    |   |                  |     |
+		*                 |six|                  |nine |
+		*                 |___|                  |_____|
 		*
 		*/
 
-		test('starting element one returns two, three, four and seven', () => {
+		test('starting element one returns two, four and seven', () => {
 			const [one, ...others] = unevenGrid3by3
 			const overlappingIds = findOverlappingElements(one, others).map(e => e.id)
-			expect(overlappingIds.sort()).toEqual(['two', 'three', 'four', 'seven'].sort())
+			expect(overlappingIds.sort()).toEqual(['two', 'four', 'seven'].sort())
 		})
 
-		test('starting element two returns one, three, five and eight', () => {
+		test('starting element two returns one, five and eight', () => {
 			const [one, two, ...others] = unevenGrid3by3
 			const overlappingIds = findOverlappingElements(two, [one, ...others]).map(e => e.id)
-			expect(overlappingIds.sort()).toEqual(['one', 'three', 'five', 'eight'].sort())
+			expect(overlappingIds.sort()).toEqual(['one', 'five', 'eight'].sort())
 		})
 
-		test('starting element three returns one, four, two, five six and nine', () => {
+		test('starting element three returns five, four, nine and six', () => {
 			const [one, two, three, ...others] = unevenGrid3by3
 			const overlappingIds = findOverlappingElements(three, [one, two, ...others]).map(e => e.id)
-			expect(overlappingIds.sort()).toEqual(['one', 'four', 'two', 'five', 'six', 'nine'].sort())
+			expect(overlappingIds.sort()).toEqual(['five', 'four', 'nine', 'six'].sort())
 		})
 
 		test('starting element five returns two, three, six and eight', () => {
