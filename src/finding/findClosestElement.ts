@@ -30,7 +30,7 @@ export const findClosestElement =
 				break;
 		}
 
-		const elementDistances: (ImplementsGetBoundingClientRect & ClosestPoint)[] = validElements.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
-		return elementDistances.reduce((acc, curr) => curr.distance < acc.distance ? curr : acc)
+		const elementsWithDistances: (ImplementsGetBoundingClientRect & ClosestPoint)[] = validElements.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
+		return elementsWithDistances.reduce((acc, curr) => curr.distance < acc.distance ? curr : acc)
 
 	}
