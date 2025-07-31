@@ -28,7 +28,8 @@ export const getNewStartingPoint = (startingElement: ImplementsGetBoundingClient
 			}
 			break;
 		case Direction.DOWN:
-			phantomElementCoordinates = { ...phantomElementCoordinates, bottom: 0 }
+			const topMost = Math.min(...validElements.map(e => e.getBoundingClientRect().top))
+			phantomElementCoordinates = { ...phantomElementCoordinates, bottom: topMost - 1, top: phantomElementCoordinates.top + topMost - 1 }
 			break;
 	}
 
