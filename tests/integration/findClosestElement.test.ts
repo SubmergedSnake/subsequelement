@@ -1,7 +1,7 @@
-import { findClosestElement } from "../../../src/finding/findClosestElement";
-import { Direction, Strategy } from "../../../src/types";
-import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3";
-import { unevenGrid3by3 } from "../mockLayouts/unevenGrid3by3";
+import { findClosestElement } from "../../src/finding/findClosestElement"
+import { Direction, Strategy } from "../../src/types"
+import { simplegrid3by3 } from "../unit/mockLayouts/simpleGrid3by3"
+import { unevenGrid3by3 } from "../unit/mockLayouts/unevenGrid3by3"
 
 describe('findClosestElement', () => {
 
