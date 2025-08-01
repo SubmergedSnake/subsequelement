@@ -1,40 +1,27 @@
-import { ImplementsGetBoundingClientRect } from "../types"
+import { Direction, ImplementsGetBoundingClientRect } from "../types"
 
-export const findNorth = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().bottom <= startingElement.getBoundingClientRect().top)
-}
+type hasRect = ImplementsGetBoundingClientRect
 
-export const findNorthEast = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().bottom <= startingElement.getBoundingClientRect().top
-		&& oe.getBoundingClientRect().left >= startingElement.getBoundingClientRect().right)
-}
+const north = (se: hasRect) => (oe: hasRect) => oe.getBoundingClientRect().bottom <= se.getBoundingClientRect().top
+const east = (se: hasRect) => (oe: hasRect) => oe.getBoundingClientRect().left >= se.getBoundingClientRect().right
+const south = (se: hasRect) => (oe: hasRect) => oe.getBoundingClientRect().top >= se.getBoundingClientRect().bottom
+const west = (se: hasRect) => (oe: hasRect) => oe.getBoundingClientRect().right <= se.getBoundingClientRect().left
 
-export const findEast = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().left >= startingElement.getBoundingClientRect().right)
-}
+const directionFilters = {
+	"NORTH": (se: hasRect, oElements: hasRect[]) => oElements.filter(north(se)),
+	"NORTHEAST": (se: hasRect, oElements: hasRect[]) => oElements.filter(north(se)).filter(east(se)),
+	"EAST": (se: hasRect, oElements: hasRect[]) => oElements.filter(east(se)),
+	"SOUTHEAST": (se: hasRect, oElements: hasRect[]) => oElements.filter(south(se)).filter(east(se)),
+	"SOUTH": (se: hasRect, oElements: hasRect[]) => oElements.filter(south(se)),
+	"SOUTHWEST": (se: hasRect, oElements: hasRect[]) => oElements.filter(south(se)).filter(west(se)),
+	"WEST": (se: hasRect, oElements: hasRect[]) => oElements.filter(west(se)),
+	"NORTHWEST": (se: hasRect, oElements: hasRect[]) => oElements.filter(north(se)).filter(west(se)),
+} satisfies { [key in Direction]: (startingElement: hasRect, otherElements: hasRect[]) => hasRect[] }
 
-export const findSouthEast = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().left >= startingElement.getBoundingClientRect().right &&
-		oe.getBoundingClientRect().top >= startingElement.getBoundingClientRect().bottom)
-}
-
-export const findSouth = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().top >= startingElement.getBoundingClientRect().bottom)
-}
-
-export const findSouthWest = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().top >= startingElement.getBoundingClientRect().bottom &&
-		oe.getBoundingClientRect().right <= startingElement.getBoundingClientRect().left)
-}
-
-export const findWest = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().right <= startingElement.getBoundingClientRect().left)
-}
-
-export const findNorthWest = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
-	return otherElements.filter(oe => oe.getBoundingClientRect().right <= startingElement.getBoundingClientRect().left &&
-		oe.getBoundingClientRect().bottom <= startingElement.getBoundingClientRect().top
-	)
+export const findInDirection = (startingElement: hasRect, otherElements: hasRect[], direction: Direction): hasRect[] => {
+	const directionFunc = directionFilters[direction]
+	const elements = directionFunc(startingElement, otherElements)
+	return elements
 }
 
 

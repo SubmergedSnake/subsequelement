@@ -1,4 +1,4 @@
-import { findNorth, findSouth, findWest, findEast } from "./findByDirection";
+import { findInDirection } from "./findByDirection";
 import { ClosestPoint, findClosestPointRelativeToStartingElement } from "./findClosestPointRelativeToStartingElement";
 import { findOverlappingElements } from "./findOverlappingElements";
 import { Direction, ImplementsGetBoundingClientRect, Strategy } from "../types";
@@ -18,16 +18,16 @@ export const findClosestElement =
 
 		switch (direction) {
 			case Direction.NORTH:
-				validElements = findNorth(startingElement, validElements)
+				validElements = findInDirection(startingElement, validElements, Direction.NORTH)
 				break;
 			case Direction.SOUTH:
-				validElements = findSouth(startingElement, validElements)
+				validElements = findInDirection(startingElement, validElements, Direction.SOUTH)
 				break;
 			case Direction.EAST:
-				validElements = findEast(startingElement, validElements)
+				validElements = findInDirection(startingElement, validElements, Direction.EAST)
 				break;
 			case Direction.WEST:
-				validElements = findWest(startingElement, validElements)
+				validElements = findInDirection(startingElement, validElements, Direction.WEST)
 				break;
 		}
 
