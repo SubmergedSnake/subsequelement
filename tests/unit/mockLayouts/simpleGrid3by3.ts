@@ -30,8 +30,8 @@ export const simplegrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 100,
 			left: 0,
-			bottom: 200,
-			top: 100
+			bottom: 100,
+			top: 0
 		})
 	},
 	{
@@ -39,8 +39,8 @@ export const simplegrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 100,
 			left: 0,
-			bottom: 300,
-			top: 200
+			bottom: 200,
+			top: 100
 		})
 	},
 	{
@@ -57,8 +57,8 @@ export const simplegrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 200,
 			left: 100,
-			bottom: 200,
-			top: 100
+			bottom: 100,
+			top: 0
 		})
 	},
 	{
@@ -66,8 +66,8 @@ export const simplegrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 200,
 			left: 100,
-			bottom: 300,
-			top: 200
+			bottom: 200,
+			top: 100
 		})
 	},
 	{
@@ -84,8 +84,8 @@ export const simplegrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 300,
 			left: 200,
-			bottom: 200,
-			top: 100
+			bottom: 100,
+			top: 0
 		})
 	},
 	{
@@ -93,8 +93,8 @@ export const simplegrid3by3 = [
 		getBoundingClientRect: () => ({
 			right: 300,
 			left: 200,
-			bottom: 300,
-			top: 200
+			bottom: 200,
+			top: 100
 		})
 	},
 
