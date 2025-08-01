@@ -12,22 +12,22 @@ export const getNewStartingPoint = (startingElement: ImplementsGetBoundingClient
 	*/
 
 	switch (direction) {
-		case Direction.RIGHT:
+		case Direction.EAST:
 			phantomElementCoordinates = { ...phantomElementCoordinates, right: 0 }
 			break;
-		case Direction.LEFT:
+		case Direction.WEST:
 			const rightMost = Math.max(...validElements.map(e => e.getBoundingClientRect().right))
 			phantomElementCoordinates = {
 				...phantomElementCoordinates, left: rightMost + 1, right: phantomElementCoordinates.right - phantomElementCoordinates.left + rightMost + 1
 			}
 			break;
-		case Direction.UP:
+		case Direction.NORTH:
 			const bottomMost = Math.max(...validElements.map(e => e.getBoundingClientRect().bottom))
 			phantomElementCoordinates = {
 				...phantomElementCoordinates, top: bottomMost + 1, bottom: phantomElementCoordinates.bottom - phantomElementCoordinates.top + bottomMost + 1
 			}
 			break;
-		case Direction.DOWN:
+		case Direction.SOUTH:
 			const topMost = Math.min(...validElements.map(e => e.getBoundingClientRect().top))
 			phantomElementCoordinates = { ...phantomElementCoordinates, bottom: topMost - 1, top: phantomElementCoordinates.top + topMost - 1 }
 			break;

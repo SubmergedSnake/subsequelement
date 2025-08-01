@@ -17,16 +17,16 @@ export const findClosestElement =
 		}
 
 		switch (direction) {
-			case Direction.UP:
+			case Direction.NORTH:
 				validElements = findAbove(startingElement, validElements)
 				break;
-			case Direction.DOWN:
+			case Direction.SOUTH:
 				validElements = findBelow(startingElement, validElements)
 				break;
-			case Direction.RIGHT:
+			case Direction.EAST:
 				validElements = findRight(startingElement, validElements)
 				break;
-			case Direction.LEFT:
+			case Direction.WEST:
 				validElements = findLeft(startingElement, validElements)
 				break;
 		}

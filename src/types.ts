@@ -4,10 +4,14 @@ export type ImplementsGetBoundingClientRect = {
 }
 
 export enum Direction {
-	UP = 'UP',
-	DOWN = 'DOWN',
-	RIGHT = 'RIGHT',
-	LEFT = 'LEFT'
+	NORTH = 'NORTH',
+	NORTHEAST = 'NORTHEAST',
+	EAST = 'EAST',
+	SOUTHEAST = 'SOUTHEAST',
+	SOUTH = 'SOUTH',
+	SOUTHWEST = 'SOUTHWEST',
+	WEST = 'WEST',
+	NORTHWEST = 'NORTHWEST',
 }
 
 export enum Strategy {

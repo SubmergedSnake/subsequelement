@@ -10,8 +10,8 @@ describe('getNewStartingPoint', () => {
 		const elements = [...simplegrid3by3]
 		const [elementSeven] = elements.splice(6, 1);
 
-		const phantomElement = getNewStartingPoint(elementSeven, elements, Direction.RIGHT)
-		const nextElementToTheRightOfSeven = findClosestElement(phantomElement, elements, Direction.RIGHT, Strategy.STRICT)
+		const phantomElement = getNewStartingPoint(elementSeven, elements, Direction.EAST)
+		const nextElementToTheRightOfSeven = findClosestElement(phantomElement, elements, Direction.EAST, Strategy.STRICT)
 		expect(nextElementToTheRightOfSeven.id).toEqual('one')
 	})
 
@@ -20,8 +20,8 @@ describe('getNewStartingPoint', () => {
 		const elements = [...simplegrid3by3]
 		const [elementThree] = elements.splice(2, 1);
 
-		const phantomElement = getNewStartingPoint(elementThree, elements, Direction.DOWN)
-		const nextElementBelowThree = findClosestElement(phantomElement, elements, Direction.DOWN, Strategy.STRICT)
+		const phantomElement = getNewStartingPoint(elementThree, elements, Direction.SOUTH)
+		const nextElementBelowThree = findClosestElement(phantomElement, elements, Direction.SOUTH, Strategy.STRICT)
 		expect(nextElementBelowThree.id).toEqual('one')
 	})
 
@@ -30,8 +30,8 @@ describe('getNewStartingPoint', () => {
 		const elements = [...simplegrid3by3]
 		const [elementTwo] = elements.splice(1, 1);
 
-		const phantomElement = getNewStartingPoint(elementTwo, elements, Direction.LEFT)
-		const nextElementLeftOfTWo = findClosestElement(phantomElement, elements, Direction.LEFT, Strategy.STRICT)
+		const phantomElement = getNewStartingPoint(elementTwo, elements, Direction.WEST)
+		const nextElementLeftOfTWo = findClosestElement(phantomElement, elements, Direction.WEST, Strategy.STRICT)
 		expect(nextElementLeftOfTWo.id).toEqual('eight')
 	})
 
@@ -40,8 +40,8 @@ describe('getNewStartingPoint', () => {
 		const elements = [...simplegrid3by3]
 		const [elementSeven] = elements.splice(6, 1);
 
-		const phantomElement = getNewStartingPoint(elementSeven, elements, Direction.UP)
-		const nextElementUpFromSeven = findClosestElement(phantomElement, elements, Direction.UP, Strategy.STRICT)
+		const phantomElement = getNewStartingPoint(elementSeven, elements, Direction.NORTH)
+		const nextElementUpFromSeven = findClosestElement(phantomElement, elements, Direction.NORTH, Strategy.STRICT)
 		expect(nextElementUpFromSeven.id).toEqual('nine')
 	})
 

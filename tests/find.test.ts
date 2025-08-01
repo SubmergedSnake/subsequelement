@@ -11,7 +11,7 @@ describe('find', () => {
 	test('throws error on erroneous input parameters', () => {
 		const faultyArgs: AdjaycentArgs = {
 			cssSelectorForTargetElements: '.class',
-			direction: Direction.UP,
+			direction: Direction.NORTH,
 			startingElement: document.createElement('div'),
 			// @ts-ignore
 			strategy: "foo"
@@ -24,7 +24,7 @@ describe('find', () => {
 	test('does not throw error with valid inputs', () => {
 		const validArgs: AdjaycentArgs = {
 			cssSelectorForTargetElements: '.class',
-			direction: Direction.UP,
+			direction: Direction.NORTH,
 			startingElement: document.createElement('div'),
 			strategy: Strategy.FLOW
 		}

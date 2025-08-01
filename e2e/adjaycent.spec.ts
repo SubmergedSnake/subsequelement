@@ -14,7 +14,7 @@ test('adjaycent works', {
       startingElement: document.querySelector('#one') as HTMLElement,
       strategy: "STRICT",
       cssSelectorForTargetElements: 'article',
-      direction: "RIGHT"
+      direction: "EAST"
 
     }
     // @ts-ignore, adjaycent is set on the window object in index.html
