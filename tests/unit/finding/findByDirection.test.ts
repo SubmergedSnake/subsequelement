@@ -5,7 +5,7 @@ import { unevenGrid3by3 } from "../mockLayouts/unevenGrid3by3"
 describe('findByDirection', () => {
 
 	describe('simplegrid3by3', () => {
-		describe('findRight', () => {
+		describe('East', () => {
 			test('returns only elements to the right of element one', () => {
 				const [one, ...rest] = simplegrid3by3
 				const elements = findRight(one, rest)
@@ -13,7 +13,7 @@ describe('findByDirection', () => {
 			})
 		})
 
-		describe('findLeft', () => {
+		describe('West', () => {
 			test('returns only elements to the left of element four', () => {
 				const [one, two, three, four, ...rest] = simplegrid3by3
 				const elements = findLeft(four, [one, two, three, ...rest])
@@ -21,7 +21,7 @@ describe('findByDirection', () => {
 			})
 		})
 
-		describe('findBelow', () => {
+		describe('South', () => {
 			test('returns only elements below element four', () => {
 				const [one, two, three, four, ...rest] = simplegrid3by3
 				const elements = findBelow(four, [one, two, three, ...rest])
@@ -29,7 +29,7 @@ describe('findByDirection', () => {
 			})
 		})
 
-		describe('findAbove', () => {
+		describe('North', () => {
 			test('returns only elements above element five', () => {
 				const [one, two, three, four, five, ...rest] = simplegrid3by3
 				const elements = findAbove(five, [one, two, three, four, ...rest])
@@ -40,7 +40,7 @@ describe('findByDirection', () => {
 
 
 	describe('unevengrid3by3', () => {
-		describe('findRight', () => {
+		describe('East', () => {
 			test('returns only elements to the right of element four', () => {
 				const [one, two, three, four, ...rest] = unevenGrid3by3
 				const elements = findRight(four, rest)
@@ -48,7 +48,7 @@ describe('findByDirection', () => {
 			})
 		})
 
-		describe('findLeft', () => {
+		describe('West', () => {
 			test('returns only elements to the left of element four', () => {
 				const [one, two, three, four, ...rest] = unevenGrid3by3
 				const elements = findLeft(four, [one, two, three, ...rest])
@@ -56,7 +56,7 @@ describe('findByDirection', () => {
 			})
 		})
 
-		describe('findBelow', () => {
+		describe('South', () => {
 			test('returns only elements below element four', () => {
 				const [one, two, three, four, ...rest] = unevenGrid3by3
 				const elements = findBelow(four, [one, two, three, ...rest])
@@ -64,7 +64,7 @@ describe('findByDirection', () => {
 			})
 		})
 
-		describe('findAbove', () => {
+		describe('North', () => {
 			test('returns only elements above element five', () => {
 				const [one, two, three, four, five, ...rest] = unevenGrid3by3
 				const elements = findAbove(five, [one, two, three, four, ...rest])
