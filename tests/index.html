@@ -5,14 +5,35 @@
       import { adjaycent } from "../src/main.ts";
       document.addEventListener("DOMContentLoaded", (event) => {
         console.log("DOM fully loaded and parsed");
-        window.adjaycent = adjaycent
+        function isAngle45Degrees(x1, y1, x2, y2) {                                                                                                                                                                                              const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);                                                                                                                                                                        const threshold = 1; // Define the threshold range (+/- 1 degree)                                                                                                                                                                    
+          console.log(`angle is ${angle}`) 
+        return (angle >= 45 - threshold && angle <= 45 + threshold);                                                                                                                                                                         
+    }  
+
+
+        document.querySelector('#expose').addEventListener('click', () =>{
+          const [first,,,,fifth, ...rest] = document.querySelectorAll('article')
+          console.log(`fifth (${fifth.innerText}) and first (${first.innerText}) elements`)
+
+          const { left, right, top, bottom } = first.getBoundingClientRect()
+          const { left: fiveL, top: fiveT, right: fiveR, bottom: fiveB } = fifth.getBoundingClientRect()
+          console.log(`${left}, ${top}, ${fiveL}, ${fiveT}`)
+
+          const areDiagonal = (left - fiveL) == (top) - (fiveT)
+          console.log(`angle is 45 degrees: ${isAngle45Degrees(left, top, right, bottom)}`)
+            
       });
+
+      })
+
+
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../tests/app.css" />
     <title>Adjaycent test bed</title>
   </head>
   <body>
+  <button id="expose">Expose coords </button>
     <div class="box" id="simple-grid">
       <article id="one">Item One</article>
       <article id="two">Item Two</article>
