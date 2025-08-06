@@ -22,7 +22,9 @@ export const simplegrid3by3 = [
 			right: 100,
 			left: 0,
 			bottom: 0,
-			top: -100
+			top: -100,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -31,7 +33,9 @@ export const simplegrid3by3 = [
 			right: 100,
 			left: 0,
 			bottom: 100,
-			top: 0
+			top: 0,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -40,7 +44,10 @@ export const simplegrid3by3 = [
 			right: 100,
 			left: 0,
 			bottom: 200,
-			top: 100
+			top: 100,
+			width: 100,
+			height: 100
+
 		})
 	},
 	{
@@ -49,7 +56,9 @@ export const simplegrid3by3 = [
 			right: 200,
 			left: 100,
 			bottom: 0,
-			top: -100
+			top: -100,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -58,7 +67,9 @@ export const simplegrid3by3 = [
 			right: 200,
 			left: 100,
 			bottom: 100,
-			top: 0
+			top: 0,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -67,7 +78,10 @@ export const simplegrid3by3 = [
 			right: 200,
 			left: 100,
 			bottom: 200,
-			top: 100
+			top: 100,
+			width: 100,
+			height: 100
+
 		})
 	},
 	{
@@ -76,7 +90,10 @@ export const simplegrid3by3 = [
 			right: 300,
 			left: 200,
 			bottom: 0,
-			top: -100
+			top: -100,
+			width: 100,
+			height: 100
+
 		})
 	},
 	{
@@ -85,7 +102,9 @@ export const simplegrid3by3 = [
 			right: 300,
 			left: 200,
 			bottom: 100,
-			top: 0
+			top: 0,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -94,7 +113,9 @@ export const simplegrid3by3 = [
 			right: 300,
 			left: 200,
 			bottom: 200,
-			top: 100
+			top: 100,
+			width: 100,
+			height: 100
 		})
 	},
 

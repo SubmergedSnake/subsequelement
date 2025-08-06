@@ -6,6 +6,15 @@ describe('findOverlappingElements', () => {
 
 	describe('simplegrid3by3', () => {
 
+		test.only('cos test', () => {
+			const [one, ...others] = simplegrid3by3
+			const { height, top, bottom, right, left, width } = one.getBoundingClientRect()
+			const fourtyFiveDegrees = Math.PI / 4
+			const diagonalLength = height / Math.cos(fourtyFiveDegrees)
+			const hypo = Math.hypot(height, width)
+			console.log(`height: ${height}, diagonal length: ${diagonalLength}, hypo ${hypo}`)
+		})
+
 		test('starting element one returns two, three, four and seven', () => {
 			const [one, ...others] = simplegrid3by3
 			const overlappingIds = findOverlappingElements(one, others).map(e => e.id)

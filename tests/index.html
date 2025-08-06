@@ -5,22 +5,23 @@
       import { adjaycent } from "../src/main.ts";
       document.addEventListener("DOMContentLoaded", (event) => {
         console.log("DOM fully loaded and parsed");
-        function isAngle45Degrees(x1, y1, x2, y2) {                                                                                                                                                                                              const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);                                                                                                                                                                        const threshold = 1; // Define the threshold range (+/- 1 degree)                                                                                                                                                                    
-          console.log(`angle is ${angle}`) 
-        return (angle >= 45 - threshold && angle <= 45 + threshold);                                                                                                                                                                         
-    }  
-
 
         document.querySelector('#expose').addEventListener('click', () =>{
-          const [first,,,,fifth, ...rest] = document.querySelectorAll('article')
+          document.querySelectorAll('article').forEach(e => {
+            const { width, height } = e.getBoundingClientRect()
+            const fourtyFiveDegrees = Math.PI / 4
+            const diagonalLength = height / Math.cos(fourtyFiveDegrees) 
+            e.textContent = diagonalLength
+          })
+
+          const [first,,,,fifth,sixth, ...rest] = document.querySelectorAll('article')
           console.log(`fifth (${fifth.innerText}) and first (${first.innerText}) elements`)
 
           const { left, right, top, bottom } = first.getBoundingClientRect()
-          const { left: fiveL, top: fiveT, right: fiveR, bottom: fiveB } = fifth.getBoundingClientRect()
-          console.log(`${left}, ${top}, ${fiveL}, ${fiveT}`)
+          const { left: otherL, top: otherT, right: otherR, bottom: otherB } = fifth.getBoundingClientRect()
 
-          const areDiagonal = (left - fiveL) == (top) - (fiveT)
-          console.log(`angle is 45 degrees: ${isAngle45Degrees(left, top, right, bottom)}`)
+          const areDiagonal = (left - otherL) == (top) - (otherT)
+          console.log(`angle is (diagonal) 45 degrees: ${areDiagonal}`)
             
       });
 

@@ -1,24 +1,5 @@
 import { ImplementsGetBoundingClientRect } from "../../../src/types";
 
-/* unevengrid3by3 layout 
-*  ___
-* |   |                       _____ 
-* |one|     _____            |     |
-* |___|    |     |           |seven|
-*          |four |           |_____|
-*          |_____|
-*  ___                         _____ 
-* |   |             _____     |     |
-* |two|            |     |    |eight|
-* |___|            |five |    |_____|
-*       _____      |_____|
-*      |     |
-*      |three|     ___                    _____ 
-*      |_____|    |   |                  |     |
-*                 |six|                  |nine |
-*                 |___|                  |_____|
-*
-*/
 
 export const unevenGrid3by3 = [
 	{
@@ -27,7 +8,9 @@ export const unevenGrid3by3 = [
 			right: 100,
 			left: 0,
 			bottom: 100,
-			top: 0
+			top: 0,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -36,7 +19,9 @@ export const unevenGrid3by3 = [
 			right: 100,
 			left: 0,
 			bottom: 400,
-			top: 300
+			top: 300,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -45,7 +30,9 @@ export const unevenGrid3by3 = [
 			right: 250,
 			left: 150,
 			bottom: 500,
-			top: 400
+			top: 400,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -54,7 +41,9 @@ export const unevenGrid3by3 = [
 			right: 200,
 			left: 100,
 			bottom: 150,
-			top: 50
+			top: 50,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -63,7 +52,9 @@ export const unevenGrid3by3 = [
 			right: 325,
 			left: 225,
 			bottom: 450,
-			top: 350
+			top: 350,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -72,7 +63,9 @@ export const unevenGrid3by3 = [
 			right: 300,
 			left: 200,
 			bottom: 550,
-			top: 450
+			top: 450,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -81,7 +74,9 @@ export const unevenGrid3by3 = [
 			right: 450,
 			left: 350,
 			bottom: 125,
-			top: 25
+			top: 25,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -90,7 +85,9 @@ export const unevenGrid3by3 = [
 			right: 475,
 			left: 375,
 			bottom: 400,
-			top: 300
+			top: 300,
+			width: 100,
+			height: 100
 		})
 	},
 	{
@@ -99,7 +96,9 @@ export const unevenGrid3by3 = [
 			right: 625,
 			left: 525,
 			bottom: 550,
-			top: 450
+			top: 450,
+			width: 100,
+			height: 100
 		})
 	},
 

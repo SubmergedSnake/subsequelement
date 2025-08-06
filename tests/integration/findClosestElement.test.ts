@@ -25,7 +25,7 @@ describe('findClosestElement', () => {
 				const elements = [...simplegrid3by3]
 				const [elementFive] = elements.splice(4, 1);
 
-				const element = findClosestElement(elementFive, elements, Direction.NORTHEAST, Strategy.STRICT)
+				const element = findClosestElement(elementFive, elements, Direction.NORTHEAST, Strategy.FLOW)
 				expect(element.id).toEqual('seven')
 			})
 		})
