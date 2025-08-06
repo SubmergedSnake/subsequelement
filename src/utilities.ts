@@ -26,3 +26,7 @@ export const omitStartingElement = (startingElement: HTMLElement, viableElements
 export const filterUsingStrategy = (strategy: AdjaycentArgs['strategy'], startingElement: HTMLElement, otherElements: HTMLElement[]) => {
 
 }
+
+export const degreesToRadians = (degrees: number) => {
+	return degrees * (Math.PI / 180);
+}
