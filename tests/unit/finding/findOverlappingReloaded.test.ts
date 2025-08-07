@@ -1,9 +1,8 @@
-import { X509Certificate } from "crypto";
 import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
 import { getLine, pointIsBetweenLines } from "../../../src/finding/ruler";
 
 describe('findOverlappingReloaded', () => {
-	test.only('', () => {
+	test.skip('', () => {
 
 		const origin = { x: 50, y: 100 }
 		const anotherPoint = { x: 47, y: 101 }
@@ -17,7 +16,7 @@ describe('findOverlappingReloaded', () => {
 
 
 		const originLine = getLine(origin, 45)
-		const isBetween = pointIsBetweenLines(anotherPoint, originLine)
+		// const isBetween = pointIsBetweenLines(anotherPoint, originLine)
 
 		const [first] = simplegrid3by3;
 

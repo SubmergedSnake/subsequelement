@@ -4,9 +4,7 @@ import { Direction, Strategy } from "../../../src/types"
 import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
 
 describe('getNewStartingPoint', () => {
-
 	test('findClosestElement returns item one for item seven when going East', () => {
-
 		const elements = [...simplegrid3by3]
 		const [elementSeven] = elements.splice(6, 1);
 

@@ -1,4 +1,7 @@
-import { degreesToRadians } from "../utilities";
+
+const degreesToRadians = (degrees: number) => {
+	return degrees * (Math.PI / 180);
+}
 
 export const getLine = (origin: { x: number, y: number }, degrees: number) => {
 	const m = degreesToRadians(degrees)
@@ -6,18 +9,20 @@ export const getLine = (origin: { x: number, y: number }, degrees: number) => {
 	return { b: yIntercept, slope: m }
 }
 
-export const pointIsBetweenLines = (point: { x: number, y: number }, line1: ReturnType<typeof getLine>) => {
+export const pointIsBetweenLines = (point: { x: number, y: number }, startLine: ReturnType<typeof getLine>, endLine: ReturnType<typeof getLine>) => {
 
-	// Calculate the y-value of the diagonal line at anotherPoint.x
-	const lineY = line1.slope * point.x + line1.b;
+	const startLineY = startLine.slope * point.x + startLine.b;
+	const startLineX = (startLineY - startLine.b) / startLine.slope
 
-	// Determine if anotherPoint is above or below the line
-	if (point.y < lineY) {
-		console.log("anotherPoint is above the line.");
-	} else if (point.y > lineY) {
-		console.log("anotherPoint is below the line.");
-	} else {
-		console.log("anotherPoint is exactly on the line.");
-	}
+	const endLineY = endLine.slope * point.x + endLine.b;
+	const endLineX = (endLineY - endLine.b) / endLine.slope
+
+	console.log(JSON.stringify(point))
+	console.log(`startLineY: ${startLineY}, startLineX: ${startLineX}, endLineY: ${endLineY}, endLineX: ${endLineX}`)
+
+	return (point.x > startLineX && point.x < endLineX)
+		&& (point.y > startLineY && point.y < endLineY)
+		|| (point.x === startLineX || point.x === endLineX)
+		|| (point.y === startLineY || point.y === endLineY)
 }
 

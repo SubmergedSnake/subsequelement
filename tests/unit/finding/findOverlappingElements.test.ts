@@ -3,7 +3,6 @@ import { unevenGrid3by3 } from "../mockLayouts/unevenGrid3by3"
 import { findOverlappingElements } from "../../../src/finding/findOverlappingElements"
 
 describe('findOverlappingElements', () => {
-
 	describe('simplegrid3by3', () => {
 
 		test.only('cos test', () => {
