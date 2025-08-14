@@ -1,28 +1,71 @@
+import { join } from "path";
+import { ImplementsGetBoundingClientRect } from "../types";
+
+type Corner = { x: number, y: number }
+
+type BoundaryLine = { yIntercept: number, slope: number }
 
 const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
 }
 
-export const getLine = (origin: { x: number, y: number }, degrees: number) => {
+export const getLine = (origin: Corner, degrees: number): BoundaryLine => {
 	const m = degreesToRadians(degrees)
 	const yIntercept = origin.y - m * origin.x;
-	return { b: yIntercept, slope: m }
+	return { yIntercept, slope: m }
 }
 
-export const pointIsBetweenLines = (point: { x: number, y: number }, startLine: ReturnType<typeof getLine>, endLine: ReturnType<typeof getLine>) => {
+export const cornerIsWithinBoundaryLines = (corner: Corner, boundaryBegin: BoundaryLine, boundaryEnd: BoundaryLine) => {
+	// check that corner.y is below line1 or equal to, and above line2 or equal to
+	// check that corner.x is to the right of line1 or equal to, and to the left of line2 or equal to
 
-	const startLineY = startLine.slope * point.x + startLine.b;
-	const startLineX = (startLineY - startLine.b) / startLine.slope
+	const cornerYOnBoundaryBegin = boundaryBegin.slope * 0 + boundaryBegin.yIntercept
+	const cornerYOnBoundaryEnd = boundaryEnd.slope * 0 + boundaryEnd.yIntercept
 
-	const endLineY = endLine.slope * point.x + endLine.b;
-	const endLineX = (endLineY - endLine.b) / endLine.slope
+	console.log(`Y intercepts for corner: ${cornerYOnBoundaryBegin}, ${cornerYOnBoundaryEnd}`)
 
-	console.log(JSON.stringify(point))
-	console.log(`startLineY: ${startLineY}, startLineX: ${startLineX}, endLineY: ${endLineY}, endLineX: ${endLineX}`)
+	const cornerXOnBoundaryBegin = (corner.y - boundaryBegin.yIntercept) / boundaryBegin.slope
+	const cornerXOnBoundaryEnd = (corner.y - boundaryEnd.yIntercept) / boundaryEnd.slope
 
-	return (point.x > startLineX && point.x < endLineX)
-		&& (point.y > startLineY && point.y < endLineY)
-		|| (point.x === startLineX || point.x === endLineX)
-		|| (point.y === startLineY || point.y === endLineY)
+	console.log(`X intercepts for corner: ${cornerXOnBoundaryBegin}, ${cornerXOnBoundaryEnd}`)
+
+	// console.log(`Corner intercepts: ${line1YIntercept}, ${line2YIntercept}`)
+	// console.log(`Boundary line intercepts: ${boundaryBegin.yIntercept}, ${boundaryEnd.yIntercept}`)
+	// console.log(`The x:es: ${xAtYLine1}, ${xAtYLine2}`)
+	//
+	// const yIsBelowLine1 = boundaryBeginYIntercept >= boundaryBegin.yIntercept
+	// const yIsAboveLine2 = boundaryEndYIntercept <= boundaryBegin.yIntercept
+	const yIsBelowLine1 = corner.y >= cornerYOnBoundaryBegin
+	const yIsAboveLine2 = corner.y <= cornerYOnBoundaryEnd
+
+	const xisRightOfLine1 = corner.x >= cornerXOnBoundaryBegin
+	const xIsLeftOfLine2 = corner.x <= cornerXOnBoundaryEnd
+
+	return (yIsBelowLine1 && yIsAboveLine2) || (xisRightOfLine1 && xIsLeftOfLine2)
+
+}
+
+
+
+export const overlapsWithStartingElement = (startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect, degrees: number): boolean => {
+
+	// TEST if any corner of the element is within the grid, or if any line of the element intersects with either of the boundaries
+
+	const { left, right, top, bottom } = startingElement.getBoundingClientRect()
+
+	const topLine = getLine({ x: left, y: top }, degrees)
+	const bottomLine = getLine({ x: left, y: bottom }, degrees)
+
+
+	// const startLineXAtPointY = (element.y - startLine.b) / startLine.slope
+	//
+	// const endLineXAtPointY = (element.y - endLine.b) / endLine.slope
+	// const endLineYAtPointX = endLine.slope * element.x + endLine.b
+	//
+	// console.log(`Coordinates at Point: startX: ${startLineXAtPointY}, startY: ${startLineYAtPointX}, endX: ${endLineXAtPointY}, endY: ${endLineYAtPointX}`)
+	//
+	// return element.x >= startLineXAtPointY && element.x <= endLineXAtPointY && element.y >= startLineYAtPointX && element.y <= endLineYAtPointX
+	return false
+
 }
 

@@ -1,5 +1,5 @@
 import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
-import { getLine, pointIsBetweenLines } from "../../../src/finding/ruler";
+import { getLine, overlapsWithStartingElement } from "../../../src/finding/ruler";
 
 describe('findOverlappingReloaded', () => {
 	test.skip('', () => {
