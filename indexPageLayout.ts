@@ -1,0 +1,223 @@
+import { HasIdAndElementCoords } from "./src/types";
+export const indexPageLayout: HasIdAndElementCoords[] = [
+  {
+    "id": "A",
+    "top": 33,
+    "left": 10,
+    "right": 214,
+    "bottom": 237,
+    "width": 204,
+    "height": 204,
+    "x": 10,
+    "y": 33
+  },
+  {
+    "id": "B",
+    "top": 33,
+    "left": 214,
+    "right": 418,
+    "bottom": 237,
+    "width": 204,
+    "height": 204,
+    "x": 214,
+    "y": 33
+  },
+  {
+    "id": "C",
+    "top": 33,
+    "left": 418,
+    "right": 622,
+    "bottom": 237,
+    "width": 204,
+    "height": 204,
+    "x": 418,
+    "y": 33
+  },
+  {
+    "id": "D",
+    "top": 237,
+    "left": 10,
+    "right": 214,
+    "bottom": 441,
+    "width": 204,
+    "height": 204,
+    "x": 10,
+    "y": 237
+  },
+  {
+    "id": "E",
+    "top": 237,
+    "left": 214,
+    "right": 418,
+    "bottom": 441,
+    "width": 204,
+    "height": 204,
+    "x": 214,
+    "y": 237
+  },
+  {
+    "id": "F",
+    "top": 237,
+    "left": 418,
+    "right": 622,
+    "bottom": 441,
+    "width": 204,
+    "height": 204,
+    "x": 418,
+    "y": 237
+  },
+  {
+    "id": "G",
+    "top": 441,
+    "left": 10,
+    "right": 214,
+    "bottom": 645,
+    "width": 204,
+    "height": 204,
+    "x": 10,
+    "y": 441
+  },
+  {
+    "id": "H",
+    "top": 441,
+    "left": 214,
+    "right": 418,
+    "bottom": 645,
+    "width": 204,
+    "height": 204,
+    "x": 214,
+    "y": 441
+  },
+  {
+    "id": "I",
+    "top": 441,
+    "left": 418,
+    "right": 622,
+    "bottom": 645,
+    "width": 204,
+    "height": 204,
+    "x": 418,
+    "y": 441
+  },
+  {
+    "id": "J",
+    "top": 645,
+    "left": 10,
+    "right": 214,
+    "bottom": 849,
+    "width": 204,
+    "height": 204,
+    "x": 10,
+    "y": 645
+  },
+  {
+    "id": "K",
+    "top": 645,
+    "left": 214,
+    "right": 418,
+    "bottom": 849,
+    "width": 204,
+    "height": 204,
+    "x": 214,
+    "y": 645
+  },
+  {
+    "id": "L",
+    "top": 645,
+    "left": 418,
+    "right": 622,
+    "bottom": 849,
+    "width": 204,
+    "height": 204,
+    "x": 418,
+    "y": 645
+  },
+  {
+    "id": "N",
+    "top": 849,
+    "left": 10,
+    "right": 214,
+    "bottom": 1053,
+    "width": 204,
+    "height": 204,
+    "x": 10,
+    "y": 849
+  },
+  {
+    "id": "M",
+    "top": 849,
+    "left": 214,
+    "right": 418,
+    "bottom": 1053,
+    "width": 204,
+    "height": 204,
+    "x": 214,
+    "y": 849
+  },
+  {
+    "id": "O",
+    "top": 849,
+    "left": 418,
+    "right": 622,
+    "bottom": 1053,
+    "width": 204,
+    "height": 204,
+    "x": 418,
+    "y": 849
+  },
+  {
+    "id": "P",
+    "top": 1053,
+    "left": 10,
+    "right": 214,
+    "bottom": 1257,
+    "width": 204,
+    "height": 204,
+    "x": 10,
+    "y": 1053
+  },
+  {
+    "id": "Q",
+    "top": 1053,
+    "left": 214,
+    "right": 418,
+    "bottom": 1257,
+    "width": 204,
+    "height": 204,
+    "x": 214,
+    "y": 1053
+  },
+  {
+    "id": "R",
+    "top": 1053,
+    "left": 418,
+    "right": 622,
+    "bottom": 1257,
+    "width": 204,
+    "height": 204,
+    "x": 418,
+    "y": 1053
+  },
+  {
+    "id": "S",
+    "top": 1257,
+    "left": 10,
+    "right": 214,
+    "bottom": 1461,
+    "width": 204,
+    "height": 204,
+    "x": 10,
+    "y": 1257
+  },
+  {
+    "id": "T",
+    "top": 1257,
+    "left": 214,
+    "right": 418,
+    "bottom": 1461,
+    "width": 204,
+    "height": 204,
+    "x": 214,
+    "y": 1257
+  }
+]

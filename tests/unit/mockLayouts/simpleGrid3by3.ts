@@ -1,4 +1,4 @@
-import { ImplementsGetBoundingClientRect } from "../../../src/types";
+import { HasIdAndElementCoords } from "../../../src/types";
 
 /* simplegrid3by3 layout
 *  _____  _____  _____  
@@ -119,4 +119,4 @@ export const simplegrid3by3 = [
 		})
 	},
 
-] satisfies ImplementsGetBoundingClientRect[]
+] satisfies HasIdAndElementCoords[]

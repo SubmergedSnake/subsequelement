@@ -1,6 +1,6 @@
-import { ImplementsGetBoundingClientRect } from "../types";
+import { HasIdAndElementCoords } from "../types";
 
-const haveColumnarOverlap = (startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect) => {
+const haveColumnarOverlap = (startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords) => {
 	const { left: otherLeft, right: otherRight } = otherElement.getBoundingClientRect()
 	const { left: startingLeft, right: startingRight } = startingElement.getBoundingClientRect()
 
@@ -14,7 +14,7 @@ const haveColumnarOverlap = (startingElement: ImplementsGetBoundingClientRect, o
 
 }
 
-const haveRowOverlap = (startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect) => {
+const haveRowOverlap = (startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords) => {
 	const { top: otherTop, bottom: otherBottom } = otherElement.getBoundingClientRect()
 	const { top: startingTop, bottom: startingBottom } = startingElement.getBoundingClientRect()
 
@@ -27,8 +27,8 @@ const haveRowOverlap = (startingElement: ImplementsGetBoundingClientRect, otherE
 	return overLaps
 }
 
-export const findOverlappingElements = (startingElement: ImplementsGetBoundingClientRect,
-	otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
+export const findOverlappingElements = (startingElement: HasIdAndElementCoords,
+	otherElements: HasIdAndElementCoords[]): HasIdAndElementCoords[] => {
 
 	const overlappingElements = otherElements.filter(otherElement => {
 		const elementsHaveColumnarOverlap = haveColumnarOverlap(startingElement, otherElement)

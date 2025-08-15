@@ -1,5 +1,5 @@
 import { join } from "path";
-import { ImplementsGetBoundingClientRect } from "../types";
+import { HasIdAndElementCoords } from "../types";
 
 type Corner = { x: number, y: number }
 
@@ -47,7 +47,7 @@ export const cornerIsWithinBoundaryLines = (corner: Corner, boundaryBegin: Bound
 
 
 
-export const overlapsWithStartingElement = (startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect, degrees: number): boolean => {
+export const overlapsWithStartingElement = (startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords, degrees: number): boolean => {
 
 	// TEST if any corner of the element is within the grid, or if any line of the element intersects with either of the boundaries
 

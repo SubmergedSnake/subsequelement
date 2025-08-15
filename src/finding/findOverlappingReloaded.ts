@@ -1,6 +1,6 @@
-import { ImplementsGetBoundingClientRect } from "../types";
+import { HasIdAndElementCoords } from "../types";
 
-const findOverlappingReloaded = (startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[]): ImplementsGetBoundingClientRect[] => {
+const findOverlappingReloaded = (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[]): HasIdAndElementCoords[] => {
 
 	return []
 }

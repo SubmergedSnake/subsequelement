@@ -1,4 +1,4 @@
-import { ImplementsGetBoundingClientRect } from "../../../src/types";
+import { HasIdAndElementCoords } from "../../../src/types";
 
 
 export const unevenGrid3by3 = [
@@ -102,4 +102,4 @@ export const unevenGrid3by3 = [
 		})
 	},
 
-] satisfies ImplementsGetBoundingClientRect[]
+] satisfies HasIdAndElementCoords[]

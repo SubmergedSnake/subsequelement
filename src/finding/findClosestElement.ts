@@ -1,12 +1,12 @@
 import { findInDirection } from "./findByDirection";
 import { ClosestPoint, findClosestPointRelativeToStartingElement } from "./findClosestPointRelativeToStartingElement";
 import { findOverlappingElements } from "./findOverlappingElements";
-import { Direction, ImplementsGetBoundingClientRect, Strategy } from "../types";
+import { Direction, HasIdAndElementCoords, Strategy } from "../types";
 import { getNewStartingPoint } from "./getNewStartingPoint";
 
 export const findClosestElement =
-	(startingElement: ImplementsGetBoundingClientRect, otherElements: ImplementsGetBoundingClientRect[], direction: Direction, strategy: Strategy)
-		: ImplementsGetBoundingClientRect => {
+	(startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], direction: Direction, strategy: Strategy)
+		: HasIdAndElementCoords => {
 
 		let validElements
 
@@ -18,7 +18,7 @@ export const findClosestElement =
 
 		const elementsInDirection = findInDirection(startingElement, validElements, direction)
 
-		let elementsWithDistances: (ImplementsGetBoundingClientRect & ClosestPoint)[] = elementsInDirection.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
+		let elementsWithDistances: (HasIdAndElementCoords & ClosestPoint)[] = elementsInDirection.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
 		if (elementsWithDistances.length === 0) {
 			const phantomElement = getNewStartingPoint(startingElement, elementsInDirection, direction)
 			elementsWithDistances = elementsInDirection.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(phantomElement, e) }))

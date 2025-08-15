@@ -1,4 +1,4 @@
-import { ImplementsGetBoundingClientRect } from "../types";
+import { HasIdAndElementCoords } from "../types";
 
 export type ClosestPoint = {
 	corner: { x: number, y: number }
@@ -6,7 +6,7 @@ export type ClosestPoint = {
 }
 
 export const findClosestPointRelativeToStartingElement =
-	(startingElement: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect): ClosestPoint => {
+	(startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords): ClosestPoint => {
 
 		const { left: otherLeft, right: otherRight, top: otherTop, bottom: otherBottom } = otherElement.getBoundingClientRect()
 		const { left: startingLeft, right: startingRight, top: startingTop, bottom: startingBottom } = startingElement.getBoundingClientRect()

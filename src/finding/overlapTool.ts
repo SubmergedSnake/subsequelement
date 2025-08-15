@@ -1,4 +1,4 @@
-import { ImplementsGetBoundingClientRect } from "../types";
+import { HasIdAndElementCoords } from "../types";
 import { getBoundary } from "./ruler";
 import { isRangeOverlap } from "range-overlap";
 
@@ -25,7 +25,7 @@ export const determineBoundaryCornersByAngle = (angle: SupportedAngle): Boundary
 }
 
 
-export const elementsAreAligned = (startingPoint: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect, angle: SupportedAngle) => {
+export const elementsAreAligned = (startingPoint: HasIdAndElementCoords, otherElement: HasIdAndElementCoords, angle: SupportedAngle) => {
 	const startingPointRect = startingPoint.getBoundingClientRect()
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.getBoundingClientRect()
 

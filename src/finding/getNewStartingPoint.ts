@@ -1,6 +1,6 @@
-import { Direction, ImplementsGetBoundingClientRect } from "../types";
+import { Direction, HasIdAndElementCoords } from "../types";
 
-export const getNewStartingPoint = (startingElement: ImplementsGetBoundingClientRect, validElements: ImplementsGetBoundingClientRect[], direction: Direction): ImplementsGetBoundingClientRect => {
+export const getNewStartingPoint = (startingElement: HasIdAndElementCoords, validElements: HasIdAndElementCoords[], direction: Direction): HasIdAndElementCoords => {
 	let phantomElementCoordinates = startingElement.getBoundingClientRect()
 
 
