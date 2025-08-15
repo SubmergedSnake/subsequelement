@@ -25,35 +25,35 @@ export const determineBoundaryCornersByAngle = (angle: SupportedAngle): Boundary
 }
 
 
-export const elementsAreAligned = (startingPoint: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect, angle: number) => {
-	const { left, right, top, bottom } = startingPoint.getBoundingClientRect()
+export const elementsAreAligned = (startingPoint: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect, angle: SupportedAngle) => {
+	const startingPointRect = startingPoint.getBoundingClientRect()
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.getBoundingClientRect()
-	// The boundaries should be dynamically set using params!!!
-	const boundaryBegin = getBoundary({ x: left, y: top }, angle)
-	const boundaryEnd = getBoundary({ x: right, y: top }, angle)
+
+	const boundaryCorners = determineBoundaryCornersByAngle(angle)
+	const { begin: { x: beginX, y: beginY }, end: { x: endX, y: endY } } = boundaryCorners
+	const boundaryBegin = getBoundary({ x: startingPointRect[beginX], y: startingPointRect[beginY] }, angle)
+	const boundaryEnd = getBoundary({ x: startingPointRect[endX], y: startingPointRect[endY] }, angle)
 
 
 	const boundaryBeginYAtElementXPosition = boundaryBegin.slope * oeLeft + boundaryBegin.yIntercept
 	const boundaryEndYAtElementXPosition = boundaryEnd.slope * oeLeft + boundaryEnd.yIntercept
-
-
 	const thereIsYOverlap = isRangeOverlap(oeTop, oeBottom, boundaryBeginYAtElementXPosition, boundaryEndYAtElementXPosition)
 
 	const boundaryBeginXAtElementYPosition = (oeTop - boundaryBegin.yIntercept) / boundaryBegin.slope
 	const boundaryEndXAtElementYPosition = (oeTop - boundaryEnd.yIntercept) / boundaryEnd.slope
-
-	// console.log(`${boundaryBeginXAtElementYPosition}`);
-	// console.log(`${boundaryEndXAtElementYPosition}`);
-	// console.log(oeLeft);
-	// console.log(oeRight);
-
-
-
 	const thereIsXOverlap = isRangeOverlap(oeLeft, oeRight, boundaryBeginXAtElementYPosition, boundaryEndXAtElementYPosition)
 
 	console.log(`there is x overlap: ${thereIsXOverlap}`)
 	console.log(`there is y overlap: ${thereIsYOverlap}`)
 
-	return thereIsYOverlap && thereIsXOverlap
+	let isAligned
 
+	if (angle === 0) {
+		isAligned = thereIsYOverlap
+	} else if (angle === 90) {
+		isAligned = thereIsXOverlap
+	} else {
+		isAligned = thereIsYOverlap && thereIsYOverlap
+	}
+	return isAligned
 }

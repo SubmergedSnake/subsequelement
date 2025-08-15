@@ -1,28 +1,31 @@
 import { determineBoundaryCornersByAngle, elementsAreAligned } from "../../../src/finding/overlapTool"
 import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
 
-describe('overlapTool', () => {
+describe.only('overlapTool', () => {
 
 	it('finds that element on horizontal grid overlaps', () => {
 		const [startingPoint, , , otherElement] = simplegrid3by3
-		const doesOverlap = elementsAreAligned(startingPoint, otherElement, 0)
-		expect(doesOverlap).toBe(true)
+		const areAligned = elementsAreAligned(startingPoint, otherElement, 0)
+		expect(areAligned).toBe(true)
 
 	})
 
 	it('finds that element on vertical grid overlaps', () => {
 		const [otherElement, startingPoint] = simplegrid3by3
-		const doesOverlap = elementsAreAligned(startingPoint, otherElement, 90)
-		expect(doesOverlap).toBe(true)
+		const areAligned = elementsAreAligned(startingPoint, otherElement, 90)
+		expect(areAligned).toBe(true)
 
 	})
 
 	it('finds that element on diagonal grid overlaps', () => {
+		const [otherElement, , , , startingPoint] = simplegrid3by3
+		const areAligned = elementsAreAligned(startingPoint, otherElement, 135)
+		expect(areAligned).toBe(true)
 
 	})
 })
 
-describe.only('determineBoundariesByAngle', () => {
+describe('determineBoundariesByAngle', () => {
 
 	it('returns left,top,left,bottom for 0°', async () => {
 		const boundaryCorners = determineBoundaryCornersByAngle(0)
