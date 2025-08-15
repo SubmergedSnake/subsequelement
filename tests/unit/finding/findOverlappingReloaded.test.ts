@@ -1,5 +1,5 @@
 import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
-import { getLine, overlapsWithStartingElement } from "../../../src/finding/ruler";
+import { getBoundary, overlapsWithStartingElement } from "../../../src/finding/ruler";
 
 describe('findOverlappingReloaded', () => {
 	test.skip('', () => {
@@ -15,7 +15,7 @@ describe('findOverlappingReloaded', () => {
 		// Determine if anotherPoint is above or below the line
 
 
-		const originLine = getLine(origin, 45)
+		const originLine = getBoundary(origin, 45)
 		// const isBetween = pointIsBetweenLines(anotherPoint, originLine)
 
 		const [first] = simplegrid3by3;

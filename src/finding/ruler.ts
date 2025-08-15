@@ -9,7 +9,7 @@ const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
 }
 
-export const getLine = (origin: Corner, degrees: number): BoundaryLine => {
+export const getBoundary = (origin: Corner, degrees: number): BoundaryLine => {
 	const m = degreesToRadians(degrees)
 	const yIntercept = origin.y - m * origin.x;
 	return { yIntercept, slope: m }
@@ -53,8 +53,8 @@ export const overlapsWithStartingElement = (startingElement: ImplementsGetBoundi
 
 	const { left, right, top, bottom } = startingElement.getBoundingClientRect()
 
-	const topLine = getLine({ x: left, y: top }, degrees)
-	const bottomLine = getLine({ x: left, y: bottom }, degrees)
+	const topLine = getBoundary({ x: left, y: top }, degrees)
+	const bottomLine = getBoundary({ x: left, y: bottom }, degrees)
 
 
 	// const startLineXAtPointY = (element.y - startLine.b) / startLine.slope

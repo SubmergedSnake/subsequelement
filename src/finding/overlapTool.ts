@@ -1,13 +1,36 @@
 import { ImplementsGetBoundingClientRect } from "../types";
-import { getLine } from "./ruler";
+import { getBoundary } from "./ruler";
 import { isRangeOverlap } from "range-overlap";
 
-export const thereIsOverlap = (startingPoint: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect, angle: number) => {
+type BoundaryCorners = {
+	begin: { x: 'left' | 'right', y: 'top' | 'bottom' }
+	end: { x: 'left' | 'right', y: 'top' | 'bottom' }
+}
+
+type SupportedAngle = 0 | 45 | 90 | 135
+
+export const determineBoundaryCornersByAngle = (angle: SupportedAngle): BoundaryCorners => {
+
+	switch (angle) {
+		case 0:
+			return { begin: { x: 'left', y: 'top' }, end: { x: 'left', y: 'bottom' } }
+		case 45:
+			return { begin: { x: 'left', y: 'top' }, end: { x: 'right', y: 'bottom' } }
+		case 90:
+			return { begin: { x: 'left', y: 'top' }, end: { x: 'right', y: 'top' } }
+		case 135:
+			return { begin: { x: 'right', y: 'top' }, end: { x: 'left', y: 'bottom' } }
+		default: throw new Error('Unsupported angle')
+	}
+}
+
+
+export const elementsAreAligned = (startingPoint: ImplementsGetBoundingClientRect, otherElement: ImplementsGetBoundingClientRect, angle: number) => {
 	const { left, right, top, bottom } = startingPoint.getBoundingClientRect()
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.getBoundingClientRect()
 	// The boundaries should be dynamically set using params!!!
-	const boundaryBegin = getLine({ x: left, y: top }, angle)
-	const boundaryEnd = getLine({ x: right, y: top }, angle)
+	const boundaryBegin = getBoundary({ x: left, y: top }, angle)
+	const boundaryEnd = getBoundary({ x: right, y: top }, angle)
 
 
 	const boundaryBeginYAtElementXPosition = boundaryBegin.slope * oeLeft + boundaryBegin.yIntercept
