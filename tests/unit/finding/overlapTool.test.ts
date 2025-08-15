@@ -10,7 +10,7 @@ describe('overlapTool', () => {
 
 	})
 
-	it('finds that element on vertical grid overlaps', () => {
+	it.only('finds that element on vertical grid overlaps', () => {
 		const [otherElement, startingPoint] = simplegrid3by3
 		const doesOverlap = thereIsOverlap(startingPoint, otherElement, 90)
 		expect(doesOverlap).toBe(true)
