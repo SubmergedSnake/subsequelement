@@ -25,7 +25,7 @@ import * as fs from 'fs'
     }).sort()
   })
 
-  fs.writeFileSync('indexPageLayout.ts', `import { HasIdAndElementCoords } from "./src/types";
+  fs.writeFileSync('./tests/unit/realLayouts/indexPageLayout.ts', `import { HasIdAndElementCoords } from "../../../src/types";
 export const indexPageLayout: HasIdAndElementCoords[] = ${JSON.stringify(indexPageElements, null, 2)}`)
 
 

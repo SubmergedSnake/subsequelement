@@ -1,4 +1,4 @@
-import { HasIdAndElementCoords } from "./src/types";
+import { HasIdAndElementCoords } from "../../../src/types";
 export const indexPageLayout: HasIdAndElementCoords[] = [
   {
     "id": "A",
