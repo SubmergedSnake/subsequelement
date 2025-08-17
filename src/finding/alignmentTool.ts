@@ -42,6 +42,13 @@ export const findAlignedElements = (startingElement: HasIdAndElementCoords, angl
 	return (otherElement: HasIdAndElementCoords) => {
 		const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement
 
+		if (angle.valueOf() === 90) {
+			return isRangeOverlap(oeLeft + 1, oeRight - 1, startingElement.left + 1, startingElement.right - 1)
+		}
+		else if (angle.valueOf() === 0) {
+			return isRangeOverlap(oeTop + 1, oeBottom - 1, startingElement.top + 1, startingElement.bottom - 1)
+		}
+
 		const boundaryCorners = determineBoundaryCornersByAngle(angle)
 		const { begin: { x: beginX, y: beginY }, end: { x: endX, y: endY } } = boundaryCorners
 
@@ -57,10 +64,12 @@ export const findAlignedElements = (startingElement: HasIdAndElementCoords, angl
 		const boundaryBeginXAtElementYPosition = (oeTop - boundaryBegin.yIntercept) / boundaryBegin.slope
 		const boundaryEndXAtElementYPosition = (oeBottom - boundaryEnd.yIntercept) / boundaryEnd.slope
 
+		console.log(boundaryBeginXAtElementYPosition)
+		console.log(boundaryEndXAtElementYPosition);
+
+
 		const thereIsXOverlap = isRangeOverlap(oeLeft, oeRight, boundaryBeginXAtElementYPosition, boundaryEndXAtElementYPosition)
 
-		console.log(`there is x overlap: ${thereIsXOverlap}`)
-		console.log(`there is y overlap: ${thereIsYOverlap}`)
 
 		let isAligned
 

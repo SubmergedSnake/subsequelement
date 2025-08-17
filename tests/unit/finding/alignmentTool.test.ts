@@ -1,23 +1,22 @@
 import { determineBoundaryCornersByAngle, findAlignedElements } from "../../../src/finding/alignmentTool"
-import { HasIdAndElementCoords } from "../../../src/types"
 import { indexPageLayout } from "../realLayouts/indexPageLayout"
 
 describe.only('alignmentTool', () => {
 
-	it.only('finds other elements that align horizontally', () => {
-		const [A] = indexPageLayout
-		const alignedElements = indexPageLayout.slice(0, 6).filter(findAlignedElements(A, 0))
-		console.log(alignedElements)
+	it('finds other elements that align horizontally', () => {
+		const [A, ...rest] = indexPageLayout
+		const alignedElements = rest.filter(findAlignedElements(A, 0))
+		expect(alignedElements.sort().map(e => e.id)).toEqual(['B', 'C'])
 	})
 
 	it('finds other elements that align vertically', () => {
-		const [otherElement, startingPoint] = indexPageLayout
-		// const areAligned = elementsAreAligned(startingPoint, otherElement, 90)
-		// expect(areAligned).toBe(true)
+		const [A, ...rest] = indexPageLayout
+		const alignedElements = rest.filter(findAlignedElements(A, 90))
+		expect(alignedElements.sort().map(e => e.id)).toEqual(['D', 'G', 'J', 'N', 'P', 'S'])
 
 	})
 
-	it.only('finds other elements that align diagonally (top/left -> bottom/right)', () => {
+	it('finds other elements that align diagonally (top/left -> bottom/right)', () => {
 		const [otherElement, , , , startingPoint] = indexPageLayout
 		// const areAligned = elementsAreAligned(startingPoint, otherElement, 45)
 		// expect(areAligned).toBe(true)
