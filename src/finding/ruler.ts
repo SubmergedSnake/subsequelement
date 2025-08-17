@@ -1,19 +1,6 @@
-import { join } from "path";
 import { HasIdAndElementCoords } from "../types";
 
-type Corner = { x: number, y: number }
 
-type BoundaryLine = { yIntercept: number, slope: number }
-
-const degreesToRadians = (degrees: number) => {
-	return degrees * (Math.PI / 180);
-}
-
-export const getBoundary = (origin: Corner, degrees: number): BoundaryLine => {
-	const m = degreesToRadians(degrees)
-	const yIntercept = origin.y - m * origin.x;
-	return { yIntercept, slope: m }
-}
 
 export const cornerIsWithinBoundaryLines = (corner: Corner, boundaryBegin: BoundaryLine, boundaryEnd: BoundaryLine) => {
 	// check that corner.y is below line1 or equal to, and above line2 or equal to

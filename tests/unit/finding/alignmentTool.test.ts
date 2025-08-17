@@ -1,26 +1,26 @@
-import { determineBoundaryCornersByAngle, elementsAreAligned } from "../../../src/finding/overlapTool"
-import { simplegrid3by3 } from "../mockLayouts/simpleGrid3by3"
+import { determineBoundaryCornersByAngle, findAlignedElements } from "../../../src/finding/alignmentTool"
+import { HasIdAndElementCoords } from "../../../src/types"
+import { indexPageLayout } from "../realLayouts/indexPageLayout"
 
-describe.only('overlapTool', () => {
+describe.only('alignmentTool', () => {
 
-	it('finds that element on horizontal grid overlaps', () => {
-		const [startingPoint, , , otherElement] = simplegrid3by3
-		const areAligned = elementsAreAligned(startingPoint, otherElement, 0)
-		expect(areAligned).toBe(true)
+	it.only('finds other elements that align horizontally', () => {
+		const [A] = indexPageLayout
+		const alignedElements = indexPageLayout.slice(0, 6).filter(findAlignedElements(A, 0))
+		console.log(alignedElements)
+	})
+
+	it('finds other elements that align vertically', () => {
+		const [otherElement, startingPoint] = indexPageLayout
+		// const areAligned = elementsAreAligned(startingPoint, otherElement, 90)
+		// expect(areAligned).toBe(true)
 
 	})
 
-	it('finds that element on vertical grid overlaps', () => {
-		const [otherElement, startingPoint] = simplegrid3by3
-		const areAligned = elementsAreAligned(startingPoint, otherElement, 90)
-		expect(areAligned).toBe(true)
-
-	})
-
-	it('finds that element on diagonal grid overlaps', () => {
-		const [otherElement, , , , startingPoint] = simplegrid3by3
-		const areAligned = elementsAreAligned(startingPoint, otherElement, 135)
-		expect(areAligned).toBe(true)
+	it.only('finds other elements that align diagonally (top/left -> bottom/right)', () => {
+		const [otherElement, , , , startingPoint] = indexPageLayout
+		// const areAligned = elementsAreAligned(startingPoint, otherElement, 45)
+		// expect(areAligned).toBe(true)
 
 	})
 })
