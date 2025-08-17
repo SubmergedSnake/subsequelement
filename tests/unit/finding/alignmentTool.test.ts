@@ -16,10 +16,11 @@ describe.only('alignmentTool', () => {
 
 	})
 
-	it('finds other elements that align diagonally (top/left -> bottom/right)', () => {
-		const [otherElement, , , , startingPoint] = indexPageLayout
-		// const areAligned = elementsAreAligned(startingPoint, otherElement, 45)
-		// expect(areAligned).toBe(true)
+	it.only('finds other elements that align diagonally (top/left -> bottom/right)', () => {
+		const [A, B, C, D, E, F, G, H, ...rest] = indexPageLayout
+		// const alignedElements = [...rest, A, B, C, D].filter(findAlignedElements(E, 45))
+		const alignedElements = [A, B, C, D, E, F, G, ...rest].filter(findAlignedElements(H, 45))
+		console.log(alignedElements)
 
 	})
 })
