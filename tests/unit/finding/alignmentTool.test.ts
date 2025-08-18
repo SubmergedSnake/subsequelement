@@ -16,12 +16,16 @@ describe.only('alignmentTool', () => {
 
 	})
 
-	it.only('finds other elements that align diagonally (top/left -> bottom/right)', () => {
+	it('finds other elements that align diagonally (top/left -> bottom/right)', () => {
 		const [A, B, C, D, E, F, G, H, ...rest] = indexPageLayout
-		// const alignedElements = [...rest, A, B, C, D].filter(findAlignedElements(E, 45))
 		const alignedElements = [A, B, C, D, E, F, G, ...rest].filter(findAlignedElements(H, 45))
-		console.log(alignedElements)
+		expect(alignedElements.sort().map(e => e.id)).toEqual(['D', 'L'])
+	})
 
+	it('finds other elements that align diagonally (bottom/left -> top/right)', () => {
+		const [A, B, C, D, E, F, G, H, ...rest] = indexPageLayout
+		const alignedElements = [A, B, C, D, E, F, G, ...rest].filter(findAlignedElements(H, -45))
+		expect(alignedElements.sort().map(e => e.id)).toEqual(['F', 'J'])
 	})
 })
 
@@ -46,14 +50,6 @@ describe('determineBoundariesByAngle', () => {
 		const { begin: { x: beginX, y: beginY }, end: { x: endX, y: endY } } = boundaryCorners
 		const corners = [beginX, beginY, endX, endY]
 		expect(corners).toEqual(['left', 'top', 'right', 'top'])
-	})
-
-	it('returns right,top,left,bottom for 135°', async () => {
-		const boundaryCorners = determineBoundaryCornersByAngle(135)
-		const { begin: { x: beginX, y: beginY }, end: { x: endX, y: endY } } = boundaryCorners
-		const corners = [beginX, beginY, endX, endY]
-		expect(corners).toEqual(['right', 'top', 'left', 'bottom'])
-
 	})
 
 	it('throws error on unsupported angle', () => {

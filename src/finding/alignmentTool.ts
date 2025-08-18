@@ -7,7 +7,7 @@ type BoundaryCorners = {
 }
 type BoundaryLine = { yIntercept: number, slope: number }
 type Corner = { x: number, y: number }
-type SupportedAngle = 0 | 45 | 90 | 135 | 225 | 315
+type SupportedAngle = 0 | 45 | 90 | -45
 
 const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
@@ -24,6 +24,8 @@ export const determineBoundaryCornersByAngle = (angle: SupportedAngle): Boundary
 
 	switch (angle) {
 		case 45:
+			return { begin: { x: 'right', y: 'top' }, end: { x: 'left', y: 'bottom' } }
+		case -45:
 			return { begin: { x: 'right', y: 'top' }, end: { x: 'left', y: 'bottom' } }
 		default: throw new Error('Unsupported angle')
 	}
@@ -44,9 +46,16 @@ export const findAlignedElements = (startingElement: HasIdAndElementCoords, angl
 
 		const { begin: { x: beginX, y: beginY }, end: { x: endX, y: endY } } = determineBoundaryCornersByAngle(angle)
 
+		let boundaryBegin
+		let boundaryEnd
 
-		const boundaryBegin = getDiagonalBoundary({ x: startingElement[beginX] + 1, y: startingElement[beginY] + 1 }, angle)
-		const boundaryEnd = getDiagonalBoundary({ x: startingElement[endX] - 1, y: startingElement[endY] - 1 }, angle)
+		if (angle.valueOf() === 45) {
+			boundaryBegin = getDiagonalBoundary({ x: startingElement[beginX] + 1, y: startingElement[beginY] + 1 }, angle)
+			boundaryEnd = getDiagonalBoundary({ x: startingElement[endX] - 1, y: startingElement[endY] - 1 }, angle)
+		} else {
+			boundaryBegin = getDiagonalBoundary({ x: startingElement[beginX] - 1, y: startingElement[beginY] - 1 }, angle)
+			boundaryEnd = getDiagonalBoundary({ x: startingElement[endX] + 1, y: startingElement[endY] + 1 }, angle)
+		}
 
 
 		const boundaryBeginYAtElementXPosition = boundaryBegin.slope * oeRight + boundaryBegin.yIntercept
@@ -54,16 +63,12 @@ export const findAlignedElements = (startingElement: HasIdAndElementCoords, angl
 
 
 		const thereIsYAlignment = isRangeOverlap(oeTop, oeBottom, boundaryBeginYAtElementXPosition, boundaryEndYAtElementXPosition)
-		console.log('There is y alignment: ' + thereIsYAlignment);
 
 		const boundaryBeginXAtElementYPosition = (oeTop - boundaryBegin.yIntercept) / boundaryBegin.slope
 		const boundaryEndXAtElementYPosition = (oeBottom - boundaryEnd.yIntercept) / boundaryEnd.slope
 
-		console.log(`otherElement left, right: ${oeLeft}, ${oeRight}`)
-		console.log(`boundaries: ${boundaryBeginXAtElementYPosition}, ${boundaryEndXAtElementYPosition}`);
 
 		const thereIsXAlignment = isRangeOverlap(oeLeft, oeRight, boundaryEndXAtElementYPosition, boundaryBeginXAtElementYPosition)
-		console.log(thereIsXAlignment);
 
 		return thereIsYAlignment && thereIsXAlignment
 	}
