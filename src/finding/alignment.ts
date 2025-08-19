@@ -32,7 +32,7 @@ export const determineBoundaryCornersByAngle = (angle: SupportedAngle): Boundary
 }
 
 
-export const findAlignedElements = (startingElement: HasIdAndElementCoords, angle: SupportedAngle) => {
+const isAligned = (startingElement: HasIdAndElementCoords, angle: SupportedAngle) => {
 
 	return (otherElement: HasIdAndElementCoords) => {
 		const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement
@@ -72,4 +72,8 @@ export const findAlignedElements = (startingElement: HasIdAndElementCoords, angl
 
 		return thereIsYAlignment && thereIsXAlignment
 	}
+}
+
+export const findAlignedElements = (startingElement: HasIdAndElementCoords, elements: HasIdAndElementCoords[], angle: SupportedAngle) => {
+	return elements.filter(isAligned(startingElement, angle))
 }

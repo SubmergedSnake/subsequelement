@@ -27,8 +27,8 @@ const reverseFindFunctions = {
 	"nw": findFunctions.se
 }
 
-export const findInDirection = (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], bearing: keyof typeof Bearing, reverse: boolean = false): HasIdAndElementCoords[] => {
-	const findFunc = reverse ? reverseFindFunctions[bearing] : findFunctions[bearing]
+export const findInDirection = (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], bearing: keyof typeof Bearing, reverse: 'reverse' | '' = ''): HasIdAndElementCoords[] => {
+	const findFunc = reverse === 'reverse' ? reverseFindFunctions[bearing] : findFunctions[bearing]
 	const elements = findFunc(startingElement, otherElements)
 	return elements
 }
