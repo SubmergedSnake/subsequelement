@@ -1,11 +1,11 @@
 import { findElements, omitStartingElement, validateArgs } from "./utilities"
-import { Direction, Strategy, type AdjaycentArgs } from "./types"
+import { type AdjaycentArgs } from "./types"
 
 export const adjaycent = (args: AdjaycentArgs) => {
 
 	validateArgs(args)
 
-	const { cssSelectorForTargetElements, direction, startingElement, strategy } = args
+	const { cssSelectorForTargetElements, bearing, startingElement, strategy } = args
 
 	const viableElements = findElements(cssSelectorForTargetElements)
 

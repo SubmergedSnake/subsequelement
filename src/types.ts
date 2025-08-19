@@ -24,7 +24,7 @@ export enum Strategy {
 export type AdjaycentArgs = {
 	startingElement: HTMLElement,
 	cssSelectorForTargetElements: string,
-	direction: keyof typeof Bearing
+	bearing: keyof typeof Bearing
 	strategy: keyof typeof Strategy
 }
 

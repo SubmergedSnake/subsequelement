@@ -3,15 +3,15 @@
  */
 
 import { adjaycent } from '../../src/main'
-import { AdjaycentArgs, Direction, Strategy } from '../../src/types'
+import { AdjaycentArgs, Strategy } from '../../src/types'
 
 describe('find', () => {
 
 	test('throws error on missing input parameters', () => {
 		// @ts-ignore
-		const faultyArgs: FindArguments = {
+		const faultyArgs: AdjaycentArgs = {
 			cssSelectorForTargetElements: '.class',
-			direction: Direction.NORTH,
+			bearing: 'n',
 			startingElement: document.createElement('div'),
 		}
 		expect(() => adjaycent(faultyArgs)).toThrow()
@@ -21,7 +21,7 @@ describe('find', () => {
 	test('throws error on erroneous input parameters', () => {
 		const faultyArgs: AdjaycentArgs = {
 			cssSelectorForTargetElements: '.class',
-			direction: Direction.NORTH,
+			bearing: 'n',
 			startingElement: document.createElement('div'),
 			// @ts-ignore
 			strategy: "foo"
@@ -32,7 +32,7 @@ describe('find', () => {
 	test('does not throw error with valid inputs', () => {
 		const validArgs: AdjaycentArgs = {
 			cssSelectorForTargetElements: '.class',
-			direction: Direction.NORTH,
+			bearing: 'n',
 			startingElement: document.createElement('div'),
 			strategy: Strategy.FLOW
 		}
