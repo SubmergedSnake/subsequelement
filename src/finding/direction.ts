@@ -16,8 +16,19 @@ const findFunctions = {
 	"nw": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(northernElements(se)).filter(westernElements(se)),
 } satisfies { [key in keyof typeof Bearing]: (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[]) => HasIdAndElementCoords[] }
 
-export const findInDirection = (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], bearing: keyof typeof Bearing): HasIdAndElementCoords[] => {
-	const findFunc = findFunctions[bearing]
+const reverseFindFunctions = {
+	"n": findFunctions.s,
+	"ne": findFunctions.sw,
+	"e": findFunctions.w,
+	"se": findFunctions.nw,
+	"s": findFunctions.n,
+	"sw": findFunctions.ne,
+	"w": findFunctions.e,
+	"nw": findFunctions.se
+}
+
+export const findInDirection = (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], bearing: keyof typeof Bearing, reverse: boolean = false): HasIdAndElementCoords[] => {
+	const findFunc = reverse ? reverseFindFunctions[bearing] : findFunctions[bearing]
 	const elements = findFunc(startingElement, otherElements)
 	return elements
 }

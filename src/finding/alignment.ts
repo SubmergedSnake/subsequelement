@@ -9,7 +9,7 @@ type BoundaryLine = { yIntercept: number, slope: number }
 type Corner = { x: number, y: number }
 type SupportedAngle = 0 | 45 | 90 | -45
 
-const degreesToRadians = (degrees: number) => {
+export const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
 }
 

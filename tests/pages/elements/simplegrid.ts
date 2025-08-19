@@ -1,5 +1,5 @@
 import { HasIdAndElementCoords } from "../../../src/types";
-export const indexPageLayout: HasIdAndElementCoords[] = [
+export const simplegrid: HasIdAndElementCoords[] = [
   {
     "id": "A",
     "top": 33,
