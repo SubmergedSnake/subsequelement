@@ -1,7 +1,7 @@
-import { determineBoundaryCornersByAngle, findAlignedElements } from "../../../src/finding/alignmentTool"
+import { determineBoundaryCornersByAngle, findAlignedElements } from "../../../src/finding/alignment"
 import { indexPageLayout } from "../realLayouts/indexPageLayout"
 
-describe.only('alignmentTool', () => {
+describe('alignmentTool', () => {
 
 	it('finds other elements that align horizontally', () => {
 		const [A, ...rest] = indexPageLayout

@@ -1,7 +1,5 @@
-import { beforeEach } from "node:test"
-import { findInDirection } from "../../../src/finding/findByDirection"
+import { findInDirection } from "../../../src/finding/direction"
 import { Direction, HasIdAndElementCoords } from "../../../src/types"
-import { unevenGrid3by3 } from "../mockLayouts/unevenGrid3by3"
 import { indexPageLayout } from "../realLayouts/indexPageLayout"
 
 
@@ -9,7 +7,7 @@ const getIndexPageElements = () => [...indexPageLayout]
 
 
 
-describe('findByDirection', () => {
+describe('direction', () => {
 
 	describe('indexPageLayout', () => {
 
@@ -65,39 +63,4 @@ describe('findByDirection', () => {
 		})
 
 	})
-
-
-	// 	describe('unevengrid3by3', () => {
-	// 		describe('East', () => {
-	// 			test('returns only elements to the right of element four', () => {
-	// 				const [one, two, three, four, ...rest] = unevenGrid3by3
-	// 				const elements = findInDirection(four, [one, two, three, ...rest], Direction.EAST)
-	// 				expect(elements.map(e => e.id).sort()).toEqual(['five', 'six', 'seven', 'eight', 'nine'].sort())
-	// 			})
-	// 		})
-	//
-	// 		describe('West', () => {
-	// 			test('returns only elements to the left of element four', () => {
-	// 				const [one, two, three, four, ...rest] = unevenGrid3by3
-	// 				const elements = findInDirection(four, [one, two, three, ...rest], Direction.WEST)
-	// 				expect(elements.map(e => e.id).sort()).toEqual(['one', 'two'].sort())
-	// 			})
-	// 		})
-	//
-	// 		describe('South', () => {
-	// 			test('returns only elements below element four', () => {
-	// 				const [one, two, three, four, ...rest] = unevenGrid3by3
-	// 				const elements = findInDirection(four, [one, two, three, ...rest], Direction.SOUTH)
-	// 				expect(elements.map(e => e.id).sort()).toEqual(['two', 'three', 'five', 'six', 'eight', 'nine'].sort())
-	// 			})
-	// 		})
-	//
-	// 		describe('North', () => {
-	// 			test('returns only elements above element five', () => {
-	// 				const [one, two, three, four, five, ...rest] = unevenGrid3by3
-	// 				const elements = findInDirection(five, [one, two, three, four, ...rest], Direction.NORTH)
-	// 				expect(elements.map(e => e.id).sort()).toEqual(['one', 'four', 'seven'].sort())
-	// 			})
-	// 		})
-	// 	})
 })

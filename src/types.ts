@@ -2,16 +2,19 @@ export type HasIdAndElementCoords = Omit<DOMRect, 'toJSON'> & {
 	id: string,
 }
 
-export enum Direction {
-	NORTH = 'NORTH',
-	NORTHEAST = 'NORTHEAST',
-	EAST = 'EAST',
-	SOUTHEAST = 'SOUTHEAST',
-	SOUTH = 'SOUTH',
-	SOUTHWEST = 'SOUTHWEST',
-	WEST = 'WEST',
-	NORTHWEST = 'NORTHWEST',
+export type SupportedAngle = 0 | 45 | 90 | -45
+
+export const Bearing = {
+	n: 90,
+	ne: -45,
+	e: 0,
+	se: 45,
+	s: 90,
+	sw: -45,
+	w: 0,
+	nw: 45
 }
+
 
 export enum Strategy {
 	STRICT = 'STRICT',
@@ -21,7 +24,7 @@ export enum Strategy {
 export type AdjaycentArgs = {
 	startingElement: HTMLElement,
 	cssSelectorForTargetElements: string,
-	direction: keyof typeof Direction
+	direction: keyof typeof Bearing
 	strategy: keyof typeof Strategy
 }
 

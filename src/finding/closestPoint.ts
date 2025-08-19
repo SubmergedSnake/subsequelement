@@ -8,8 +8,8 @@ export type ClosestPoint = {
 export const findClosestPointRelativeToStartingElement =
 	(startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords): ClosestPoint => {
 
-		const { left: otherLeft, right: otherRight, top: otherTop, bottom: otherBottom } = otherElement.getBoundingClientRect()
-		const { left: startingLeft, right: startingRight, top: startingTop, bottom: startingBottom } = startingElement.getBoundingClientRect()
+		const { left: otherLeft, right: otherRight, top: otherTop, bottom: otherBottom } = otherElement
+		const { left: startingLeft, right: startingRight, top: startingTop, bottom: startingBottom } = startingElement
 
 		const startingElementCorners = {
 			topLeft: { x: startingLeft, y: startingTop },
