@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { Strategy, AdjaycentArgs, Direction } from '../src/types';
+import { AdjaycentArgs } from '../src/types';
 
 
 test('adjaycent works', {
@@ -14,8 +14,7 @@ test('adjaycent works', {
       startingElement: document.querySelector('#one') as HTMLElement,
       strategy: "STRICT",
       cssSelectorForTargetElements: 'article',
-      direction: "EAST"
-
+      bearing: "e"
     }
     // @ts-ignore, adjaycent is set on the window object in index.html
     const element = adjaycent(args)
