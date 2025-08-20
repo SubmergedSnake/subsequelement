@@ -7,6 +7,28 @@ describe('closestElement', () => {
 
 	describe('simplegrid', () => {
 
+		test('e(ast) of F is D', () => {
+			let elements = [...simplegrid]
+			const [F] = elements.splice(5, 1);
+			const element = closestElement(F, elements, 'e')
+			expect(element.id).toEqual('D')
+		})
+
+
+		test('s(outh) of S is A', () => {
+			let elements = [...simplegrid]
+			const [S] = elements.splice(18, 1);
+			const element = closestElement(S, elements, 's')
+			expect(element.id).toEqual('A')
+		})
+
+		test('n(orth) of B is T', () => {
+			let elements = [...simplegrid]
+			const [B] = elements.splice(1, 1);
+			const element = closestElement(B, elements, 'n')
+			expect(element.id).toEqual('T')
+		})
+
 		test('n(orth) of K is H', () => {
 			let elements = [...simplegrid]
 			const [K] = elements.splice(10, 1);
@@ -21,6 +43,14 @@ describe('closestElement', () => {
 			elements = findAlignedElements(K, elements, Bearing['n'] as SupportedAngle)
 			const element = closestElement(K, elements, 'n')
 			expect(element.id).toEqual('H')
+		})
+
+		test('n(orth)w(est) of A is I (strict)', () => {
+			let elements = [...simplegrid]
+			const [A] = elements.splice(0, 1);
+			elements = findAlignedElements(A, elements, Bearing['nw'] as SupportedAngle)
+			const element = closestElement(A, elements, 'nw')
+			expect(element.id).toEqual('I')
 		})
 
 		test('n(orth) of A is S (strict)', () => {
