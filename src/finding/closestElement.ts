@@ -1,5 +1,5 @@
 import { findInDirection } from "./direction";
-import { ClosestPoint, findClosestPointRelativeToStartingElement } from "./closestPoint";
+import { getElementDistance } from "./closestPoint";
 import { HasIdAndElementCoords } from "../types";
 
 import { Bearing } from "../types";
@@ -10,11 +10,11 @@ export const closestElement =
 
 		let validElements = findInDirection(startingElement, otherElements, direction)
 
-		const remainingElementsInDirection: (HasIdAndElementCoords & ClosestPoint)[] = validElements.map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
+		const remainingElementsInDirection: { element: HasIdAndElementCoords, distance: number }[] = validElements.map(e => ({ ...getElementDistance(startingElement, e) }))
 		if (remainingElementsInDirection.length === 0) {
-			let elementsInOppositeDirection = findInDirection(startingElement, otherElements, direction, 'reverse').map(e => ({ ...e, ...findClosestPointRelativeToStartingElement(startingElement, e) }))
+			let elementsInOppositeDirection = findInDirection(startingElement, otherElements, direction, 'reverse').map(e => ({ ...e, ...getElementDistance(startingElement, e) }))
 			return elementsInOppositeDirection.reduce((acc, curr) => curr.distance > acc.distance ? curr : acc)
 		}
-		return remainingElementsInDirection.reduce((acc, curr) => curr.distance < acc.distance ? curr : acc)
+		return remainingElementsInDirection.reduce((acc, curr) => curr.distance < acc.distance ? curr : acc).element
 
 	}

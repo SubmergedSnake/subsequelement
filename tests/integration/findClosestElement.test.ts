@@ -5,9 +5,17 @@ import { simplegrid } from "../pages/elements/simplegrid"
 
 describe('closestElement', () => {
 
-	describe('simplegrid (strict, findAlignedElements)', () => {
+	describe('simplegrid', () => {
 
 		test('n(orth) of K is H', () => {
+			let elements = [...simplegrid]
+			const [K] = elements.splice(10, 1);
+			const element = closestElement(K, elements, 'n')
+			expect(element.id).toEqual('H')
+		})
+
+
+		test('n(orth) of K is H (strict)', () => {
 			let elements = [...simplegrid]
 			const [K] = elements.splice(10, 1);
 			elements = findAlignedElements(K, elements, Bearing['n'] as SupportedAngle)
@@ -15,7 +23,7 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('H')
 		})
 
-		test('n(orth) of A is S', () => {
+		test('n(orth) of A is S (strict)', () => {
 			let elements = [...simplegrid]
 			const [A] = elements.splice(0, 1);
 			elements = findAlignedElements(A, elements, Bearing['n'] as SupportedAngle)
@@ -23,7 +31,7 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('S')
 		})
 
-		test('n(orth)e(ast) of G is E', () => {
+		test('n(orth)e(ast) of G is E (strict)', () => {
 			let elements = [...simplegrid]
 			const [G] = elements.splice(6, 1);
 
@@ -32,7 +40,7 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('E')
 		})
 
-		test('n(orth)e(ast) of L is P', () => {
+		test('n(orth)e(ast) of L is P (strict)', () => {
 			let elements = [...simplegrid]
 			const [L] = elements.splice(11, 1);
 
@@ -41,7 +49,7 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('P')
 		})
 
-		test('e(ast) of E is F', () => {
+		test('e(ast) of E is F (strict)', () => {
 			let elements = [...simplegrid]
 			const [E] = elements.splice(4, 1);
 			elements = findAlignedElements(E, elements, Bearing['e'] as SupportedAngle)
@@ -49,7 +57,7 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('F')
 		})
 
-		test('e(ast) of F is D', () => {
+		test('e(ast) of F is D (strict)', () => {
 			let elements = [...simplegrid]
 			const [F] = elements.splice(5, 1);
 			elements = findAlignedElements(F, elements, Bearing['e'] as SupportedAngle)
@@ -57,7 +65,7 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('D')
 		})
 
-		test('s(outh) of B is E', () => {
+		test('s(outh) of B is E (strict)', () => {
 			let elements = [...simplegrid]
 			const [B] = elements.splice(1, 1);
 			elements = findAlignedElements(B, elements, Bearing['s'] as SupportedAngle)
@@ -65,14 +73,14 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('E')
 		})
 
-		test('s(outh)e(ast) of I is A', () => {
+		test('s(outh)e(ast) of I is A (strict)', () => {
 			let elements = [...simplegrid]
 			const [I] = elements.splice(8, 1);
 			elements = findAlignedElements(I, elements, Bearing['se'] as SupportedAngle)
 			const element = closestElement(I, elements, 'se')
 			expect(element.id).toEqual('A')
 		})
-		test('s(outh)w(est) of G is C', () => {
+		test('s(outh)w(est) of G is C (strict)', () => {
 			let elements = [...simplegrid]
 			const [G] = elements.splice(6, 1);
 			elements = findAlignedElements(G, elements, Bearing['sw'] as SupportedAngle)
@@ -80,7 +88,7 @@ describe('closestElement', () => {
 			expect(element.id).toEqual('C')
 		})
 
-		test('w(est) of I is H', () => {
+		test('w(est) of I is H (strict)', () => {
 			let elements = [...simplegrid]
 			const [I] = elements.splice(8, 1);
 

@@ -1,12 +1,7 @@
 import { HasIdAndElementCoords } from "../types";
 
-export type ClosestPoint = {
-	corner: { x: number, y: number }
-	distance: number
-}
-
-export const findClosestPointRelativeToStartingElement =
-	(startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords): ClosestPoint => {
+export const getElementDistance =
+	(startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords): { element: HasIdAndElementCoords, distance: number } => {
 
 		const { left: otherLeft, right: otherRight, top: otherTop, bottom: otherBottom } = otherElement
 		const { left: startingLeft, right: startingRight, top: startingTop, bottom: startingBottom } = startingElement
@@ -25,17 +20,10 @@ export const findClosestPointRelativeToStartingElement =
 			bottomRight: { x: otherRight, y: otherBottom }
 		}
 
-		const distances = Object.values(startingElementCorners).map(startingCorner => {
-			return Object.values(otherElementCorners).map(otherCorner => {
-				return {
-					corner: otherCorner, distance: Math.hypot(startingCorner.x - otherCorner.x, startingCorner.y - otherCorner.y)
-				}
-			})
-		}).flat()
+		const totalDistance = Object.entries(startingElementCorners).map(([key, sCorner]) => {
+			const oCorner = otherElementCorners[key as keyof typeof otherElementCorners]
+			return Math.hypot(sCorner.x - oCorner.x, sCorner.y - oCorner.y)
+		}).reduce((acc, curr) => acc + curr)
 
-		return distances.reduce((acc, curr) => {
-			if (curr.distance < acc.distance) return curr
-			return acc
-
-		})
+		return { element: otherElement, distance: totalDistance }
 	}
