@@ -4,7 +4,7 @@ import * as fs from 'fs'
 
 (async () => {
 
-  const layouts: string[] = ['simplegrid', 'funnygrid']
+  const layouts: string[] = ['simplegrid', 'irregulargrid']
 
   for (const layout of layouts) {
     const browser = await playwright['firefox'].launch();
