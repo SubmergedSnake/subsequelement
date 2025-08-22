@@ -1,7 +1,7 @@
 import { findAlignedElements } from "../../src/finding/alignment"
 import { closestElement } from "../../src/finding/closestElement"
 import { Bearing, SupportedAngle } from "../../src/types"
-import { simplegrid } from "../pages/elements/simplegrid"
+import { simplegrid } from "../resources/elements/simplegrid"
 
 describe('closestElement', () => {
 

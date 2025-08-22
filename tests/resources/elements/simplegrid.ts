@@ -4,222 +4,222 @@ import { HasIdAndElementCoords } from "../../../src/types";
 export const simplegrid: HasIdAndElementCoords[] = [
   {
     "id": "A",
-    "top": 33,
+    "top": 10,
     "left": 10,
     "right": 214,
-    "bottom": 237,
+    "bottom": 214,
     "width": 204,
     "height": 204,
     "x": 10,
-    "y": 33
+    "y": 10
   },
   {
     "id": "B",
-    "top": 33,
+    "top": 10,
     "left": 214,
     "right": 418,
-    "bottom": 237,
+    "bottom": 214,
     "width": 204,
     "height": 204,
     "x": 214,
-    "y": 33
+    "y": 10
   },
   {
     "id": "C",
-    "top": 33,
+    "top": 10,
     "left": 418,
     "right": 622,
-    "bottom": 237,
+    "bottom": 214,
     "width": 204,
     "height": 204,
     "x": 418,
-    "y": 33
+    "y": 10
   },
   {
     "id": "D",
-    "top": 237,
+    "top": 214,
     "left": 10,
     "right": 214,
-    "bottom": 441,
+    "bottom": 418,
     "width": 204,
     "height": 204,
     "x": 10,
-    "y": 237
+    "y": 214
   },
   {
     "id": "E",
-    "top": 237,
+    "top": 214,
     "left": 214,
     "right": 418,
-    "bottom": 441,
+    "bottom": 418,
     "width": 204,
     "height": 204,
     "x": 214,
-    "y": 237
+    "y": 214
   },
   {
     "id": "F",
-    "top": 237,
+    "top": 214,
     "left": 418,
     "right": 622,
-    "bottom": 441,
+    "bottom": 418,
     "width": 204,
     "height": 204,
     "x": 418,
-    "y": 237
+    "y": 214
   },
   {
     "id": "G",
-    "top": 441,
+    "top": 418,
     "left": 10,
     "right": 214,
-    "bottom": 645,
+    "bottom": 622,
     "width": 204,
     "height": 204,
     "x": 10,
-    "y": 441
+    "y": 418
   },
   {
     "id": "H",
-    "top": 441,
+    "top": 418,
     "left": 214,
     "right": 418,
-    "bottom": 645,
+    "bottom": 622,
     "width": 204,
     "height": 204,
     "x": 214,
-    "y": 441
+    "y": 418
   },
   {
     "id": "I",
-    "top": 441,
+    "top": 418,
     "left": 418,
     "right": 622,
-    "bottom": 645,
+    "bottom": 622,
     "width": 204,
     "height": 204,
     "x": 418,
-    "y": 441
+    "y": 418
   },
   {
     "id": "J",
-    "top": 645,
+    "top": 622,
     "left": 10,
     "right": 214,
-    "bottom": 849,
+    "bottom": 826,
     "width": 204,
     "height": 204,
     "x": 10,
-    "y": 645
+    "y": 622
   },
   {
     "id": "K",
-    "top": 645,
+    "top": 622,
     "left": 214,
     "right": 418,
-    "bottom": 849,
+    "bottom": 826,
     "width": 204,
     "height": 204,
     "x": 214,
-    "y": 645
+    "y": 622
   },
   {
     "id": "L",
-    "top": 645,
+    "top": 622,
     "left": 418,
     "right": 622,
-    "bottom": 849,
+    "bottom": 826,
     "width": 204,
     "height": 204,
     "x": 418,
-    "y": 645
+    "y": 622
   },
   {
     "id": "N",
-    "top": 849,
+    "top": 826,
     "left": 10,
     "right": 214,
-    "bottom": 1053,
+    "bottom": 1030,
     "width": 204,
     "height": 204,
     "x": 10,
-    "y": 849
+    "y": 826
   },
   {
     "id": "M",
-    "top": 849,
+    "top": 826,
     "left": 214,
     "right": 418,
-    "bottom": 1053,
+    "bottom": 1030,
     "width": 204,
     "height": 204,
     "x": 214,
-    "y": 849
+    "y": 826
   },
   {
     "id": "O",
-    "top": 849,
+    "top": 826,
     "left": 418,
     "right": 622,
-    "bottom": 1053,
+    "bottom": 1030,
     "width": 204,
     "height": 204,
     "x": 418,
-    "y": 849
+    "y": 826
   },
   {
     "id": "P",
-    "top": 1053,
+    "top": 1030,
     "left": 10,
     "right": 214,
-    "bottom": 1257,
+    "bottom": 1234,
     "width": 204,
     "height": 204,
     "x": 10,
-    "y": 1053
+    "y": 1030
   },
   {
     "id": "Q",
-    "top": 1053,
+    "top": 1030,
     "left": 214,
     "right": 418,
-    "bottom": 1257,
+    "bottom": 1234,
     "width": 204,
     "height": 204,
     "x": 214,
-    "y": 1053
+    "y": 1030
   },
   {
     "id": "R",
-    "top": 1053,
+    "top": 1030,
     "left": 418,
     "right": 622,
-    "bottom": 1257,
+    "bottom": 1234,
     "width": 204,
     "height": 204,
     "x": 418,
-    "y": 1053
+    "y": 1030
   },
   {
     "id": "S",
-    "top": 1257,
+    "top": 1234,
     "left": 10,
     "right": 214,
-    "bottom": 1461,
+    "bottom": 1438,
     "width": 204,
     "height": 204,
     "x": 10,
-    "y": 1257
+    "y": 1234
   },
   {
     "id": "T",
-    "top": 1257,
+    "top": 1234,
     "left": 214,
     "right": 418,
-    "bottom": 1461,
+    "bottom": 1438,
     "width": 204,
     "height": 204,
     "x": 214,
-    "y": 1257
+    "y": 1234
   }
 ]

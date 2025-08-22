@@ -27,10 +27,12 @@ const furthest = (direction: keyof typeof Bearing, startingElement: HasIdAndElem
 export const closestElement =
 	(startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], direction: keyof typeof Bearing)
 		: HasIdAndElementCoords => {
+		console.log(otherElements)
 
-		let validElements = findInDirection(startingElement, otherElements, direction)
+		const remainingElementsInDirection: { element: HasIdAndElementCoords, distance: number }[] =
+			findInDirection(startingElement, otherElements, direction)
+				.map(e => ({ ...getElementDistance(startingElement, e) }))
 
-		const remainingElementsInDirection: { element: HasIdAndElementCoords, distance: number }[] = validElements.map(e => ({ ...getElementDistance(startingElement, e) }))
 		if (remainingElementsInDirection.length === 0) {
 			let elementsInOppositeDirection = findInDirection(startingElement, otherElements, direction, 'reverse')
 			return furthest(direction, startingElement, elementsInOppositeDirection)

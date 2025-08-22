@@ -8,6 +8,7 @@ import * as fs from 'fs'
 
   for (const layout of layouts) {
     const browser = await playwright['firefox'].launch();
+
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto(`http://localhost:1234/${layout}.html`)
