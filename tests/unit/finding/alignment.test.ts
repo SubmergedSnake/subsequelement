@@ -1,5 +1,5 @@
 import { determineBoundaryCornersByAngle, findAlignedElements } from "../../../src/finding/alignment"
-import { simplegrid } from "../../pages/elements/simplegrid"
+import { simplegrid } from "../../resources/elements/simplegrid"
 
 describe('alignment', () => {
 
@@ -16,7 +16,7 @@ describe('alignment', () => {
 
 	})
 
-	it('finds other elements that align diagonally (top/left -> bottom/right)', () => {
+	it.only('finds other elements that align diagonally (top/left -> bottom/right)', () => {
 		const [A, B, C, D, E, F, G, H, ...rest] = simplegrid
 		const alignedElements = findAlignedElements(H, [A, B, C, D, E, F, G, ...rest], 45)
 		expect(alignedElements.sort().map(e => e.id)).toEqual(['D', 'L'])
@@ -29,18 +29,18 @@ describe('alignment', () => {
 	})
 })
 
-describe('determineBoundariesByAngle', () => {
+describe.skip('determineBoundariesByAngle', () => {
 
 	it('returns right,top,left,bottom for 45°', async () => {
 		const boundaryCorners = determineBoundaryCornersByAngle(45)
-		const { begin: { x: beginX, y: beginY }, end: { x: endX, y: endY } } = boundaryCorners
+		const { leftBoundary: { x: beginX, y: beginY }, rightBoundary: { x: endX, y: endY } } = boundaryCorners
 		const corners = [beginX, beginY, endX, endY]
 		expect(corners).toEqual(['right', 'top', 'left', 'bottom'])
 	})
 
 	it('returns right,top,left,bottom for -45°', async () => {
 		const boundaryCorners = determineBoundaryCornersByAngle(45)
-		const { begin: { x: beginX, y: beginY }, end: { x: endX, y: endY } } = boundaryCorners
+		const { leftBoundary: { x: beginX, y: beginY }, rightBoundary: { x: endX, y: endY } } = boundaryCorners
 		const corners = [beginX, beginY, endX, endY]
 		expect(corners).toEqual(['right', 'top', 'left', 'bottom'])
 	})

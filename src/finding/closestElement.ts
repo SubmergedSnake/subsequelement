@@ -27,7 +27,6 @@ const furthest = (direction: keyof typeof Bearing, startingElement: HasIdAndElem
 export const closestElement =
 	(startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], direction: keyof typeof Bearing)
 		: HasIdAndElementCoords => {
-		console.log(otherElements)
 
 		const remainingElementsInDirection: { element: HasIdAndElementCoords, distance: number }[] =
 			findInDirection(startingElement, otherElements, direction)

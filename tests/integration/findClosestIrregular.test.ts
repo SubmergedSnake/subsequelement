@@ -23,12 +23,21 @@ describe('closestElement', () => {
 			const element = closestElement(B, elements, 'w')
 			expect(element.id).toEqual('A')
 		})
-		test.only('n(orth)w(est) of C is B (strict)', () => {
+		test('n(orth)e(ast) of C is E (strict)', () => {
 			let elements = [...irregulargrid]
 			const [C] = elements.splice(2, 1);
-			elements = findAlignedElements(C, [elements[1]], Bearing['nw'] as SupportedAngle)
-			const element = closestElement(C, elements, 'nw')
-			expect(element.id).toEqual('B')
+			elements = findAlignedElements(C, elements, Bearing['ne'] as SupportedAngle)
+			const element = closestElement(C, elements, 'ne')
+			expect(element.id).toEqual('E')
+		})
+		test.only('n(orth)w(est) of B is A (strict)', () => {
+			let elements = [...irregulargrid]
+			const [B] = elements.splice(1, 1);
+			elements = findAlignedElements(B, elements, Bearing['nw'] as SupportedAngle)
+			console.log('Aligned elements:', elements);
+			
+			const element = closestElement(B, elements, 'nw')
+			expect(element.id).toEqual('A')
 		})
 		test.skip('n(orth)w(est) of C is B (strict)', () => {
 			let elements = [...irregulargrid]
