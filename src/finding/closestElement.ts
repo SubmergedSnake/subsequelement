@@ -1,5 +1,5 @@
 import { findInDirection } from "./direction";
-import { getElementDistance } from "./closestPoint";
+import { getElementDistance } from "./elementDistance";
 import { HasIdAndElementCoords } from "../types";
 
 import { Bearing } from "../types";

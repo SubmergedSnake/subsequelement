@@ -1,5 +1,5 @@
 import { findInDirection } from "../../../src/finding/direction"
-import { simplegrid } from "../../pages/elements/simplegrid"
+import { simplegrid } from "../../resources/elements/simplegrid"
 
 
 const getIndexPageElements = () => [...simplegrid]
@@ -8,7 +8,7 @@ const getIndexPageElements = () => [...simplegrid]
 
 describe('direction', () => {
 
-	describe('indexPageLayout', () => {
+	describe('simplegrid', () => {
 
 		test('returns only elements north of element E', () => {
 			const [E] = getIndexPageElements().splice(4, 1);

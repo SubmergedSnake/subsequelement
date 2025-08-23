@@ -7,13 +7,13 @@ const westernElements = (se: HasIdAndElementCoords) => (oe: HasIdAndElementCoord
 
 const findFunctions = {
 	"n": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(northernElements(se)),
-	"ne": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(northernElements(se)).filter(easternElements(se)),
+	"ne": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => [...oElements.filter(northernElements(se)), ...oElements.filter(easternElements(se))],
 	"e": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(easternElements(se)),
-	"se": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(southernElements(se)).filter(easternElements(se)),
+	"se": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => [...oElements.filter(southernElements(se)), ...oElements.filter(easternElements(se))],
 	"s": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(southernElements(se)),
-	"sw": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(southernElements(se)).filter(westernElements(se)),
+	"sw": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => [...oElements.filter(southernElements(se)), ...oElements.filter(westernElements(se))],
 	"w": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(westernElements(se)),
-	"nw": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => oElements.filter(northernElements(se)).filter(westernElements(se)),
+	"nw": (se: HasIdAndElementCoords, oElements: HasIdAndElementCoords[]) => [...oElements.filter(northernElements(se)), ...oElements.filter(westernElements(se))],
 } satisfies { [key in keyof typeof Bearing]: (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[]) => HasIdAndElementCoords[] }
 
 const reverseFindFunctions = {
