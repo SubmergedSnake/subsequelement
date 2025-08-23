@@ -2,10 +2,9 @@ import { HasIdAndElementCoords } from "../types";
 import { isRangeOverlap } from "range-overlap";
 
 type BoundaryCorners = {
-	leftBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
-	rightBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
+	bottomBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
+	topBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
 }
-type BoundaryLine = { yIntercept: number, slope: number }
 type Corner = { x: number, y: number }
 type SupportedAngle = 0 | 45 | 90 | -45
 
@@ -14,19 +13,19 @@ export const degreesToRadians = (degrees: number) => {
 }
 
 
-export const getDiagonalBoundary = (origin: Corner, degrees: number): BoundaryLine => {
+const getYIntercept = (origin: Corner, degrees: number): number => {
 	const m = degreesToRadians(degrees)
 	const yIntercept = origin.y - m * origin.x
-	return { yIntercept, slope: m }
+	return yIntercept
 }
 
-export const determineBoundaryCornersByAngle = (angle: SupportedAngle): BoundaryCorners => {
+export const determineElementCornersForBoundary = (angle: SupportedAngle): BoundaryCorners => {
 
 	switch (angle) {
 		case 45:
-			return { leftBoundary: { x: 'left', y: 'bottom' }, rightBoundary: { x: 'right', y: 'top' } }
+			return { bottomBoundary: { x: 'left', y: 'bottom' }, topBoundary: { x: 'right', y: 'top' } }
 		case -45:
-			return { leftBoundary: { x: 'left', y: 'top' }, rightBoundary: { x: 'right', y: 'bottom' } }
+			return { bottomBoundary: { x: 'right', y: 'bottom' }, topBoundary: { x: 'left', y: 'top' } }
 		default: throw new Error('Unsupported angle')
 	}
 }
@@ -37,41 +36,25 @@ const isAligned = (startingElement: HasIdAndElementCoords, angle: SupportedAngle
 	return (otherElement: HasIdAndElementCoords) => {
 		const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement
 
-		// vertical
 		if (angle.valueOf() === 90) {
-			return isRangeOverlap(oeLeft + 1, oeRight - 1, startingElement.left + 1, startingElement.right - 1)
-		} // horizontal
+			return isRangeOverlap([oeLeft, oeRight], [startingElement.left, startingElement.right], true)
+		}
 		else if (angle.valueOf() === 0) {
-			return isRangeOverlap(oeTop + 1, oeBottom - 1, startingElement.top + 1, startingElement.bottom - 1)
+			return isRangeOverlap([oeTop, oeBottom], [startingElement.top, startingElement.bottom], true)
 		}
 
-		//diagonal
+		const { bottomBoundary: { x: bottomX, y: bottomY }, topBoundary: { x: topX, y: topY } } = determineElementCornersForBoundary(angle)
 
-		const { leftBoundary: { x: boundaryLeftX, y: boundaryLeftY }, rightBoundary: { x: boundaryRightX, y: boundaryRightY } } = determineBoundaryCornersByAngle(angle)
-
-		let boundaryLeft
-		let boundaryRight
 		let isAligned
 
+		const startingElementYInterceptTop = getYIntercept({ x: startingElement[topX], y: startingElement[topY] }, angle)
+		const startingElementYInterceptBottom = getYIntercept({ x: startingElement[bottomX], y: startingElement[bottomY] }, angle)
 
-		if (angle.valueOf() === 45) {
-			boundaryLeft = getDiagonalBoundary({ x: startingElement[boundaryLeftX] + 1, y: startingElement[boundaryLeftY] + 1 }, angle)
-			boundaryRight = getDiagonalBoundary({ x: startingElement[boundaryRightX] - 1, y: startingElement[boundaryRightY] - 1 }, angle)
+		const otherElementYInterceptTop = getYIntercept({ x: otherElement[topX], y: otherElement[topY] }, angle)
+		const otherElementYInterceptBottom = getYIntercept({ x: otherElement[bottomX], y: otherElement[bottomY] }, angle)
 
-			const bLeftLeft = boundaryLeft.slope * oeLeft + boundaryLeft.yIntercept
-			const bLeftRight = boundaryLeft.slope * oeRight + boundaryLeft.yIntercept
 
-			const bRightLeft = boundaryRight.slope * oeLeft + boundaryRight.yIntercept
-			const bRightRight = boundaryRight.slope * oeRight + boundaryRight.yIntercept
-
-			const thereIsYAlignment = isRangeOverlap(oeTop, oeBottom, bRightLeft, bLeftLeft)
-			const thereIsYAlignment2 = isRangeOverlap(oeTop, oeBottom, bRightRight, bLeftRight)
-
-			isAligned = thereIsYAlignment || thereIsYAlignment2
-		} else {
-			boundaryLeft = getDiagonalBoundary({ x: startingElement[boundaryLeftX] - 1, y: startingElement[boundaryLeftY] - 1 }, angle)
-			boundaryRight = getDiagonalBoundary({ x: startingElement[boundaryRightX] + 1, y: startingElement[boundaryRightY] + 1 }, angle)
-		}
+		isAligned = isRangeOverlap([startingElementYInterceptTop, startingElementYInterceptBottom], [otherElementYInterceptTop, otherElementYInterceptBottom], true)
 		return isAligned
 	}
 }

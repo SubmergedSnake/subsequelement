@@ -1,4 +1,4 @@
-import { determineBoundaryCornersByAngle, findAlignedElements } from "../../../src/finding/alignment"
+import { determineElementCornersForBoundary, findAlignedElements } from "../../../src/finding/alignment"
 import { simplegrid } from "../../resources/elements/simplegrid"
 
 describe('alignment', () => {
@@ -16,37 +16,37 @@ describe('alignment', () => {
 
 	})
 
-	it.only('finds other elements that align diagonally (top/left -> bottom/right)', () => {
+	it('finds other elements that align diagonally (top/left -> bottom/right)', () => {
 		const [A, B, C, D, E, F, G, H, ...rest] = simplegrid
 		const alignedElements = findAlignedElements(H, [A, B, C, D, E, F, G, ...rest], 45)
-		expect(alignedElements.sort().map(e => e.id)).toEqual(['D', 'L'])
+		expect(alignedElements.sort().map(e => e.id)).toEqual(['A', 'D', 'E', 'G', 'I', 'K', 'L', 'O'])
 	})
 
 	it('finds other elements that align diagonally (bottom/left -> top/right)', () => {
 		const [A, B, C, D, E, F, G, H, ...rest] = simplegrid
 		const alignedElements = findAlignedElements(H, [A, B, C, D, E, F, G, ...rest], -45)
-		expect(alignedElements.sort().map(e => e.id)).toEqual(['F', 'J'])
+		expect(alignedElements.sort().map(e => e.id)).toEqual(['C', 'E', 'F', 'G', 'I', 'J', 'K', 'N'])
 	})
 })
 
-describe.skip('determineBoundariesByAngle', () => {
+describe('determineBoundariesByAngle', () => {
 
-	it('returns right,top,left,bottom for 45°', async () => {
-		const boundaryCorners = determineBoundaryCornersByAngle(45)
-		const { leftBoundary: { x: beginX, y: beginY }, rightBoundary: { x: endX, y: endY } } = boundaryCorners
-		const corners = [beginX, beginY, endX, endY]
-		expect(corners).toEqual(['right', 'top', 'left', 'bottom'])
+	it('returns left,bottom,right,top for 45°', async () => {
+		const boundaryCorners = determineElementCornersForBoundary(45)
+		const { bottomBoundary: { x: bottomX, y: bottomY }, topBoundary: { x: topX, y: topY } } = boundaryCorners
+		const corners = [bottomX, bottomY, topX, topY]
+		expect(corners).toEqual(['left', 'bottom', 'right', 'top'])
 	})
 
-	it('returns right,top,left,bottom for -45°', async () => {
-		const boundaryCorners = determineBoundaryCornersByAngle(45)
-		const { leftBoundary: { x: beginX, y: beginY }, rightBoundary: { x: endX, y: endY } } = boundaryCorners
-		const corners = [beginX, beginY, endX, endY]
-		expect(corners).toEqual(['right', 'top', 'left', 'bottom'])
+	it('returns right,bottom,left,top for -45°', async () => {
+		const boundaryCorners = determineElementCornersForBoundary(-45)
+		const { bottomBoundary: { x: bottomX, y: bottomY }, topBoundary: { x: topX, y: topY } } = boundaryCorners
+		const corners = [bottomX, bottomY, topX, topY]
+		expect(corners).toEqual(['right', 'bottom', 'left', 'top'])
 	})
 
 	it('throws error on unsupported angle', () => {
 		// @ts-ignore
-		expect(() => determineBoundaryCornersByAngle(227)).toThrow()
+		expect(() => determineElementCornersForBoundary(227)).toThrow()
 	})
 })

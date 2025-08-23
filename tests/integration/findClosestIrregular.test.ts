@@ -35,11 +35,11 @@ describe('closestElement', () => {
 			const [B] = elements.splice(1, 1);
 			elements = findAlignedElements(B, elements, Bearing['nw'] as SupportedAngle)
 			console.log('Aligned elements:', elements);
-			
+
 			const element = closestElement(B, elements, 'nw')
 			expect(element.id).toEqual('A')
 		})
-		test.skip('n(orth)w(est) of C is B (strict)', () => {
+		test('n(orth)w(est) of C is B (strict)', () => {
 			let elements = [...irregulargrid]
 			const [C] = elements.splice(2, 1);
 			elements = findAlignedElements(C, elements, Bearing['nw'] as SupportedAngle)
