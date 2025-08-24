@@ -12,6 +12,11 @@ export const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
 }
 
+const calculateAlignment = (range1: number[], range2: number[]) => {
+	let overlap = Math.max(0, Math.min(range1[1], range2[1]) - Math.max(range1[0], range2[0]));
+	return overlap;
+}
+
 
 const getYIntercept = (origin: Corner, degrees: number): number => {
 	const m = degreesToRadians(degrees)
@@ -37,9 +42,13 @@ const isAligned = (startingElement: HasIdAndElementCoords, angle: SupportedAngle
 		const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement
 
 		if (angle.valueOf() === 90) {
+			const alignmentIndex = calculateAlignment([oeLeft, oeRight], [startingElement.left, startingElement.right])
+			console.log(`There is alignment vertically: ${alignmentIndex}`)
 			return isRangeOverlap([oeLeft, oeRight], [startingElement.left, startingElement.right], true)
 		}
 		else if (angle.valueOf() === 0) {
+			const alignmentIndex = calculateAlignment([oeTop, oeBottom], [startingElement.top, startingElement.bottom])
+			console.log(`There is alignment horizontally: ${alignmentIndex}`)
 			return isRangeOverlap([oeTop, oeBottom], [startingElement.top, startingElement.bottom], true)
 		}
 
@@ -52,6 +61,8 @@ const isAligned = (startingElement: HasIdAndElementCoords, angle: SupportedAngle
 
 		const otherElementYInterceptTop = getYIntercept({ x: otherElement[topX], y: otherElement[topY] }, angle)
 		const otherElementYInterceptBottom = getYIntercept({ x: otherElement[bottomX], y: otherElement[bottomY] }, angle)
+		const alignment = calculateAlignment([startingElementYInterceptTop, startingElementYInterceptBottom], [otherElementYInterceptTop, otherElementYInterceptBottom])
+		console.log(`There is alignment diagonally: ${alignment}`);
 
 
 		isAligned = isRangeOverlap([startingElementYInterceptTop, startingElementYInterceptBottom], [otherElementYInterceptTop, otherElementYInterceptBottom], true)

@@ -39,3 +39,4 @@ export const closestElement =
 		return remainingElementsInDirection.reduce((acc, curr) => curr.distance < acc.distance ? curr : acc).element
 
 	}
+

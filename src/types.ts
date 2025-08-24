@@ -2,6 +2,11 @@ export type HasIdAndElementCoords = Omit<DOMRect, 'toJSON'> & {
 	id: string,
 }
 
+export type ElementWithAlignment = {
+	e: HasIdAndElementCoords,
+	alignment: number
+}
+
 export type SupportedAngle = 0 | 45 | 90 | -45
 
 export const Bearing = {
