@@ -1,9 +1,30 @@
-import { HasIdAndElementCoords } from "../types";
+import { Bearing, ElementWithAlignment, HasIdAndElementCoords } from "../types";
 
-export const getElementDistance =
-	(startingElement: HasIdAndElementCoords, otherElement: HasIdAndElementCoords): { element: HasIdAndElementCoords, distance: number } => {
+export const getElementDistanceDirectional = (startingElement: HasIdAndElementCoords, otherElement: ElementWithAlignment, bearing: keyof typeof Bearing) => {
+	const { left: otherLeft, right: otherRight, top: otherTop, bottom: otherBottom } = otherElement.e
+	const { left: startingLeft, right: startingRight, top: startingTop, bottom: startingBottom } = startingElement
 
-		const { left: otherLeft, right: otherRight, top: otherTop, bottom: otherBottom } = otherElement
+
+	switch (bearing) {
+		case 'e':
+			return { element: otherElement, distance: Math.abs(startingRight - otherLeft) }
+		case 's':
+			return { element: otherElement, distance: Math.abs(otherTop - startingBottom) }
+		case 'w':
+			return { element: otherElement, distance: Math.abs(otherRight - startingLeft) }
+		case 'n':
+			return { element: otherElement, distance: Math.abs(otherBottom - startingTop) }
+		default: throw new Error('Unsupported Bearing value for getElementDistance provided')
+	}
+}
+
+
+// TODO - should consider distances in the same way that is done above, in getElementDistanceDirectional, because an 
+// element can be close(st) even if it's corners aren't = big element
+export const getElementDistanceHypot =
+	(startingElement: HasIdAndElementCoords, otherElement: ElementWithAlignment): { element: ElementWithAlignment, distance: number } => {
+
+		const { left: otherLeft, right: otherRight, top: otherTop, bottom: otherBottom } = otherElement.e
 		const { left: startingLeft, right: startingRight, top: startingTop, bottom: startingBottom } = startingElement
 
 		const startingElementCorners = {

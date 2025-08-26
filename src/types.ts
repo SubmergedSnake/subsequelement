@@ -18,7 +18,7 @@ export const Bearing = {
 	sw: -45,
 	w: 0,
 	nw: 45
-}
+} satisfies { [key: string]: SupportedAngle }
 
 
 export enum Strategy {
