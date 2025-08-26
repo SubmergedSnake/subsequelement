@@ -1,4 +1,4 @@
-import { getElementsWithAlignment } from "../../src/finding/alignmentIndex"
+import { getAlignmentIndexForElements } from "../../src/finding/alignmentIndex"
 import { closestElement2 } from "../../src/finding/closestElement2"
 import { findInDirection } from "../../src/finding/direction"
 import { Bearing } from "../../src/types"
@@ -10,7 +10,7 @@ describe('closestElement', () => {
 			let elements = [...varyingsizes]
 			const [A] = elements.splice(0, 1);
 			const elementsInDirection = findInDirection(A, elements.filter(e => e.id !== 'A'), 'e')
-			const elementsWithAlignment = getElementsWithAlignment(A, elementsInDirection, Bearing['e'])
+			const elementsWithAlignment = getAlignmentIndexForElements(A, elementsInDirection, Bearing['e'])
 			const element = closestElement2(A, elementsWithAlignment, 'e')
 			expect(element.id).toEqual('B')
 		})
@@ -19,7 +19,7 @@ describe('closestElement', () => {
 			let elements = [...varyingsizes]
 			const [C] = elements.splice(2, 1);
 			const elementsInDirection = findInDirection(C, elements.filter(e => e.id !== 'C'), 'w')
-			const elementsWithAlignment = getElementsWithAlignment(C, elementsInDirection, Bearing['w'])
+			const elementsWithAlignment = getAlignmentIndexForElements(C, elementsInDirection, Bearing['w'])
 			console.log(`elements that align with C: ${elementsWithAlignment.map(e => `${e.e.id}, ${e.alignment}`)}`);
 
 			const element = closestElement2(C, elementsWithAlignment, 'w')
@@ -32,7 +32,7 @@ describe('closestElement', () => {
 			let element
 			if (G) {
 				const elementsInDirection = findInDirection(G, elements.filter(e => e.id !== 'G'), 'n')
-				const elementsWithAlignment = getElementsWithAlignment(G, elementsInDirection, Bearing['n'])
+				const elementsWithAlignment = getAlignmentIndexForElements(G, elementsInDirection, Bearing['n'])
 				element = closestElement2(G, elementsWithAlignment, 'n')
 				console.log(`elements that align with G: ${elementsWithAlignment.map(e => `${e.e.id}, ${e.alignment}`)}`);
 			}
@@ -46,7 +46,7 @@ describe('closestElement', () => {
 			let element
 			if (E) {
 				const elementsInDirection = findInDirection(E, elements.filter(e => e.id !== 'E'), 's')
-				const elementsWithAlignment = getElementsWithAlignment(E, elementsInDirection, Bearing['s'])
+				const elementsWithAlignment = getAlignmentIndexForElements(E, elementsInDirection, Bearing['s'])
 				element = closestElement2(E, elementsWithAlignment, 's')
 				console.log(`elements that align with E: ${elementsWithAlignment.map(e => `${e.e.id}, ${e.alignment}`)}`);
 			}

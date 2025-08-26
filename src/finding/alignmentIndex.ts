@@ -11,9 +11,12 @@ const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
 }
 
-const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]) => {
-	let overlap = Math.max(0, Math.min(startingElementRange[1], otherElementRange[1]) - Math.max(startingElementRange[0], otherElementRange[0]));
-	return overlap;
+
+export const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]): number => {
+	const smallestRangeEnd = Math.min(startingElementRange[1], otherElementRange[1])
+	const largestRangeStart = Math.max(startingElementRange[0], otherElementRange[0])
+	let alignment = smallestRangeEnd - largestRangeStart
+	return alignment
 }
 
 const getYIntercept = (origin: Corner, degrees: number): number => {
@@ -33,9 +36,9 @@ const determineElementCornersForBoundary = (angle: SupportedAngle): BoundaryCorn
 	}
 }
 
-export const getElementsWithAlignment = (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], angle: SupportedAngle): ElementWithAlignment[] => {
+export const getAlignmentIndexForElements = (startingElement: HasIdAndElementCoords, otherElements: HasIdAndElementCoords[], angle: SupportedAngle): ElementWithAlignment[] => {
 
-	const alignment = (startingElement: HasIdAndElementCoords, angle: SupportedAngle) => {
+	const alignmentI = (startingElement: HasIdAndElementCoords, angle: SupportedAngle) => {
 
 		return (otherElement: HasIdAndElementCoords): ElementWithAlignment => {
 			const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement
@@ -62,5 +65,5 @@ export const getElementsWithAlignment = (startingElement: HasIdAndElementCoords,
 			return { e: otherElement, alignment }
 		}
 	}
-	return otherElements.map(alignment(startingElement, angle))
+	return otherElements.map(alignmentI(startingElement, angle))
 }

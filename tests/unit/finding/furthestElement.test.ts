@@ -1,4 +1,4 @@
-import { getElementsWithAlignment as getElementsAndAlignment } from "../../../src/finding/alignmentIndex";
+import { getAlignmentIndexForElements as getElementsAndAlignment } from "../../../src/finding/alignmentIndex";
 import { furthestElement } from "../../../src/finding/furthestElement";
 import { Bearing } from "../../../src/types";
 import { simplegrid } from "../../resources/elements/simplegrid";
