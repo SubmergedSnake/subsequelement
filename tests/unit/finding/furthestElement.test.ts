@@ -1,5 +1,5 @@
-import { getAlignmentIndexForElements as getElementsAndAlignment } from "../../../src/finding/alignmentIndex";
-import { furthestElement } from "../../../src/finding/furthestElement";
+import { getAlignmentIndexForElements as getElementsAndAlignment } from "../../../src/alignmentIndex";
+import { furthestElement } from "../../../src/furthestElement";
 import { Bearing } from "../../../src/types";
 import { simplegrid } from "../../resources/elements/simplegrid";
 
@@ -37,7 +37,7 @@ describe('furthestElement', () => {
 		let element
 		if (S) {
 			const elementsWithAlignment = getElementsAndAlignment(S, elements, Bearing['nw'])
-			console.log(elementsWithAlignment.map(e => `Element ${e.e.id}, ${e.e.x + e.e.y + e.alignment}`))
+			console.log(elementsWithAlignment.map(e => `Element ${e.e.id}, ${e.e.getBoundingClientRect().x + e.e.getBoundingClientRect().y + e.alignment} `))
 			element = furthestElement('nw', S, elementsWithAlignment)
 		}
 		expect(element?.id).toEqual('C')

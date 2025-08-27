@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { AdjaycentArgs } from '../src/types';
+import { Options } from '../src/types';
 
 
 test('adjaycent works', {
@@ -10,7 +10,7 @@ test('adjaycent works', {
 
   const elementId = await page.evaluate(() => {
 
-    const args: AdjaycentArgs = {
+    const args: Options = {
       startingElement: document.querySelector('#one') as HTMLElement,
       strategy: "STRICT",
       cssSelectorForTargetElements: 'article',

@@ -1,9 +1,19 @@
-export type HasIdAndElementCoords = Omit<DOMRect, 'toJSON'> & {
+export type IsHtmlElementLike = {
 	id: string,
+	getBoundingClientRect: () => Omit<ReturnType<HTMLElement['getBoundingClientRect']>, 'toJSON'> & {
+		toJSON?: () => string
+	}
 }
 
+export type BoundaryCorners = {
+	bottomBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
+	topBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
+}
+
+export type Corner = { x: number, y: number }
+
 export type ElementWithAlignment = {
-	e: HasIdAndElementCoords,
+	e: IsHtmlElementLike,
 	alignment: number
 }
 
@@ -26,7 +36,7 @@ export enum Strategy {
 	FLOW = 'FLOW'
 }
 
-export type AdjaycentArgs = {
+export type Options = {
 	startingElement: HTMLElement,
 	cssSelectorForTargetElements: string,
 	bearing: keyof typeof Bearing

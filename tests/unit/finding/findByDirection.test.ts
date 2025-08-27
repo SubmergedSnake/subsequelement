@@ -1,4 +1,4 @@
-import { findInDirection } from "../../../src/finding/direction"
+import { findInDirection } from "../../../src/direction"
 import { simplegrid } from "../../resources/elements/simplegrid"
 
 
@@ -54,8 +54,9 @@ describe('direction', () => {
 			expect(elements.map(e => e.id).sort()).toEqual(['A', 'D', 'G', 'J', 'N', 'P', 'S'].sort())
 		})
 
-		test('returns only elements northwest of element five', () => {
+		test('returns only elements northwest of element H', () => {
 			const [H] = getIndexPageElements().splice(7, 1);
+
 			const elements = findInDirection(H, simplegrid, 'nw')
 			expect(elements.map(e => e.id).sort()).toEqual(['D', 'A'].sort())
 		})

@@ -1,8 +1,7 @@
-import { findAlignedElements } from "../../src/finding/alignment"
-import { closestElement2 } from "../../src/finding/closestElement2"
+import { closestElement2 } from "../../src/closestElement2"
 import { irregulargrid } from "../resources/elements/irregulargrid"
 import { Bearing, SupportedAngle } from "../../src/types"
-import { getAlignmentIndexForElements } from "../../src/finding/alignmentIndex"
+import { getAlignmentIndexForElements } from "../../src/alignmentIndex"
 
 describe('closestElement', () => {
 	describe('irregulargrid', () => {
@@ -34,7 +33,7 @@ describe('closestElement', () => {
 			let elements = [...irregulargrid]
 			const [E] = elements.splice(4, 1);
 			const elementsWithAlignment = getAlignmentIndexForElements(E, elements.filter(e => e.id !== 'E'), Bearing['w'])
-			const element = closestElement2(E, elementsWithAlignment, 'w', 'directional')
+			const element = closestElement2(E, elementsWithAlignment, 'w', { strict: true })
 			expect(element.id).toEqual('C')
 		})
 

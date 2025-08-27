@@ -1,6 +1,6 @@
-import { AdjaycentArgs, Bearing, Strategy } from "../src/types"
+import { Options, Bearing, Strategy } from "../src/types"
 
-export const validateArgs = (args: AdjaycentArgs) => {
+export const validateArgs = (args: Options) => {
 	const { cssSelectorForTargetElements, strategy, bearing, startingElement } = args
 
 	const hasStartingElement = startingElement instanceof HTMLElement

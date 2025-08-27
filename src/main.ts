@@ -1,7 +1,7 @@
 import { findElements, omitStartingElement, validateArgs } from "./utilities"
-import { type AdjaycentArgs } from "./types"
+import { type Options } from "./types"
 
-export const adjaycent = (args: AdjaycentArgs) => {
+export const adjaycent = (args: Options) => {
 
 	validateArgs(args)
 
