@@ -8,13 +8,13 @@ describe('closestElement2', () => {
 
 	describe('simplegrid', () => {
 
-		test.only('e(ast) of F undefined', () => {
+		test('e(ast) of F undefined', () => {
 			let elements = [...simplegrid]
 			const [F] = elements.splice(5, 1);
 			const elementsInDirection = findInDirection(F, elements, 'e')
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(F, elements, Bearing['e'] as SupportedAngle)
-			const element = closestElement2(F, elementsWithAlignmentIndex, 'e', { strict: true })
-			expect(element.id).toBeUndefined()
+			const closestElement = closestElement2(F, elementsWithAlignmentIndex, 'e', { strict: true })
+			expect(closestElement.id).toBeUndefined()
 		})
 
 

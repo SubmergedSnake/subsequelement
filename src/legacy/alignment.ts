@@ -1,4 +1,4 @@
-import { HasIdAndElementCoords } from "../types";
+import { IsHtmlElementLike } from "../types";
 import { isRangeOverlap } from "range-overlap";
 
 type BoundaryCorners = {
@@ -36,9 +36,9 @@ export const determineElementCornersForBoundary = (angle: SupportedAngle): Bound
 }
 
 
-const isAligned = (startingElement: HasIdAndElementCoords, angle: SupportedAngle) => {
+const isAligned = (startingElement: IsHtmlElementLike, angle: SupportedAngle) => {
 
-	return (otherElement: HasIdAndElementCoords) => {
+	return (otherElement: IsHtmlElementLike) => {
 		const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement
 
 		if (angle.valueOf() === 90) {
@@ -70,6 +70,6 @@ const isAligned = (startingElement: HasIdAndElementCoords, angle: SupportedAngle
 	}
 }
 
-export const findAlignedElements = (startingElement: HasIdAndElementCoords, elements: HasIdAndElementCoords[], angle: SupportedAngle) => {
+export const findAlignedElements = (startingElement: IsHtmlElementLike, elements: IsHtmlElementLike[], angle: SupportedAngle) => {
 	return elements.filter(isAligned(startingElement, angle))
 }
