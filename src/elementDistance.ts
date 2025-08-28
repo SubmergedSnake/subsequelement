@@ -14,6 +14,14 @@ export const getElementDistanceDirectional = (startingElement: IsHtmlElementLike
 			return { element: otherElement, distance: Math.abs(otherRight - startingLeft) }
 		case 'n':
 			return { element: otherElement, distance: Math.abs(otherBottom - startingTop) }
+		case 'ne':
+			return { element: otherElement, distance: Math.hypot(startingRight - otherLeft, startingTop - otherBottom) }
+		case 'nw':
+			return { element: otherElement, distance: Math.hypot(startingLeft - otherRight, startingTop - otherBottom) }
+		case 'se':
+			return { element: otherElement, distance: Math.hypot(startingRight - otherLeft, startingBottom - otherTop) }
+		case 'sw':
+			return { element: otherElement, distance: Math.hypot(startingLeft - otherRight, startingBottom - otherTop) }
 		default: throw new Error('Unsupported Bearing value for getElementDistance provided')
 	}
 }

@@ -1,4 +1,4 @@
-import { degreesToRadians } from "../../src/finding/alignment"
+import { degreesToRadians } from "../../src/utilities"
 
 describe('degreesToRadians', () => {
 

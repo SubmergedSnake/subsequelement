@@ -24,3 +24,6 @@ export const omitStartingElement = (startingElement: HTMLElement, viableElements
 }
 
 
+export const degreesToRadians = (degrees: number) => {
+	return degrees * (Math.PI / 180);
+}
