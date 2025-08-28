@@ -36,7 +36,7 @@ export enum Predicate {
 }
 
 export type Options = {
-	startingElement: HTMLElement,
+	startingElement: IsHtmlElementLike,
 	cssSelectorForTargetElements: string,
 	bearing: keyof typeof Bearing
 	predicate: Predicate

@@ -1,5 +1,5 @@
-import { getAlignmentIndexForElements as getElementsAndAlignment } from "../../src/helpers/alignmentIndex";
-import { findInDirection } from "../../src/direction";
+import { getAlignmentIndexForElements } from "../../src/helpers/alignmentIndex";
+import { getElementsInDirection } from "../../src/direction";
 import { furthestElement } from "../../src/proximity/furthestElement";
 import { Bearing, Predicate } from "../../src/types";
 import { simplegrid } from "../resources/elements/simplegrid";
@@ -12,8 +12,8 @@ describe('furthestElement', () => {
 			const A = elements.find(e => e.id === 'A')
 			let element
 			if (A) {
-				const elementsInDirection = findInDirection(A, elements, 'se')
-				const elementsWithAlignment = getElementsAndAlignment(A, elementsInDirection, Bearing['se'])
+				const elementsInDirection = getElementsInDirection(A, elements, 'se')
+				const elementsWithAlignment = getAlignmentIndexForElements(A, elementsInDirection, Bearing['se'])
 				element = furthestElement(A, elementsWithAlignment, 'se', Predicate.ALIGN)
 			}
 			expect(element?.id).toEqual('I')
@@ -24,8 +24,8 @@ describe('furthestElement', () => {
 			const G = elements.find(e => e.id === 'G')
 			let element
 			if (G) {
-				const elementsInDirection = findInDirection(G, elements, 'ne')
-				const elementsWithAlignment = getElementsAndAlignment(G, elementsInDirection, Bearing['ne'])
+				const elementsInDirection = getElementsInDirection(G, elements, 'ne')
+				const elementsWithAlignment = getAlignmentIndexForElements(G, elementsInDirection, Bearing['ne'])
 				element = furthestElement(G, elementsWithAlignment, 'ne', Predicate.ALIGN)
 			}
 			expect(element?.id).toEqual('C')
@@ -36,8 +36,8 @@ describe('furthestElement', () => {
 			const R = elements.find(e => e.id === 'R')
 			let element
 			if (R) {
-				const elementsInDirection = findInDirection(R, elements, 'nw')
-				const elementsWithAlignment = getElementsAndAlignment(R, elementsInDirection, Bearing['nw'])
+				const elementsInDirection = getElementsInDirection(R, elements, 'nw')
+				const elementsWithAlignment = getAlignmentIndexForElements(R, elementsInDirection, Bearing['nw'])
 				element = furthestElement(R, elementsWithAlignment, 'nw')
 			}
 			expect(element?.id).toEqual('A')
@@ -48,8 +48,8 @@ describe('furthestElement', () => {
 			const O = elements.find(e => e.id === 'O')
 			let element
 			if (O) {
-				const elementsInDirection = findInDirection(O, elements, 'sw')
-				const elementsWithAlignment = getElementsAndAlignment(O, elementsInDirection, Bearing['sw'])
+				const elementsInDirection = getElementsInDirection(O, elements, 'sw')
+				const elementsWithAlignment = getAlignmentIndexForElements(O, elementsInDirection, Bearing['sw'])
 				element = furthestElement(O, elementsWithAlignment, 'sw', Predicate.ALIGN)
 			}
 			expect(element?.id).toEqual('S')
@@ -60,8 +60,8 @@ describe('furthestElement', () => {
 			const C = elements.find(e => e.id === 'C')
 			let element
 			if (C) {
-				const elementsInDirection = findInDirection(C, elements, 'sw')
-				const elementsWithAlignment = getElementsAndAlignment(C, elementsInDirection, Bearing['sw'])
+				const elementsInDirection = getElementsInDirection(C, elements, 'sw')
+				const elementsWithAlignment = getAlignmentIndexForElements(C, elementsInDirection, Bearing['sw'])
 				element = furthestElement(C, elementsWithAlignment, 'sw', Predicate.ALIGN)
 			}
 			expect(element?.id).toEqual('G')
@@ -72,8 +72,8 @@ describe('furthestElement', () => {
 			const C = elements.find(e => e.id === 'C')
 			let element
 			if (C) {
-				const elementsInDirection = findInDirection(C, elements, 'sw')
-				const elementsWithAlignment = getElementsAndAlignment(C, elementsInDirection, Bearing['sw'])
+				const elementsInDirection = getElementsInDirection(C, elements, 'sw')
+				const elementsWithAlignment = getAlignmentIndexForElements(C, elementsInDirection, Bearing['sw'])
 				element = furthestElement(C, elementsWithAlignment, 'sw')
 			}
 			expect(element?.id).toEqual('S')

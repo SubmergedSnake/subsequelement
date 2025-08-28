@@ -27,9 +27,9 @@ const reverseFindFunctions = {
 	"nw": findFunctions.se
 }
 
-export const findInDirection = (startingElement: IsHtmlElementLike, otherElements: IsHtmlElementLike[], bearing: keyof typeof Bearing, reverse: 'reverse' | '' = ''): IsHtmlElementLike[] => {
-	const findFunc = reverse === 'reverse' ? reverseFindFunctions[bearing] : findFunctions[bearing]
-	const elements = findFunc(startingElement, otherElements)
+export const getElementsInDirection = (startingElement: IsHtmlElementLike, otherElements: IsHtmlElementLike[], bearing: keyof typeof Bearing): IsHtmlElementLike[] => {
+	const findFunc = findFunctions[bearing]
+	const elements = findFunc(startingElement, otherElements).filter(e => e.id !== startingElement.id)
 	return elements
 }
 

@@ -1,6 +1,6 @@
 import { getAlignmentIndexForElements } from "../../src/helpers/alignmentIndex"
 import { closestElement2 } from "../../src/proximity/closestElement2"
-import { findInDirection } from "../../src/direction"
+import { getElementsInDirection } from "../../src/direction"
 import { Bearing } from "../../src/types"
 import { varyingsizes } from "../resources/elements/varyingsizes"
 
@@ -9,7 +9,7 @@ describe('closestElement', () => {
 		test('e(ast) of A is B', () => {
 			let elements = [...varyingsizes]
 			const [A] = elements.splice(0, 1);
-			const elementsInDirection = findInDirection(A, elements.filter(e => e.id !== 'A'), 'e')
+			const elementsInDirection = getElementsInDirection(A, elements.filter(e => e.id !== 'A'), 'e')
 			const elementsWithAlignment = getAlignmentIndexForElements(A, elementsInDirection, Bearing['e'])
 			const element = closestElement2(A, elementsWithAlignment, 'e')
 			expect(element.id).toEqual('B')
@@ -18,7 +18,7 @@ describe('closestElement', () => {
 		test('w(est) of C is B', () => {
 			let elements = [...varyingsizes]
 			const [C] = elements.splice(2, 1);
-			const elementsInDirection = findInDirection(C, elements.filter(e => e.id !== 'C'), 'w')
+			const elementsInDirection = getElementsInDirection(C, elements.filter(e => e.id !== 'C'), 'w')
 			const elementsWithAlignment = getAlignmentIndexForElements(C, elementsInDirection, Bearing['w'])
 
 			const element = closestElement2(C, elementsWithAlignment, 'w')
@@ -30,7 +30,7 @@ describe('closestElement', () => {
 			const G = elements.find(e => e.id === 'G')
 			let element
 			if (G) {
-				const elementsInDirection = findInDirection(G, elements.filter(e => e.id !== 'G'), 'n')
+				const elementsInDirection = getElementsInDirection(G, elements.filter(e => e.id !== 'G'), 'n')
 				const elementsWithAlignment = getAlignmentIndexForElements(G, elementsInDirection, Bearing['n'])
 				element = closestElement2(G, elementsWithAlignment, 'n')
 			}
@@ -43,7 +43,7 @@ describe('closestElement', () => {
 			const E = elements.find(e => e.id === 'E')
 			let element
 			if (E) {
-				const elementsInDirection = findInDirection(E, elements.filter(e => e.id !== 'E'), 's')
+				const elementsInDirection = getElementsInDirection(E, elements.filter(e => e.id !== 'E'), 's')
 				const elementsWithAlignment = getAlignmentIndexForElements(E, elementsInDirection, Bearing['s'])
 				element = closestElement2(E, elementsWithAlignment, 's')
 			}

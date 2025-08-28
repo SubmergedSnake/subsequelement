@@ -1,6 +1,6 @@
 import { Options, Bearing, Predicate } from "../src/types"
 
-export const validateArgs = (options: Options) => {
+export const validateOptions = (options: Options): Options => {
 	const { cssSelectorForTargetElements, predicate, bearing, startingElement } = options
 
 	const hasStartingElement = startingElement instanceof HTMLElement
@@ -12,6 +12,7 @@ export const validateArgs = (options: Options) => {
 		throw Error(`Insufficient or faulty arguments provided to find -function. Required 
 		arguments are: startingElement, cssSelectorForTargetElements, strategy and direction.`)
 	}
+	return options
 }
 
 export const findElements = (cssSelector: string): HTMLElement[] => {

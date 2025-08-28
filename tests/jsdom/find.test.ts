@@ -2,8 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { closest } from '../../src/main'
+import { closest, subsequelement } from '../../src/subsequelement'
 import { Options, Predicate } from '../../src/types'
+import { simplegrid } from '../resources/elements/simplegrid'
 
 describe('find', () => {
 
@@ -39,4 +40,15 @@ describe('find', () => {
 
 		expect(() => closest(validArgs)).not.toThrow()
 	})
+})
+
+
+test.only('n(orth) of K is H', () => {
+	let elements = [...simplegrid]
+	const K = elements.find(e => e.id === 'K')
+	let element
+	if (K) {
+		element = subsequelement.closest({ startingElement: K, cssSelectorForTargetElements: '.article', bearing: 'n', predicate: Predicate.ALIGN })
+	}
+	expect(element?.id).toEqual('H')
 })
