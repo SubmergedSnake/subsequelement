@@ -1,5 +1,5 @@
-import { getAlignmentIndexForElements } from "../../src/alignmentIndex"
-import { closestElement2 } from "../../src/closestElement2"
+import { getAlignmentIndexForElements } from "../../src/helpers/alignmentIndex"
+import { closestElement2 } from "../../src/proximity/closestElement2"
 import { Bearing, Predicate, SupportedAngle } from "../../src/types"
 import { simplegrid } from "../resources/elements/simplegrid"
 

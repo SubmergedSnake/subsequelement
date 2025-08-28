@@ -1,5 +1,5 @@
-import { getElementDistanceDirectional } from "./elementDistance"
-import { Bearing, ElementWithAlignment, IsHtmlElementLike, Predicate } from "./types"
+import { getElementDistanceDirectional } from "../helpers/elementDistance"
+import { Bearing, ElementWithAlignment, IsHtmlElementLike, Predicate } from "../types"
 
 export const furthestElement = (startingElement: IsHtmlElementLike, otherElements: ElementWithAlignment[], bearing: keyof typeof Bearing, predicate?: Predicate): IsHtmlElementLike => {
 

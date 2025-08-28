@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { adjaycent } from '../../src/main'
+import { closest } from '../../src/main'
 import { Options, Predicate } from '../../src/types'
 
 describe('find', () => {
@@ -11,10 +11,10 @@ describe('find', () => {
 		// @ts-ignore
 		const faultyArgs: Options = {
 			cssSelectorForTargetElements: '.class',
-			bearing: 'n',
+			// bearing: 'n',
 			startingElement: document.createElement('div'),
 		}
-		expect(() => adjaycent(faultyArgs)).toThrow()
+		expect(() => closest(faultyArgs)).toThrow()
 	})
 
 
@@ -26,7 +26,7 @@ describe('find', () => {
 			// @ts-ignore
 			predicate: "foo"
 		}
-		expect(() => adjaycent(faultyArgs)).toThrow()
+		expect(() => closest(faultyArgs)).toThrow()
 	})
 
 	test('does not throw error with valid inputs', () => {
@@ -37,6 +37,6 @@ describe('find', () => {
 			predicate: Predicate.ALIGN
 		}
 
-		expect(() => adjaycent(validArgs)).not.toThrow()
+		expect(() => closest(validArgs)).not.toThrow()
 	})
 })

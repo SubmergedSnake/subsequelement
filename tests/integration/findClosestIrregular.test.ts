@@ -1,7 +1,7 @@
-import { closestElement2 } from "../../src/closestElement2"
+import { closestElement2 } from "../../src/proximity/closestElement2"
 import { irregulargrid } from "../resources/elements/irregulargrid"
 import { Bearing, Predicate } from "../../src/types"
-import { getAlignmentIndexForElements } from "../../src/alignmentIndex"
+import { getAlignmentIndexForElements } from "../../src/helpers/alignmentIndex"
 
 describe('closestElement', () => {
 	describe('irregulargrid', () => {

@@ -1,6 +1,6 @@
-import { getAlignmentIndexForElements as getElementsAndAlignment } from "../../src/alignmentIndex";
+import { getAlignmentIndexForElements as getElementsAndAlignment } from "../../src/helpers/alignmentIndex";
 import { findInDirection } from "../../src/direction";
-import { furthestElement } from "../../src/furthestElement";
+import { furthestElement } from "../../src/proximity/furthestElement";
 import { Bearing, Predicate } from "../../src/types";
 import { simplegrid } from "../resources/elements/simplegrid";
 

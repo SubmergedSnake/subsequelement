@@ -1,5 +1,5 @@
-import { BoundaryCorners, Corner, ElementWithAlignment, IsHtmlElementLike, SupportedAngle } from "./types";
-import { degreesToRadians } from "./utilities";
+import { BoundaryCorners, Corner, ElementWithAlignment, IsHtmlElementLike, SupportedAngle } from "../types";
+import { degreesToRadians } from "../utilities";
 
 export const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]): number => {
 	const smallestRangeEnd = Math.min(startingElementRange[1], otherElementRange[1])

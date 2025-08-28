@@ -1,5 +1,5 @@
-import { getAlignmentIndexForElements } from "../../src/alignmentIndex"
-import { closestElement2 } from "../../src/closestElement2"
+import { getAlignmentIndexForElements } from "../../src/helpers/alignmentIndex"
+import { closestElement2 } from "../../src/proximity/closestElement2"
 import { findInDirection } from "../../src/direction"
 import { Bearing } from "../../src/types"
 import { varyingsizes } from "../resources/elements/varyingsizes"
