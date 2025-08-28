@@ -12,7 +12,7 @@ test('adjaycent works', {
 
     const args: Options = {
       startingElement: document.querySelector('#one') as HTMLElement,
-      strategy: "STRICT",
+      predicate: "STRICT",
       cssSelectorForTargetElements: 'article',
       bearing: "e"
     }

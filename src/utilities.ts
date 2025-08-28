@@ -1,11 +1,11 @@
-import { Options, Bearing, Strategy } from "../src/types"
+import { Options, Bearing, Predicate } from "../src/types"
 
-export const validateArgs = (args: Options) => {
-	const { cssSelectorForTargetElements, strategy, bearing, startingElement } = args
+export const validateArgs = (options: Options) => {
+	const { cssSelectorForTargetElements, predicate: strategy, bearing, startingElement } = options
 
 	const hasStartingElement = startingElement instanceof HTMLElement
 	const hasCssSelectorForTargetElements = typeof cssSelectorForTargetElements === "string"
-	const hasStrategy = Object.values(Strategy).includes(strategy as Strategy)
+	const hasStrategy = Object.values(Predicate).includes(strategy as Predicate)
 	const hasDirection = Object.keys(Bearing).includes(bearing as keyof typeof Bearing)
 
 	if ([hasStartingElement, hasCssSelectorForTargetElements, hasStrategy, hasDirection].includes(false)) {

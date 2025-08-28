@@ -3,7 +3,7 @@
  */
 
 import { adjaycent } from '../../src/main'
-import { Options, Strategy } from '../../src/types'
+import { Options, Predicate } from '../../src/types'
 
 describe('find', () => {
 
@@ -24,7 +24,7 @@ describe('find', () => {
 			bearing: 'n',
 			startingElement: document.createElement('div'),
 			// @ts-ignore
-			strategy: "foo"
+			predicate: "foo"
 		}
 		expect(() => adjaycent(faultyArgs)).toThrow()
 	})
@@ -34,7 +34,7 @@ describe('find', () => {
 			cssSelectorForTargetElements: '.class',
 			bearing: 'n',
 			startingElement: document.createElement('div'),
-			strategy: Strategy.FLOW
+			predicate: Predicate.ALIGN
 		}
 
 		expect(() => adjaycent(validArgs)).not.toThrow()

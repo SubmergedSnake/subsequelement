@@ -1,4 +1,3 @@
-export type Predicate = "align"
 export type IsHtmlElementLike = {
 	id: string,
 	getBoundingClientRect: () => Omit<ReturnType<HTMLElement['getBoundingClientRect']>, 'toJSON'> & {
@@ -32,16 +31,15 @@ export const Bearing = {
 } satisfies { [key: string]: SupportedAngle }
 
 
-export enum Strategy {
-	STRICT = 'STRICT',
-	FLOW = 'FLOW'
+export enum Predicate {
+	ALIGN = 'align',
 }
 
 export type Options = {
 	startingElement: HTMLElement,
 	cssSelectorForTargetElements: string,
 	bearing: keyof typeof Bearing
-	strategy: keyof typeof Strategy
+	predicate: Predicate
 }
 
 

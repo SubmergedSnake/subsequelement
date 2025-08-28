@@ -5,7 +5,7 @@ export const adjaycent = (args: Options) => {
 
 	validateArgs(args)
 
-	const { cssSelectorForTargetElements, bearing, startingElement, strategy } = args
+	const { cssSelectorForTargetElements, bearing, startingElement, predicate: strategy } = args
 
 	const viableElements = findElements(cssSelectorForTargetElements)
 
