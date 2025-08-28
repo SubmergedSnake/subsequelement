@@ -1,3 +1,4 @@
+export type Predicate = "align"
 export type IsHtmlElementLike = {
 	id: string,
 	getBoundingClientRect: () => Omit<ReturnType<HTMLElement['getBoundingClientRect']>, 'toJSON'> & {

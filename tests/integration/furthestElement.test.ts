@@ -1,4 +1,5 @@
 import { getAlignmentIndexForElements as getElementsAndAlignment } from "../../src/alignmentIndex";
+import { findInDirection } from "../../src/direction";
 import { furthestElement } from "../../src/furthestElement";
 import { Bearing } from "../../src/types";
 import { simplegrid } from "../resources/elements/simplegrid";
@@ -8,10 +9,26 @@ describe('furthestElement', () => {
 
 		it('furthest element s(outh)e(ast) of A is I', async () => {
 			let elements = [...simplegrid]
-			const [A] = elements.splice(0, 1);
-			const elementsWithAlignment = getElementsAndAlignment(A, elements, Bearing['se'])
-			const element = furthestElement(A, elementsWithAlignment, 'se', { strict: true })
-			expect(element.id).toEqual('I')
+			const A = elements.find(e => e.id === 'A')
+			let element
+			if (A) {
+				const elementsInDirection = findInDirection(A, elements, 'se')
+				const elementsWithAlignment = getElementsAndAlignment(A, elementsInDirection, Bearing['se'])
+				element = furthestElement(A, elementsWithAlignment, 'se', 'align')
+			}
+			expect(element?.id).toEqual('I')
+		})
+
+		it('furthest element n(orth)e(ast) of G is C', async () => {
+			let elements = [...simplegrid]
+			const G = elements.find(e => e.id === 'G')
+			let element
+			if (G) {
+				const elementsInDirection = findInDirection(G, elements, 'ne')
+				const elementsWithAlignment = getElementsAndAlignment(G, elementsInDirection, Bearing['ne'])
+				element = furthestElement(G, elementsWithAlignment, 'ne', 'align')
+			}
+			expect(element?.id).toEqual('C')
 		})
 
 		it('furthest element n(orth)w(est) of R is A', async () => {
@@ -19,32 +36,45 @@ describe('furthestElement', () => {
 			const R = elements.find(e => e.id === 'R')
 			let element
 			if (R) {
-				const elementsWithAlignment = getElementsAndAlignment(R, elements, Bearing['nw'])
+				const elementsInDirection = findInDirection(R, elements, 'nw')
+				const elementsWithAlignment = getElementsAndAlignment(R, elementsInDirection, Bearing['nw'])
 				element = furthestElement(R, elementsWithAlignment, 'nw')
 			}
 			expect(element?.id).toEqual('A')
 		})
 
-		// TODO - should return undefined, no elements sw of S
 		it('furthest element s(outh)w(est) of O is S', async () => {
 			let elements = [...simplegrid]
-			const S = elements.find(e => e.id === 'O')
+			const O = elements.find(e => e.id === 'O')
 			let element
-			if (S) {
-				const elementsWithAlignment = getElementsAndAlignment(S, elements.filter(e => e.id !== 'S'), Bearing['sw'])
-				element = furthestElement(S, elementsWithAlignment, 'sw')
+			if (O) {
+				const elementsInDirection = findInDirection(O, elements, 'sw')
+				const elementsWithAlignment = getElementsAndAlignment(O, elementsInDirection, Bearing['sw'])
+				element = furthestElement(O, elementsWithAlignment, 'sw', 'align')
 			}
-			expect(element?.id).toEqual('O')
+			expect(element?.id).toEqual('S')
 		})
 
-		it.only('furthest element s(outh)w(est) of C is S', async () => {
+		it('furthest element s(outh)w(est) of C is S (strict)', async () => {
 			let elements = [...simplegrid]
 			const C = elements.find(e => e.id === 'C')
 			let element
 			if (C) {
-				const elementsWithAlignment = getElementsAndAlignment(C, elements, Bearing['sw'])
-				elementsWithAlignment.forEach(e => console.log(`${e.e.id}, ${e.alignment}`))
-				element = furthestElement(C, elementsWithAlignment, 'sw', { strict: true })
+				const elementsInDirection = findInDirection(C, elements, 'sw')
+				const elementsWithAlignment = getElementsAndAlignment(C, elementsInDirection, Bearing['sw'])
+				element = furthestElement(C, elementsWithAlignment, 'sw', 'align')
+			}
+			expect(element?.id).toEqual('G')
+		})
+
+		it('furthest element s(outh)w(est) of C is S', async () => {
+			let elements = [...simplegrid]
+			const C = elements.find(e => e.id === 'C')
+			let element
+			if (C) {
+				const elementsInDirection = findInDirection(C, elements, 'sw')
+				const elementsWithAlignment = getElementsAndAlignment(C, elementsInDirection, Bearing['sw'])
+				element = furthestElement(C, elementsWithAlignment, 'sw')
 			}
 			expect(element?.id).toEqual('S')
 		})

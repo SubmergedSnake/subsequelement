@@ -20,7 +20,6 @@ describe('closestElement', () => {
 			const [C] = elements.splice(2, 1);
 			const elementsInDirection = findInDirection(C, elements.filter(e => e.id !== 'C'), 'w')
 			const elementsWithAlignment = getAlignmentIndexForElements(C, elementsInDirection, Bearing['w'])
-			console.log(`elements that align with C: ${elementsWithAlignment.map(e => `${e.e.id}, ${e.alignment}`)}`);
 
 			const element = closestElement2(C, elementsWithAlignment, 'w')
 			expect(element.id).toEqual('B')
@@ -34,7 +33,6 @@ describe('closestElement', () => {
 				const elementsInDirection = findInDirection(G, elements.filter(e => e.id !== 'G'), 'n')
 				const elementsWithAlignment = getAlignmentIndexForElements(G, elementsInDirection, Bearing['n'])
 				element = closestElement2(G, elementsWithAlignment, 'n')
-				console.log(`elements that align with G: ${elementsWithAlignment.map(e => `${e.e.id}, ${e.alignment}`)}`);
 			}
 
 			expect(element?.id).toEqual('F')
@@ -48,7 +46,6 @@ describe('closestElement', () => {
 				const elementsInDirection = findInDirection(E, elements.filter(e => e.id !== 'E'), 's')
 				const elementsWithAlignment = getAlignmentIndexForElements(E, elementsInDirection, Bearing['s'])
 				element = closestElement2(E, elementsWithAlignment, 's')
-				console.log(`elements that align with E: ${elementsWithAlignment.map(e => `${e.e.id}, ${e.alignment}`)}`);
 			}
 			expect(element?.id).toEqual('F')
 		})
