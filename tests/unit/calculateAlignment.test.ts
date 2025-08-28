@@ -1,4 +1,4 @@
-import { calculateAlignment } from "../../../src/alignmentIndex"
+import { calculateAlignment } from "../../src/alignmentIndex"
 
 describe('calculateAlignment', () => {
 

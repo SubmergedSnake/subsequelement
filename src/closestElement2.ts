@@ -8,7 +8,7 @@ export const closestElement2 =
 
 
 		let elementsWithDistances =
-			otherElements.map(element => ({ ...getElementDistanceDirectional(startingElement, element, bearing) }))
+			otherElements.filter(e => e.e.id !== startingElement.id).map(element => ({ ...getElementDistanceDirectional(startingElement, element, bearing) }))
 		if (considerAlignment) {
 			if (considerAlignment.strict) {
 				elementsWithDistances = elementsWithDistances.filter(e => e.element.alignment > 0).map(e => ({ element: e.element, distance: e.distance - e.element.alignment }))

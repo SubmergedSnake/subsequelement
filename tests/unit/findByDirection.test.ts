@@ -1,5 +1,5 @@
-import { findInDirection } from "../../../src/direction"
-import { simplegrid } from "../../resources/elements/simplegrid"
+import { findInDirection } from "../../src/direction"
+import { simplegrid } from "../resources/elements/simplegrid"
 
 
 const getIndexPageElements = () => [...simplegrid]
