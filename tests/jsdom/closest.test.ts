@@ -2,53 +2,53 @@
  * @jest-environment jsdom
  */
 
-import { closest, subsequelement } from '../../src/subsequelement'
-import { Options, Predicate } from '../../src/types'
-import { simplegrid } from '../resources/elements/simplegrid'
+import { subsequelement } from "../../src/subsequelement"
+import { Predicate } from "../../src/types"
+import { simplegrid } from "../resources/elements/simplegrid"
+
+const INVALID_SELECTOR = 'invalid'
+const SIMPLE_SELECTOR = 'simplegrid'
+const IRREGULAR_SELECTOR = 'irregulargrid'
+const VARYING_SIZES_SELECTOR = 'varyingsizes'
+
 
 describe('closest', () => {
 
-	test('throws error on missing input parameters', () => {
-		// @ts-ignore
-		const faultyArgs: Options = {
-			cssSelectorForTargetElements: '.class',
-			// bearing: 'n',
-			startingElement: document.createElement('div'),
+	let querySelectorSpy
+
+	beforeAll(() => {
+		querySelectorSpy = jest.spyOn(document, 'querySelectorAll').mockImplementation((selectors: string) => {
+			let elements
+			switch (selectors) {
+				case INVALID_SELECTOR:
+					elements = []
+					break;
+				case SIMPLE_SELECTOR:
+					elements = simplegrid
+					break;
+			}
+			return elements as any as NodeListOf<Element>
 		}
-		expect(() => closest(faultyArgs)).toThrow()
+		)
 	})
 
-
-	test('throws error on erroneous input parameters', () => {
-		const faultyArgs: Options = {
-			cssSelectorForTargetElements: '.class',
-			bearing: 'n',
-			startingElement: document.createElement('div'),
-			// @ts-ignore
-			predicate: "foo"
+	test('returns undefined if cssSelectorForTargetElements returns nothing', () => {
+		let elements = [...simplegrid]
+		const K = elements.find(e => e.id === 'K')
+		let element
+		if (K) {
+			element = subsequelement.closest({ startingElement: K, cssSelectorForTargetElements: INVALID_SELECTOR, bearing: 'n', predicate: Predicate.ALIGN })
 		}
-		expect(() => closest(faultyArgs)).toThrow()
+		expect(element).toBe(undefined)
 	})
+	test('returns B north of E', () => {
 
-	test('does not throw error with valid inputs', () => {
-		const validArgs: Options = {
-			cssSelectorForTargetElements: '.class',
-			bearing: 'n',
-			startingElement: document.createElement('div'),
-			predicate: Predicate.ALIGN
+		let elements = [...simplegrid]
+		const E = elements.find(e => e.id === 'E')
+		let element
+		if (E) {
+			element = subsequelement.closest({ startingElement: E, cssSelectorForTargetElements: SIMPLE_SELECTOR, bearing: 'n', predicate: Predicate.ALIGN })
 		}
-
-		expect(() => closest(validArgs)).not.toThrow()
+		expect(element?.id).toEqual('B')
 	})
-})
-
-
-test.only('returns undefined if cssSelectorForTargetElements returns nothing', () => {
-	let elements = [...simplegrid]
-	const K = elements.find(e => e.id === 'K')
-	let element
-	if (K) {
-		element = subsequelement.closest({ startingElement: K, cssSelectorForTargetElements: '.article', bearing: 'n', predicate: Predicate.ALIGN })
-	}
-	expect(element).toBe(undefined)
 })

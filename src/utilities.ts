@@ -10,8 +10,6 @@ export const validateOptions = (options: Options): Options => {
 	}
 
 	const missingRequiredOptions = Object.entries(providedOptions).filter(([_key, value]) => value === false).map(([key, _value]) => key)
-	console.log(missingRequiredOptions.length);
-
 
 	if (missingRequiredOptions.length > 0) {
 		throw Error(`Missing required options: ${missingRequiredOptions}`)
