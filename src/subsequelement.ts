@@ -5,10 +5,13 @@ import { getAlignmentIndexForElements } from "./helpers/alignmentIndex"
 import { closestElement2 } from "./proximity/closestElement2"
 import { furthestElement } from "./proximity/furthestElement"
 
-export const closest = (options: Options): IsHtmlElementLike => {
+export const closest = (options: Options): IsHtmlElementLike | undefined => {
 	const { cssSelectorForTargetElements, bearing, startingElement, predicate } = validateOptions(options)
 
 	const targetElements = Array.from(document.querySelectorAll(cssSelectorForTargetElements))
+	if (targetElements.length === 0) {
+		return undefined
+	}
 	const elementsInDirection = getElementsInDirection(startingElement, targetElements, bearing)
 	const elementsWithAlignmentIndex = getAlignmentIndexForElements(startingElement, elementsInDirection, Bearing[bearing] as SupportedAngle)
 	const element = closestElement2(startingElement, elementsWithAlignmentIndex, bearing, predicate)

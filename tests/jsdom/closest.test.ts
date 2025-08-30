@@ -6,7 +6,7 @@ import { closest, subsequelement } from '../../src/subsequelement'
 import { Options, Predicate } from '../../src/types'
 import { simplegrid } from '../resources/elements/simplegrid'
 
-describe('find', () => {
+describe('closest', () => {
 
 	test('throws error on missing input parameters', () => {
 		// @ts-ignore
@@ -43,12 +43,12 @@ describe('find', () => {
 })
 
 
-test.only('n(orth) of K is H', () => {
+test.only('returns undefined if cssSelectorForTargetElements returns nothing', () => {
 	let elements = [...simplegrid]
 	const K = elements.find(e => e.id === 'K')
 	let element
 	if (K) {
 		element = subsequelement.closest({ startingElement: K, cssSelectorForTargetElements: '.article', bearing: 'n', predicate: Predicate.ALIGN })
 	}
-	expect(element?.id).toEqual('H')
+	expect(element).toBe(undefined)
 })

@@ -39,7 +39,7 @@ export type Options = {
 	startingElement: IsHtmlElementLike,
 	cssSelectorForTargetElements: string,
 	bearing: keyof typeof Bearing
-	predicate: Predicate
+	predicate?: Predicate
 }
 
 

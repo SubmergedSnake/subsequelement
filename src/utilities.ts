@@ -1,16 +1,20 @@
-import { Options, Bearing, Predicate } from "../src/types"
+import { Options, Bearing } from "../src/types"
 
 export const validateOptions = (options: Options): Options => {
-	const { cssSelectorForTargetElements, predicate, bearing, startingElement } = options
+	const { cssSelectorForTargetElements, bearing, startingElement } = options
 
-	const hasStartingElement = startingElement instanceof HTMLElement
-	const hasCssSelectorForTargetElements = typeof cssSelectorForTargetElements === "string"
-	const hasValidPredicate = Object.values(Predicate).includes(predicate as Predicate) || predicate === undefined
-	const hasDirection = Object.keys(Bearing).includes(bearing as keyof typeof Bearing)
+	const providedOptions = {
+		startingElement: startingElement.getBoundingClientRect,
+		cssSelectorForTargetElements: typeof cssSelectorForTargetElements === "string",
+		bearing: Object.keys(Bearing).includes(bearing as keyof typeof Bearing)
+	}
 
-	if ([hasStartingElement, hasCssSelectorForTargetElements, hasValidPredicate, hasDirection].includes(false)) {
-		throw Error(`Insufficient or faulty arguments provided to find -function. Required 
-		arguments are: startingElement, cssSelectorForTargetElements, strategy and direction.`)
+	const missingRequiredOptions = Object.entries(providedOptions).filter(([_key, value]) => value === false).map(([key, _value]) => key)
+	console.log(missingRequiredOptions.length);
+
+
+	if (missingRequiredOptions.length > 0) {
+		throw Error(`Missing required options: ${missingRequiredOptions}`)
 	}
 	return options
 }
