@@ -12,8 +12,8 @@ test('adjaycent works', {
 
     const args: Options = {
       startingElement: document.querySelector('#one') as HTMLElement,
-      predicate: "STRICT",
-      cssSelectorForTargetElements: 'article',
+      emphasizeAlign: "STRICT",
+      selectors: 'article',
       bearing: "e"
     }
     // @ts-ignore, adjaycent is set on the window object in index.html

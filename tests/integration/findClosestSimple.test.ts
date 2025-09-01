@@ -1,6 +1,6 @@
 import { getAlignmentIndexForElements } from "../../src/helpers/alignmentIndex"
 import { closestElement2 } from "../../src/proximity/closestElement2"
-import { Bearing, Predicate, SupportedAngle } from "../../src/types"
+import { Bearing, SupportedAngle } from "../../src/types"
 import { simplegrid } from "../resources/elements/simplegrid"
 
 describe('closestElement2', () => {
@@ -11,7 +11,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [K] = elements.splice(10, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(K, elements, Bearing['n'] as SupportedAngle)
-			const element = closestElement2(K, elementsWithAlignmentIndex, 'n', Predicate.ALIGN)
+			const element = closestElement2(K, elementsWithAlignmentIndex, 'n', true)
 			expect(element.id).toEqual('H')
 		})
 
@@ -19,7 +19,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [G] = elements.splice(6, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(G, elements, Bearing['sw'] as SupportedAngle)
-			const element = closestElement2(G, elementsWithAlignmentIndex, 'ne', Predicate.ALIGN)
+			const element = closestElement2(G, elementsWithAlignmentIndex, 'ne', true)
 			expect(element.id).toEqual('E')
 		})
 
@@ -27,7 +27,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [E] = elements.splice(4, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(E, elements, Bearing['e'] as SupportedAngle)
-			const element = closestElement2(E, elementsWithAlignmentIndex, 'e', Predicate.ALIGN)
+			const element = closestElement2(E, elementsWithAlignmentIndex, 'e', true)
 			expect(element.id).toEqual('F')
 		})
 
@@ -35,7 +35,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [E] = elements.splice(4, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(E, elements, Bearing['se'] as SupportedAngle)
-			const element = closestElement2(E, elementsWithAlignmentIndex, 'se', Predicate.ALIGN)
+			const element = closestElement2(E, elementsWithAlignmentIndex, 'se', true)
 			expect(element.id).toEqual('I')
 		})
 
@@ -43,7 +43,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [B] = elements.splice(1, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(B, elements, Bearing['s'] as SupportedAngle)
-			const element = closestElement2(B, elementsWithAlignmentIndex, 's', Predicate.ALIGN)
+			const element = closestElement2(B, elementsWithAlignmentIndex, 's', true)
 			expect(element.id).toEqual('E')
 		})
 
@@ -51,7 +51,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [B] = elements.splice(1, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(B, elements, Bearing['sw'] as SupportedAngle)
-			const element = closestElement2(B, elementsWithAlignmentIndex, 'sw', Predicate.ALIGN)
+			const element = closestElement2(B, elementsWithAlignmentIndex, 'sw', true)
 			expect(element.id).toEqual('D')
 		})
 
@@ -59,7 +59,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [I] = elements.splice(8, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(I, elements, Bearing['w'] as SupportedAngle)
-			const element = closestElement2(I, elementsWithAlignmentIndex, 'w', Predicate.ALIGN)
+			const element = closestElement2(I, elementsWithAlignmentIndex, 'w', true)
 			expect(element.id).toEqual('H')
 		})
 
@@ -67,7 +67,7 @@ describe('closestElement2', () => {
 			let elements = [...simplegrid]
 			const [I] = elements.splice(8, 1);
 			const elementsWithAlignmentIndex = getAlignmentIndexForElements(I, elements, Bearing['nw'] as SupportedAngle)
-			const element = closestElement2(I, elementsWithAlignmentIndex, 'nw', Predicate.ALIGN)
+			const element = closestElement2(I, elementsWithAlignmentIndex, 'nw', true)
 			expect(element.id).toEqual('E')
 		})
 

@@ -3,7 +3,6 @@
  */
 
 import { subsequelement } from "../../src/subsequelement"
-import { Predicate } from "../../src/types"
 import { simplegrid } from "../resources/elements/simplegrid"
 
 const INVALID_SELECTOR = 'invalid'
@@ -32,12 +31,12 @@ describe('closest', () => {
 		)
 	})
 
-	test('returns undefined if cssSelectorForTargetElements returns nothing', () => {
+	test('returns undefined if selectors returns nothing', () => {
 		let elements = [...simplegrid]
 		const K = elements.find(e => e.id === 'K')
 		let element
 		if (K) {
-			element = subsequelement.closest({ startingElement: K, cssSelectorForTargetElements: INVALID_SELECTOR, bearing: 'n', predicate: Predicate.ALIGN })
+			element = subsequelement.closest(K, 'n', { selectors: ['foobar'] })
 		}
 		expect(element).toBe(undefined)
 	})
@@ -47,7 +46,7 @@ describe('closest', () => {
 		const E = elements.find(e => e.id === 'E')
 		let element
 		if (E) {
-			element = subsequelement.closest({ startingElement: E, cssSelectorForTargetElements: SIMPLE_SELECTOR, bearing: 'n', predicate: Predicate.ALIGN })
+			element = subsequelement.closest(E, 'n', { selectors: [SIMPLE_SELECTOR], emphasizeAlign: true })
 		}
 		expect(element?.id).toEqual('B')
 	})

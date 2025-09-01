@@ -1,7 +1,7 @@
 import { getAlignmentIndexForElements } from "../../src/helpers/alignmentIndex";
 import { getElementsInDirection } from "../../src/direction";
 import { furthestElement } from "../../src/proximity/furthestElement";
-import { Bearing, Predicate } from "../../src/types";
+import { Bearing } from "../../src/types";
 import { simplegrid } from "../resources/elements/simplegrid";
 
 describe('furthestElement', () => {
@@ -14,7 +14,7 @@ describe('furthestElement', () => {
 			if (A) {
 				const elementsInDirection = getElementsInDirection(A, elements, 'se')
 				const elementsWithAlignment = getAlignmentIndexForElements(A, elementsInDirection, Bearing['se'])
-				element = furthestElement(A, elementsWithAlignment, 'se', Predicate.ALIGN)
+				element = furthestElement(A, elementsWithAlignment, 'se', true)
 			}
 			expect(element?.id).toEqual('I')
 		})
@@ -26,7 +26,7 @@ describe('furthestElement', () => {
 			if (G) {
 				const elementsInDirection = getElementsInDirection(G, elements, 'ne')
 				const elementsWithAlignment = getAlignmentIndexForElements(G, elementsInDirection, Bearing['ne'])
-				element = furthestElement(G, elementsWithAlignment, 'ne', Predicate.ALIGN)
+				element = furthestElement(G, elementsWithAlignment, 'ne', true)
 			}
 			expect(element?.id).toEqual('C')
 		})
@@ -50,7 +50,7 @@ describe('furthestElement', () => {
 			if (O) {
 				const elementsInDirection = getElementsInDirection(O, elements, 'sw')
 				const elementsWithAlignment = getAlignmentIndexForElements(O, elementsInDirection, Bearing['sw'])
-				element = furthestElement(O, elementsWithAlignment, 'sw', Predicate.ALIGN)
+				element = furthestElement(O, elementsWithAlignment, 'sw', true)
 			}
 			expect(element?.id).toEqual('S')
 		})
@@ -62,7 +62,7 @@ describe('furthestElement', () => {
 			if (C) {
 				const elementsInDirection = getElementsInDirection(C, elements, 'sw')
 				const elementsWithAlignment = getAlignmentIndexForElements(C, elementsInDirection, Bearing['sw'])
-				element = furthestElement(C, elementsWithAlignment, 'sw', Predicate.ALIGN)
+				element = furthestElement(C, elementsWithAlignment, 'sw', true)
 			}
 			expect(element?.id).toEqual('G')
 		})

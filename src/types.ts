@@ -31,15 +31,9 @@ export const Bearing = {
 } satisfies { [key: string]: SupportedAngle }
 
 
-export enum Predicate {
-	ALIGN = 'align',
-}
-
 export type Options = {
-	startingElement: IsHtmlElementLike,
-	cssSelectorForTargetElements: string,
-	bearing: keyof typeof Bearing
-	predicate?: Predicate
+	selectors?: string[],
+	emphasizeAlign?: boolean
 }
 
 
