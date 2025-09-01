@@ -11,7 +11,7 @@
     "watch": "parcel watch",
     "build": "parcel build",
     "test": "jest --watch",
-    "e2e:adjaycent": "playwright test --grep @adjaycent",
+    "e2e": "playwright test",
     "refresh": "(npm run serve&) && npx tsx retrievehtml.ts && killall node"
   },
   "keywords": [],
