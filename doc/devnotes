@@ -1,0 +1,6 @@
+TODO - should refactor find functions for ne, se, sw, nw:
+
+nw: other element left is before starting element left and other element top  is before starting element top
+se: other element right is after starting element right and other element bottom is after starting element bottom
+sw: other element left is before starting element left and other element bottom is after starting element bottom
+ne: other element right is after starting element right and other element top is before starting element top
