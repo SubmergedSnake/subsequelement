@@ -1,8 +1,8 @@
-import { Subsequelement } from "../../Subsequelement";
-import { Bearing, IsHtmlElementLike } from "../types";
+import { Subsequelement } from "../Subsequelement";
+import { IsHtmlElementLike } from "../types";
 
 
-export const getProximity = (startingElement: IsHtmlElementLike, otherElement: Subsequelement): Subsequelement => {
+export const getProximity = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike): Omit<Subsequelement, 'alignment'> => {
 
 
 	type Side = keyof ReturnType<IsHtmlElementLike['getBoundingClientRect']>
@@ -17,12 +17,12 @@ export const getProximity = (startingElement: IsHtmlElementLike, otherElement: S
 		const startingElementCorner = { x: startingElement.getBoundingClientRect()[x] as number, y: startingElement.getBoundingClientRect()[y] as number }
 		return sidePairs.map((corner: Corner) => {
 			const { x, y } = corner
-			const otherElementCorner = { x: otherElement.e.getBoundingClientRect()[x] as number, y: otherElement.e.getBoundingClientRect()[y] as number }
+			const otherElementCorner = { x: otherElement.getBoundingClientRect()[x] as number, y: otherElement.getBoundingClientRect()[y] as number }
 			return Math.hypot(startingElementCorner.x - otherElementCorner.x, startingElementCorner.y - otherElementCorner.y)
 		})
 	}).flat().reduce((acc, curr) => curr < acc ? curr : acc)
 	return {
-		...otherElement, proximity: proximity
+		e: otherElement, proximity: proximity
 	}
 }
 

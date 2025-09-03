@@ -1,10 +1,8 @@
 import { validateSubsequelementArgs } from "./utilities"
-import { Bearing, IsHtmlElementLike, Options, SupportedAngle } from "./types"
-import { getElementsInDirection } from "./direction"
-import { getAlignmentIndexForElements } from "./helpers/alignmentIndex"
+import { Bearing, IsHtmlElementLike, Options } from "./types"
 import { closestElement2 } from "./proximity/closestElement2"
 import { furthestElement } from "./proximity/furthestElement"
-import { Subsequelements } from "../Subsequelement"
+import { getSubsequelements } from "./getsubsequelements"
 
 export const closest = (startingElement: IsHtmlElementLike, bearing: keyof typeof Bearing, options?: Options): IsHtmlElementLike | undefined => {
 	validateSubsequelementArgs(startingElement, bearing, options)
@@ -18,18 +16,10 @@ export const closest = (startingElement: IsHtmlElementLike, bearing: keyof typeo
 	if (targetElements.length === 0) {
 		return undefined
 	}
-	const elementsInDirection = getElementsInDirection(startingElement, targetElements, bearing)
 
-	const subs = new Subsequelements(startingElement, elementsInDirection)
-	subs.applyBearing(bearing)
-	subs.applyProximity()
-	subs.applyAlignment(bearing)
-	subs.otherElements.forEach(oe => console.log(oe));
+	const subs = getSubsequelements(startingElement, targetElements, bearing)
 
-
-
-	const elementsWithAlignmentIndex = getAlignmentIndexForElements(startingElement, elementsInDirection, Bearing[bearing] as SupportedAngle)
-	const element = closestElement2(startingElement, elementsWithAlignmentIndex, bearing, options?.emphasizeAlign)
+	const element = closestElement2(subs)
 
 	return element
 }
@@ -46,12 +36,11 @@ export const furthest = (startingElement: IsHtmlElementLike, bearing: keyof type
 	if (targetElements.length === 0) {
 		return undefined
 	}
+	const subs = getSubsequelements(startingElement, targetElements, bearing)
 
-	const elementsInDirection = getElementsInDirection(startingElement, targetElements, bearing)
-	const elementsWithAlignment = getAlignmentIndexForElements(startingElement, elementsInDirection, Bearing[bearing])
-	const element = furthestElement(startingElement, elementsWithAlignment, bearing, options?.emphasizeAlign)
+	const element = furthestElement(subs)
 
 	return element
 }
 
-export * as subsequelement from './subsequelement'
+

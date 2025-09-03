@@ -1,6 +1,6 @@
-import { subsequelement } from "../../../src/subsequelement"
 import { test, expect } from '@playwright/test';
 import { Bearing, Options } from "../../../src/types"
+import { closest } from '../../../src/main';
 
 type ElementIdTest = {
   desc: string,
@@ -26,7 +26,7 @@ export const assertClosestElementIds = (tests: ElementIdTest[], layout: string) 
       let element
 
       if (startingElement) {
-        element = subsequelement.closest(startingElement, args.bearing, options)
+        element = closest(startingElement, args.bearing, options)
       }
 
       return element?.id

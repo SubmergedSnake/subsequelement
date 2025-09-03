@@ -1,4 +1,4 @@
-import { subsequelement } from "../../../src/subsequelement"
+import { furthest } from "../../../src/main"
 import { test, expect } from '@playwright/test';
 import { Bearing, Options } from "../../../src/types"
 
@@ -26,7 +26,7 @@ export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string)
       let element
 
       if (startingElement) {
-        element = subsequelement.furthest(startingElement, args.bearing, options)
+        element = furthest(startingElement, args.bearing, options)
       }
 
       return element?.id

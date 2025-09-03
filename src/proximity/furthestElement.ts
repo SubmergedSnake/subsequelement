@@ -1,14 +1,11 @@
-import { getElementDistanceDirectional } from "../helpers/elementDistance"
-import { Bearing, ElementWithAlignment, IsHtmlElementLike } from "../types"
+import { Subsequelement } from "../Subsequelement"
+import { IsHtmlElementLike } from "../types"
 
-export const furthestElement = (startingElement: IsHtmlElementLike, otherElements: ElementWithAlignment[], bearing: keyof typeof Bearing, emphasizeAlign?: boolean): IsHtmlElementLike => {
+export const furthestElement = (otherElements: Subsequelement[], alignmentThreshold: number = 0.75): IsHtmlElementLike => {
+	console.log(`alignment threshold a ${alignmentThreshold}`);
+	const foo = otherElements.filter(e => e.alignment > alignmentThreshold)
+	foo.forEach(console.log)
 
-	let elementsWithDistances =
-		otherElements.filter(e => e.e.id !== startingElement.id).map(element => ({ ...getElementDistanceDirectional(startingElement, element, bearing) }))
 
-	if (emphasizeAlign) {
-		elementsWithDistances = elementsWithDistances.filter(e => e.element.alignment > 0).map(e => ({ element: e.element, distance: e.distance + e.element.alignment }))
-	}
-
-	return elementsWithDistances.reduce((acc, curr) => curr.distance > acc.distance ? curr : acc).element.e
+	return otherElements.filter(e => e.alignment > alignmentThreshold).reduce((acc, curr) => curr.proximity > acc.proximity || curr.proximity >= acc.proximity && curr.alignment > acc.alignment ? curr : acc).e
 }

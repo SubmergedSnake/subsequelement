@@ -1,12 +1,13 @@
-import { Subsequelement } from "../../Subsequelement";
+import { Subsequelement } from "../Subsequelement";
 import { BoundaryCorners, Corner, ElementWithAlignment, IsHtmlElementLike, SupportedAngle } from "../types";
 import { degreesToRadians } from "../utilities";
 
 export const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]): number => {
 	const smallestRangeEnd = Math.min(startingElementRange[1], otherElementRange[1])
 	const largestRangeStart = Math.max(startingElementRange[0], otherElementRange[0])
-	let alignment = smallestRangeEnd - largestRangeStart
-	return alignment
+	const alignment = smallestRangeEnd - largestRangeStart
+	const alignmentIndex = alignment / (otherElementRange[1] - otherElementRange[0])
+	return alignmentIndex
 }
 
 const getYIntercept = (origin: Corner, degrees: number): number => {
@@ -26,10 +27,12 @@ const determineElementCornersForBoundary = (angle: SupportedAngle): BoundaryCorn
 	}
 }
 
-export const getAlignment = (startingElement: IsHtmlElementLike, otherElement: Subsequelement, angle: SupportedAngle): Subsequelement => {
+export const getAlignment = (startingElement: IsHtmlElementLike, otherElement: Omit<Subsequelement, 'alignment'>, angle: SupportedAngle): Subsequelement => {
 
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.e.getBoundingClientRect()
 	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()
+	console.log(`calculating alignment for element: ${otherElement.e.id}`);
+
 
 	if (angle.valueOf() === 90) {
 		const alignment = calculateAlignment([oeLeft, oeRight], [sLeft, sRight])
@@ -48,7 +51,8 @@ export const getAlignment = (startingElement: IsHtmlElementLike, otherElement: S
 
 	const otherElementYInterceptTop = getYIntercept({ x: otherElement.e.getBoundingClientRect()[topX], y: otherElement.e.getBoundingClientRect()[topY] }, angle)
 	const otherElementYInterceptBottom = getYIntercept({ x: otherElement.e.getBoundingClientRect()[bottomX], y: otherElement.e.getBoundingClientRect()[bottomY] }, angle)
-	const alignment = calculateAlignment([startingElementYInterceptTop, startingElementYInterceptBottom], [otherElementYInterceptTop, otherElementYInterceptBottom])
+
+	const alignment = calculateAlignment([otherElementYInterceptTop, otherElementYInterceptBottom], [startingElementYInterceptTop, startingElementYInterceptBottom])
 
 	return { ...otherElement, alignment }
 }

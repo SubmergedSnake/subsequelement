@@ -2,87 +2,87 @@
 
 import { IsHtmlElementLike } from "../../../src/types";
 export const varyingsizes: IsHtmlElementLike[] = [{
- id: "A",
-getBoundingClientRect: () => ({
-          top: 60,
-          left: 10,
-          right: 89,
-          bottom: 139,
-          height: 79,
-          width: 79,
-          x: 10,
-          y: 60 
-})
-},{
- id: "B",
-getBoundingClientRect: () => ({
-          top: 10,
-          left: 89,
-          right: 133,
-          bottom: 314,
-          height: 304,
-          width: 44,
-          x: 89,
-          y: 10 
-})
-},{
- id: "C",
-getBoundingClientRect: () => ({
-          top: 30,
-          left: 133,
-          right: 177,
-          bottom: 84,
-          height: 54,
-          width: 44,
-          x: 133,
-          y: 30 
-})
-},{
- id: "D",
-getBoundingClientRect: () => ({
-          top: 110,
-          left: 177,
-          right: 221,
-          bottom: 164,
-          height: 54,
-          width: 44,
-          x: 177,
-          y: 110 
-})
-},{
- id: "E",
-getBoundingClientRect: () => ({
-          top: 314,
-          left: 310,
-          right: 410,
-          bottom: 343,
-          height: 29,
-          width: 100,
-          x: 310,
-          y: 314 
-})
-},{
- id: "F",
-getBoundingClientRect: () => ({
-          top: 343,
-          left: 10,
-          right: 514,
-          bottom: 372,
-          height: 29,
-          width: 504,
-          x: 10,
-          y: 343 
-})
-},{
- id: "G",
-getBoundingClientRect: () => ({
-          top: 372,
-          left: 10,
-          right: 514,
-          bottom: 426,
-          height: 54,
-          width: 504,
-          x: 10,
-          y: 372 
-})
+  id: "A",
+  getBoundingClientRect: () => ({
+    top: 60,
+    left: 10,
+    right: 89,
+    bottom: 139,
+    height: 79,
+    width: 79,
+    x: 10,
+    y: 60
+  })
+}, {
+  id: "B",
+  getBoundingClientRect: () => ({
+    top: 10,
+    left: 89,
+    right: 133,
+    bottom: 314,
+    height: 304,
+    width: 44,
+    x: 89,
+    y: 10
+  })
+}, {
+  id: "C",
+  getBoundingClientRect: () => ({
+    top: 30,
+    left: 133,
+    right: 177,
+    bottom: 84,
+    height: 54,
+    width: 44,
+    x: 133,
+    y: 30
+  })
+}, {
+  id: "D",
+  getBoundingClientRect: () => ({
+    top: 110,
+    left: 177,
+    right: 221,
+    bottom: 164,
+    height: 54,
+    width: 44,
+    x: 177,
+    y: 110
+  })
+}, {
+  id: "E",
+  getBoundingClientRect: () => ({
+    top: 314,
+    left: 310,
+    right: 410,
+    bottom: 343,
+    height: 29,
+    width: 100,
+    x: 310,
+    y: 314
+  })
+}, {
+  id: "F",
+  getBoundingClientRect: () => ({
+    top: 343,
+    left: 10,
+    right: 514,
+    bottom: 372,
+    height: 29,
+    width: 504,
+    x: 10,
+    y: 343
+  })
+}, {
+  id: "G",
+  getBoundingClientRect: () => ({
+    top: 372,
+    left: 10,
+    right: 514,
+    bottom: 426,
+    height: 54,
+    width: 504,
+    x: 10,
+    y: 372
+  })
 }]

@@ -1,15 +1,11 @@
-import { getElementDistanceDirectional } from "../helpers/elementDistance";
-import { ElementWithAlignment, IsHtmlElementLike, Bearing } from "../types";
+import { Subsequelement } from "../Subsequelement";
+import { IsHtmlElementLike } from "../types";
 
 export const closestElement2 =
-	(startingElement: IsHtmlElementLike, otherElements: ElementWithAlignment[], bearing: keyof typeof Bearing, emphasizeAlign?: boolean)
+	(otherElements: Subsequelement[], alignmentThreshold: number = 0.75)
 		: IsHtmlElementLike => {
 
-		let elementsWithDistances =
-			otherElements.filter(e => e.e.id !== startingElement.id).map(element => ({ ...getElementDistanceDirectional(startingElement, element, bearing) }))
-		if (emphasizeAlign) {
-			elementsWithDistances = elementsWithDistances.map(e => ({ element: e.element, distance: e.distance - e.element.alignment }))
-		}
-
-		return elementsWithDistances.reduce((acc, curr) => curr.distance < acc.distance ? curr : acc).element.e
+		return otherElements.filter(e => e.alignment > alignmentThreshold).reduce((acc, curr) =>
+			curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
+		).e
 	}
