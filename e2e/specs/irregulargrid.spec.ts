@@ -1,7 +1,7 @@
 import { Bearing } from '../../src/types';
-import { assertElementIds } from '../utils/assertElementIds';
+import { assertClosestElementIds } from '../utils/assertClosestElementIds';
 
-const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, emphasizeAlign?: boolean, expectedId: string }[] = [
+const irregularGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, emphasizeAlign?: boolean, expectedId: string }[] = [
   { desc: 'e(ast) of B is C', startingElementId: 'B', bearing: 'e', emphasizeAlign: true, expectedId: 'C' },
   { desc: 'n(orth) of D is C', startingElementId: 'D', bearing: 'n', emphasizeAlign: true, expectedId: 'C' },
   { desc: 'w(est) of B is A', startingElementId: 'B', bearing: 'w', emphasizeAlign: true, expectedId: 'A' },
@@ -15,5 +15,5 @@ const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof
 ]
 
 
-assertElementIds(simpleGridTests, 'irregulargrid')
+assertClosestElementIds(irregularGridTests, 'irregulargrid')
 

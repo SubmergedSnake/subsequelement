@@ -10,7 +10,7 @@ type ElementIdTest = {
   expectedId: string
 }
 
-export const assertElementIds = (tests: ElementIdTest[], layout: string) => {
+export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string) => {
   tests.forEach(({ desc, startingElementId, bearing, emphasizeAlign, expectedId }) => test(`${desc}`, async ({ page }) => {
     await page.goto(`/${layout}`)
 
@@ -26,7 +26,7 @@ export const assertElementIds = (tests: ElementIdTest[], layout: string) => {
       let element
 
       if (startingElement) {
-        element = subsequelement.closest(startingElement, args.bearing, options)
+        element = subsequelement.furthest(startingElement, args.bearing, options)
       }
 
       return element?.id

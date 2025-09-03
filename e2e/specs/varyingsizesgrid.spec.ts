@@ -1,5 +1,5 @@
 import { Bearing } from '../../src/types';
-import { assertElementIds } from '../utils/assertElementIds';
+import { assertClosestElementIds } from '../utils/assertClosestElementIds';
 
 const varyingSizesGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, emphasizeAlign?: boolean, expectedId: string }[] = [
   { desc: 'e(ast) of A is B', startingElementId: 'A', bearing: 'e', emphasizeAlign: true, expectedId: 'B' },
@@ -8,5 +8,5 @@ const varyingSizesGridTests: { desc: string, startingElementId: string, bearing:
   { desc: 's(outh) of E is F', startingElementId: 'E', bearing: 's', emphasizeAlign: true, expectedId: 'F' },
 ]
 
-assertElementIds(varyingSizesGridTests, 'varyingsizes')
+assertClosestElementIds(varyingSizesGridTests, 'varyingsizes')
 
