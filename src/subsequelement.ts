@@ -4,6 +4,7 @@ import { getElementsInDirection } from "./direction"
 import { getAlignmentIndexForElements } from "./helpers/alignmentIndex"
 import { closestElement2 } from "./proximity/closestElement2"
 import { furthestElement } from "./proximity/furthestElement"
+import { Subsequelements } from "../Subsequelement"
 
 export const closest = (startingElement: IsHtmlElementLike, bearing: keyof typeof Bearing, options?: Options): IsHtmlElementLike | undefined => {
 	validateSubsequelementArgs(startingElement, bearing, options)
@@ -18,6 +19,15 @@ export const closest = (startingElement: IsHtmlElementLike, bearing: keyof typeo
 		return undefined
 	}
 	const elementsInDirection = getElementsInDirection(startingElement, targetElements, bearing)
+
+	const subs = new Subsequelements(startingElement, elementsInDirection)
+	subs.applyBearing(bearing)
+	subs.applyProximity()
+	subs.applyAlignment(bearing)
+	subs.otherElements.forEach(oe => console.log(oe));
+
+
+
 	const elementsWithAlignmentIndex = getAlignmentIndexForElements(startingElement, elementsInDirection, Bearing[bearing] as SupportedAngle)
 	const element = closestElement2(startingElement, elementsWithAlignmentIndex, bearing, options?.emphasizeAlign)
 
