@@ -1,4 +1,4 @@
-import { Bearing } from '../../src/types';
+import { Bearing } from '../../../src/types';
 import { assertClosestElementIds } from '../utils/assertClosestElementIds';
 
 const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, emphasizeAlign: boolean, expectedId: string }[] = [

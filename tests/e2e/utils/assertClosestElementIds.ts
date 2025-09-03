@@ -1,6 +1,6 @@
-import { subsequelement } from "../../src/subsequelement"
+import { subsequelement } from "../../../src/subsequelement"
 import { test, expect } from '@playwright/test';
-import { Bearing, Options } from "../../src/types"
+import { Bearing, Options } from "../../../src/types"
 
 type ElementIdTest = {
   desc: string,
