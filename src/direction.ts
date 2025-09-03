@@ -1,9 +1,9 @@
 import { Bearing, IsHtmlElementLike } from "./types"
 
-const northernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().top <= se.getBoundingClientRect().top
-const easternElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().right >= se.getBoundingClientRect().right
-const southernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().bottom >= se.getBoundingClientRect().bottom
-const westernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().left <= se.getBoundingClientRect().left
+const northernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().top < se.getBoundingClientRect().top
+const easternElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().right > se.getBoundingClientRect().right
+const southernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().bottom > se.getBoundingClientRect().bottom
+const westernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().left < se.getBoundingClientRect().left
 
 const findFunctions = {
 	"n": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(northernElements(se)),

@@ -1,6 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { Bearing, Options } from '../src/types';
-import { subsequelement } from '../src/subsequelement';
+import { Bearing } from '../../src/types';
+import { assertElementIds } from '../utils/assertElementIds';
 
 const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, emphasizeAlign: boolean, expectedId: string }[] = [
   { desc: 'n(orth) of K is H', startingElementId: 'K', bearing: 'n', emphasizeAlign: true, expectedId: 'H' },
@@ -13,29 +12,5 @@ const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof
   { desc: 'n(orth)w(est) of I is E', startingElementId: 'I', bearing: 'nw', emphasizeAlign: true, expectedId: 'E' },
 ]
 
-
-simpleGridTests.forEach(({ desc, startingElementId, bearing, emphasizeAlign, expectedId }) => test(`${desc}`, async ({ page }) => {
-  await page.goto('/simplegrid')
-
-  const elementId = await page.evaluate((args) => {
-
-    const startingElement = document.getElementById(args.startingElementId)
-
-    const options: Options = {
-      selectors: ['article'],
-      emphasizeAlign: args.emphasizeAlign
-    }
-
-    let element
-
-    if (startingElement) {
-      element = subsequelement.closest(startingElement, args.bearing, options)
-    }
-
-    return element?.id
-
-  }, { startingElementId, bearing, emphasizeAlign })
-  expect(elementId).toEqual(expectedId)
-})
-)
+assertElementIds(simpleGridTests, 'simplegrid')
 
