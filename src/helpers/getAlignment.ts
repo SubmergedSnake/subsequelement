@@ -6,7 +6,8 @@ export const calculateAlignment = (startingElementRange: number[], otherElementR
 	const smallestRangeEnd = Math.min(startingElementRange[1], otherElementRange[1])
 	const largestRangeStart = Math.max(startingElementRange[0], otherElementRange[0])
 	const alignment = smallestRangeEnd - largestRangeStart
-	const alignmentIndex = alignment / (otherElementRange[1] - otherElementRange[0])
+	const alignmentIndex = alignment / (startingElementRange[1] - startingElementRange[0])
+	console.log(`got alignment: ${alignmentIndex}`)
 	return alignmentIndex
 }
 
@@ -27,7 +28,7 @@ const determineElementCornersForBoundary = (angle: SupportedAngle): BoundaryCorn
 	}
 }
 
-export const getAlignment = (startingElement: IsHtmlElementLike, otherElement: Omit<Subsequelement, 'alignment'>, angle: SupportedAngle): Subsequelement => {
+export const addAlignment = (startingElement: IsHtmlElementLike, otherElement: Omit<Subsequelement, 'alignment'>, angle: SupportedAngle): Subsequelement => {
 
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.e.getBoundingClientRect()
 	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()

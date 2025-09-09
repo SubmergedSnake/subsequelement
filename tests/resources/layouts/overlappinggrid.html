@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../app.css" />
+   <script type="module">
+      import { closest, furthest} from '../../../src/main.ts'
+      window.closest = closest
+      window.furthest = furthest
+    </script>
+    <title>Overlapping grid</title>
+  </head>
+  <body>
+    <div class="box-wide" id="irregular-grid">
+      <article id="C" style="margin-top: 125px">Item C</article>
+      <article id="B" style="position: absolute; top: -30px; width:300px; height: 90px;  margin-top: 200px">Item B</article>
+      <article id="A" style="position: absolute; top: -180px; width:300px; height: 90px;  margin-top: 200px">Item A</article>
+      <article id="D" style="position: absolute; top: -180px; width:300px; height: 90px; left: 275px;  margin-top: 350px">Item D</article>
+    </div>
+  </body>
+</html>

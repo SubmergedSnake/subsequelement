@@ -1,28 +1,37 @@
 import { Subsequelement } from "../Subsequelement";
-import { IsHtmlElementLike } from "../types";
+import { Bearing, IsHtmlElementLike } from "../types";
 
+const calculateProximity = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike, bearing: keyof typeof Bearing) => {
+	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()
+	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.getBoundingClientRect()
 
-export const getProximity = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike): Omit<Subsequelement, 'alignment'> => {
+	let directionalProximity
 
-
-	type Side = keyof ReturnType<IsHtmlElementLike['getBoundingClientRect']>
-	type Corner = {
-		x: Side
-		y: Side
+	if (['nw', 'n', 'ne', 'sw', 's', 'se'].includes(bearing)) {
+		const topProx = Math.min(Math.abs(sTop - oeBottom), Math.abs(sTop - oeTop))
+		const bottomProx = Math.min(Math.abs(sBottom - oeTop), Math.abs(sBottom - oeBottom))
+		directionalProximity = Math.min(topProx, bottomProx)
 	}
 
-	const sidePairs: Corner[] = [{ x: 'left', y: 'top' }, { x: 'right', y: 'top' }, { x: 'right', y: 'bottom' }, { x: 'left', y: 'bottom' }]
-	const proximity = sidePairs.map((corner: Corner) => {
-		const { x, y } = corner
-		const startingElementCorner = { x: startingElement.getBoundingClientRect()[x] as number, y: startingElement.getBoundingClientRect()[y] as number }
-		return sidePairs.map((corner: Corner) => {
-			const { x, y } = corner
-			const otherElementCorner = { x: otherElement.getBoundingClientRect()[x] as number, y: otherElement.getBoundingClientRect()[y] as number }
-			return Math.hypot(startingElementCorner.x - otherElementCorner.x, startingElementCorner.y - otherElementCorner.y)
-		})
-	}).flat().reduce((acc, curr) => curr < acc ? curr : acc)
-	return {
-		e: otherElement, proximity: proximity
+	// for east and west
+	else {
+		const leftProx = Math.min(Math.abs(sLeft - oeRight), Math.abs(sLeft - oeLeft))
+		const rightProx = Math.min(Math.abs(sRight - oeLeft), Math.abs(sRight - oeRight))
+		directionalProximity = Math.min(leftProx, rightProx)
+
 	}
+
+	const absoluteDirectionalProximity = Math.abs(directionalProximity)
+	console.log(`Got absolute directional proximity for other element ${otherElement.id}: ${absoluteDirectionalProximity}`);
+	return absoluteDirectionalProximity
+	// return Math.abs(Math.min(topProx, bottomProx, leftProx, rightProx))
 }
 
+
+
+
+export const addProximity = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike, bearing: keyof typeof Bearing): Omit<Subsequelement, 'alignment'> => {
+	return {
+		e: otherElement, proximity: calculateProximity(startingElement, otherElement, bearing)
+	}
+}

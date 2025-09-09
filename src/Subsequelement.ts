@@ -1,6 +1,6 @@
 import { filterByBearing } from "../src/bearing"
-import { getAlignment } from "../src/helpers/getAlignment"
-import { getProximity } from "../src/helpers/getProximity"
+import { addAlignment } from "../src/helpers/getAlignment"
+import { addProximity } from "../src/helpers/getProximity"
 import { Bearing, IsHtmlElementLike } from "../src/types"
 
 
@@ -17,8 +17,8 @@ export class Subsequelements {
   constructor(startingElement: IsHtmlElementLike, otherElements: IsHtmlElementLike[], bearing: keyof typeof Bearing) {
     this.startingElement = startingElement
     this.otherElements = filterByBearing(startingElement, otherElements, bearing)
-      .map(oe => getProximity(this.startingElement, oe))
-      .map(oe => getAlignment(startingElement, oe, Bearing[bearing]))
+      .map(oe => addProximity(this.startingElement, oe, bearing))
+      .map(oe => addAlignment(startingElement, oe, Bearing[bearing]))
   }
 
 }
