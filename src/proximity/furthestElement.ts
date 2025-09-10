@@ -1,11 +1,21 @@
 import { Subsequelement } from "../Subsequelement"
 import { IsHtmlElementLike } from "../types"
 
-export const furthestElement = (otherElements: Subsequelement[], alignmentThreshold: number = 0.75): IsHtmlElementLike => {
-	console.log(`alignment threshold a ${alignmentThreshold}`);
-	const foo = otherElements.filter(e => e.alignment > alignmentThreshold)
-	foo.forEach(console.log)
+export const furthestElement = (otherElements: Subsequelement[], preferAlignment: boolean = true): IsHtmlElementLike | undefined => {
 
-
-	return otherElements.filter(e => e.alignment > alignmentThreshold).reduce((acc, curr) => curr.proximity > acc.proximity || curr.proximity >= acc.proximity && curr.alignment > acc.alignment ? curr : acc).e
+	if (preferAlignment) {
+		let aligmentThresholds = [0.5, 0, -0.5, -1, -1.5, -2, -2.5, -3, -4, -5]
+		for (const threshold of aligmentThresholds) {
+			const elementsWithinThreshold = otherElements.filter(e => e.alignment >= threshold)
+			if (elementsWithinThreshold.length > 0) {
+				return elementsWithinThreshold.reduce((acc, curr) =>
+					curr.proximity > acc.proximity ? curr : acc
+				).e
+			}
+		}
+	} else {
+		return otherElements.reduce((acc, curr) =>
+			curr.proximity > acc.proximity ? curr : acc
+		).e || undefined
+	}
 }

@@ -6,8 +6,8 @@ export const calculateAlignment = (startingElementRange: number[], otherElementR
 	const smallestRangeEnd = Math.min(startingElementRange[1], otherElementRange[1])
 	const largestRangeStart = Math.max(startingElementRange[0], otherElementRange[0])
 	const alignment = smallestRangeEnd - largestRangeStart
-	const alignmentIndex = alignment / (startingElementRange[1] - startingElementRange[0])
-	console.log(`got alignment: ${alignmentIndex}`)
+	// const alignmentIndex = alignment / (startingElementRange[1] - startingElementRange[0])
+	const alignmentIndex = alignment / (otherElementRange[1] - otherElementRange[0])
 	return alignmentIndex
 }
 

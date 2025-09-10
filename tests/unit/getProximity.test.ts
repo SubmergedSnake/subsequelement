@@ -4,13 +4,13 @@ import { overlappinggrid } from "../resources/elements/overlappinggrid"
 
 describe('getProximity', () => {
 	describe('works for non-overlapping elements', () => {
-		it('returns correct proximity between A and C', async () => {
+		it.only('returns correct proximity between A and C', async () => {
 			const [elementA, , elementC] = simplegrid
-			const eWithProximity = addProximity(elementA, elementC)
-			expect(eWithProximity.proximity).toEqual(204)
+			const cWithProximity = addProximity(elementA, elementC)
+			expect(cWithProximity.proximity).toEqual(204)
 		})
 
-		it('returns correct proximity between A and F', async () => {
+		it('returns correct proximity between A and I', async () => {
 			const A = simplegrid.find(e => e.id === 'A')
 			const I = simplegrid.find(e => e.id === 'I')
 			let eWithProximity

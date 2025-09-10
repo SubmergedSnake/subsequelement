@@ -17,7 +17,7 @@ export class Subsequelements {
   constructor(startingElement: IsHtmlElementLike, otherElements: IsHtmlElementLike[], bearing: keyof typeof Bearing) {
     this.startingElement = startingElement
     this.otherElements = filterByBearing(startingElement, otherElements, bearing)
-      .map(oe => addProximity(this.startingElement, oe, bearing))
+      .map(oe => addProximity(this.startingElement, oe))
       .map(oe => addAlignment(startingElement, oe, Bearing[bearing]))
   }
 

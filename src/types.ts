@@ -33,7 +33,7 @@ export const Bearing = {
 
 export type Options = {
 	selectors?: string[],
-	emphasizeAlign?: boolean
+	preferAlignment?: boolean
 }
 
 

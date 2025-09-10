@@ -6,12 +6,12 @@ type ElementIdTest = {
   desc: string,
   startingElementId: string,
   bearing: keyof typeof Bearing,
-  emphasizeAlign?: boolean,
+  preferAlignment?: boolean,
   expectedId: string
 }
 
 export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string) => {
-  tests.forEach(({ desc, startingElementId, bearing, emphasizeAlign, expectedId }) => test(`${desc}`, async ({ page }) => {
+  tests.forEach(({ desc, startingElementId, bearing, preferAlignment, expectedId }) => test(`${desc}`, async ({ page }) => {
     await page.goto(`/${layout}`)
 
     const elementId = await page.evaluate((args) => {
@@ -20,7 +20,7 @@ export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string)
 
       const options: Options = {
         selectors: ['article'],
-        emphasizeAlign: args.emphasizeAlign
+        preferAlignment: args.preferAlignment
       }
 
       let element
@@ -31,7 +31,7 @@ export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string)
 
       return element?.id
 
-    }, { startingElementId, bearing, emphasizeAlign })
+    }, { startingElementId, bearing, preferAlignment })
     expect(elementId).toEqual(expectedId)
   })
   )

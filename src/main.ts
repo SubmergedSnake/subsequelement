@@ -19,7 +19,7 @@ export const closest = (startingElement: IsHtmlElementLike, bearing: keyof typeo
 
 	const subs = getSubsequelements(startingElement, targetElements, bearing)
 
-	const element = closestElement2(subs)
+	const element = closestElement2(subs, options?.preferAlignment)
 
 	return element
 }
@@ -38,7 +38,7 @@ export const furthest = (startingElement: IsHtmlElementLike, bearing: keyof type
 	}
 	const subs = getSubsequelements(startingElement, targetElements, bearing)
 
-	const element = furthestElement(subs)
+	const element = furthestElement(subs, options?.preferAlignment)
 
 	return element
 }
