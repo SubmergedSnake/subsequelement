@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { closest } from '../../src/subsequelement'
+import { closest } from '../../src/main'
 import { Options } from '../../src/types'
 
 describe('validateOptions', () => {
@@ -10,7 +10,7 @@ describe('validateOptions', () => {
 	test('throws error on missing input parameters', () => {
 		const options: Options = {
 			selectors: ['arst'],
-			emphasizeAlign: true
+			preferAlignment: true
 		}
 		// @ts-ignore
 		expect(() => closest('n', options)).toThrow('Missing or invalid args: startingElement')
@@ -29,7 +29,7 @@ describe('validateOptions', () => {
 	test('does not throw error with valid inputs', () => {
 		const options: Options = {
 			selectors: ['.class'],
-			emphasizeAlign: true
+			preferAlignment: true
 		}
 
 		expect(() => closest(document.createElement('div'), 'n', options)).not.toThrow()
