@@ -1,6 +1,6 @@
 import { IsHtmlElementLike, SubsequElement } from "../types";
 
-const calculateOverlap = (startingElement: IsHtmlElementLike, otherElement: SubsequElement) => {
+const calculateOverlap = (startingElement: Element, otherElement: SubsequElement) => {
 	const { left: sLeft, top: sTop, height: sHeight, width: sWidth } = startingElement.getBoundingClientRect()
 	const { left: oeLeft, top: oeTop, height: oeHeight, width: oeWidth } = otherElement.e.getBoundingClientRect()
 
@@ -10,7 +10,7 @@ const calculateOverlap = (startingElement: IsHtmlElementLike, otherElement: Subs
 	return overlapX * overlapY
 }
 
-const checkOverlap = (startingElement: IsHtmlElementLike, otherElement: SubsequElement) => {
+const checkOverlap = (startingElement: Element, otherElement: SubsequElement) => {
 	const { left: sLeft, top: sTop, height: sHeight, width: sWidth } = startingElement.getBoundingClientRect()
 	const { left: oeLeft, top: oeTop, height: oeHeight, width: oeWidth } = otherElement.e.getBoundingClientRect()
 
@@ -23,7 +23,7 @@ const checkOverlap = (startingElement: IsHtmlElementLike, otherElement: SubsequE
 	return true;
 }
 
-export const addOverlap = (startingElement: IsHtmlElementLike, otherElement: SubsequElement): SubsequElement => {
+export const addOverlap = (startingElement: Element, otherElement: SubsequElement): SubsequElement => {
 	const overlap = checkOverlap(startingElement, otherElement) ? calculateOverlap(startingElement, otherElement) : undefined
 	return { ...otherElement, overlap }
 }

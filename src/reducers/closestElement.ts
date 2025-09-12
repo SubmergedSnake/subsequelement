@@ -1,17 +1,16 @@
-import { HasOverlap, IsHtmlElementLike, SubsequElement } from "../types";
+import { HasOverlap, SubsequElement } from "../types";
 
 export const closestElement =
 	(otherElements: SubsequElement[], preferAlignment: boolean = true)
-		: IsHtmlElementLike | undefined => {
-
+		: Element | undefined => {
 
 		const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
 
-		const mostOverlappingElement = overlappingElements.length ? overlappingElements.reduce((acc, curr) =>
+		const mostOverlappingElement = overlappingElements.length > 0 ? overlappingElements.reduce((acc, curr) =>
 			curr.overlap > acc.overlap ? curr : acc
 		).e : undefined
 
-		if (mostOverlappingElement) {
+		if (mostOverlappingElement !== undefined) {
 			return mostOverlappingElement
 		}
 

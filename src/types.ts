@@ -37,7 +37,7 @@ export type Options = {
 }
 
 export type SubsequElement = {
-	e: IsHtmlElementLike,
+	e: Element,
 	alignment: number,
 	proximity: number,
 	overlap?: number

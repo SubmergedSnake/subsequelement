@@ -1,24 +1,24 @@
-import { Bearing, IsHtmlElementLike } from "../types"
+import { Bearing } from "../types"
 
-const northernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().top < se.getBoundingClientRect().top
-const easternElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().right > se.getBoundingClientRect().right
-const southernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().bottom > se.getBoundingClientRect().bottom
-const westernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().left < se.getBoundingClientRect().left
+const northernElements = (se: Element) => (oe: Element) => oe.getBoundingClientRect().top < se.getBoundingClientRect().top
+const easternElements = (se: Element) => (oe: Element) => oe.getBoundingClientRect().right > se.getBoundingClientRect().right
+const southernElements = (se: Element) => (oe: Element) => oe.getBoundingClientRect().bottom > se.getBoundingClientRect().bottom
+const westernElements = (se: Element) => (oe: Element) => oe.getBoundingClientRect().left < se.getBoundingClientRect().left
 
 const findFunctions = {
-	"n": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(northernElements(se)),
-	"ne": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(northernElements(se)).filter(easternElements(se)),
-	"e": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(easternElements(se)),
-	"se": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(southernElements(se)).filter(easternElements(se)),
-	"s": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(southernElements(se)),
-	"sw": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(southernElements(se)).filter(westernElements(se)),
-	"w": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(westernElements(se)),
-	"nw": (se: IsHtmlElementLike, oElements: IsHtmlElementLike[]) => oElements.filter(northernElements(se)).filter(westernElements(se)),
-} satisfies { [key in keyof typeof Bearing]: (startingElement: IsHtmlElementLike, otherElements: IsHtmlElementLike[]) => IsHtmlElementLike[] }
+	"n": (se: Element, oElements: Element[]) => oElements.filter(northernElements(se)),
+	"ne": (se: Element, oElements: Element[]) => oElements.filter(northernElements(se)).filter(easternElements(se)),
+	"e": (se: Element, oElements: Element[]) => oElements.filter(easternElements(se)),
+	"se": (se: Element, oElements: Element[]) => oElements.filter(southernElements(se)).filter(easternElements(se)),
+	"s": (se: Element, oElements: Element[]) => oElements.filter(southernElements(se)),
+	"sw": (se: Element, oElements: Element[]) => oElements.filter(southernElements(se)).filter(westernElements(se)),
+	"w": (se: Element, oElements: Element[]) => oElements.filter(westernElements(se)),
+	"nw": (se: Element, oElements: Element[]) => oElements.filter(northernElements(se)).filter(westernElements(se)),
+} satisfies { [key in keyof typeof Bearing]: (startingElement: Element, otherElements: Element[]) => Element[] }
 
-export const filterByBearing = (startingElement: IsHtmlElementLike, otherElements: IsHtmlElementLike[], bearing: keyof typeof Bearing): IsHtmlElementLike[] => {
+export const filterByBearing = (startingElement: Element, otherElements: Element[], bearing: keyof typeof Bearing): Element[] => {
 	const findFunc = findFunctions[bearing]
-	const elements = findFunc(startingElement, otherElements).filter(se => se.id !== startingElement.id)
+	const elements = findFunc(startingElement, otherElements)
 
 	return elements
 }

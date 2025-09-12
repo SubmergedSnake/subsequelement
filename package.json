@@ -33,5 +33,8 @@
   },
   "dependencies": {
     "range-overlap": "^1.0.0"
+  },
+  "exports": {
+    "subsequelement": "./dist/main.js"
   }
 }

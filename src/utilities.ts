@@ -1,7 +1,6 @@
-import { Options, Bearing, IsHtmlElementLike } from "../src/types"
+import { Options, Bearing } from "../src/types"
 
-export const validateSubsequelementArgs = (startingElement: IsHtmlElementLike, bearing: keyof typeof Bearing, options: Options | undefined) => {
-
+export const validateSubsequelementArgs = (startingElement: Element, bearing: keyof typeof Bearing, options: Options | undefined) => {
 
 	const providedArguments = {
 		startingElement: startingElement.getBoundingClientRect || false,
@@ -14,10 +13,6 @@ export const validateSubsequelementArgs = (startingElement: IsHtmlElementLike, b
 	if (missingRequiredOptions.length > 0) {
 		throw Error(`Missing or invalid args: ${missingRequiredOptions}`)
 	}
-}
-
-export const findElements = (cssSelector: string): HTMLElement[] => {
-	return Array.from(document.querySelectorAll(cssSelector))
 }
 
 export const degreesToRadians = (degrees: number) => {

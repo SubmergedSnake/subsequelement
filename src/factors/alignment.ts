@@ -27,7 +27,7 @@ const determineElementCornersForBoundary = (angle: SupportedAngle): BoundaryCorn
 	}
 }
 
-export const addAlignment = (startingElement: IsHtmlElementLike, otherElement: Omit<SubsequElement, 'alignment'>, angle: SupportedAngle): SubsequElement => {
+export const addAlignment = (startingElement: Element, otherElement: Omit<SubsequElement, 'alignment'>, angle: SupportedAngle): SubsequElement => {
 
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.e.getBoundingClientRect()
 	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()

@@ -1,10 +1,11 @@
 import { validateSubsequelementArgs } from "./utilities"
-import { Bearing, IsHtmlElementLike, Options } from "./types"
+import { Bearing, Options } from "./types"
 import { closestElement } from "./reducers/closestElement"
 import { furthestElement } from "./reducers/furthestElement"
 import { getSubsequElements } from "./getSubsequElements"
 
-export const closest = (startingElement: IsHtmlElementLike, bearing: keyof typeof Bearing, options?: Options): IsHtmlElementLike | undefined => {
+export const closest = (startingElement: Element, bearing: keyof typeof Bearing, options?: Options): Element | undefined => {
+
 	validateSubsequelementArgs(startingElement, bearing, options)
 
 	const selectors = Array.isArray(options?.selectors) && options.selectors.length > 0
@@ -21,7 +22,7 @@ export const closest = (startingElement: IsHtmlElementLike, bearing: keyof typeo
 	return closestElement(subs, options?.preferAlignment)
 }
 
-export const furthest = (startingElement: IsHtmlElementLike, bearing: keyof typeof Bearing, options?: Options): IsHtmlElementLike | undefined => {
+export const furthest = (startingElement: Element, bearing: keyof typeof Bearing, options?: Options): Element | undefined => {
 	validateSubsequelementArgs(startingElement, bearing, options)
 
 	const selectors = Array.isArray(options?.selectors) && options.selectors.length > 0
