@@ -1,5 +1,4 @@
-import { Subsequelement } from "./Subsequelement"
-import { Bearing, IsHtmlElementLike } from "./types"
+import { Bearing, IsHtmlElementLike } from "../types"
 
 const northernElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().top < se.getBoundingClientRect().top
 const easternElements = (se: IsHtmlElementLike) => (oe: IsHtmlElementLike) => oe.getBoundingClientRect().right > se.getBoundingClientRect().right

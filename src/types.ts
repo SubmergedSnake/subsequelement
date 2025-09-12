@@ -36,4 +36,13 @@ export type Options = {
 	preferAlignment?: boolean
 }
 
+export type SubsequElement = {
+	e: IsHtmlElementLike,
+	alignment: number,
+	proximity: number,
+	overlap?: number
+}
+
+export type HasOverlap = Required<SubsequElement>
+
 

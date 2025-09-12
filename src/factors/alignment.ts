@@ -1,5 +1,4 @@
-import { Subsequelement } from "../Subsequelement";
-import { BoundaryCorners, Corner, ElementWithAlignment, IsHtmlElementLike, SupportedAngle } from "../types";
+import { BoundaryCorners, Corner, IsHtmlElementLike, SubsequElement, SupportedAngle } from "../types";
 import { degreesToRadians } from "../utilities";
 
 export const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]): number => {
@@ -28,11 +27,10 @@ const determineElementCornersForBoundary = (angle: SupportedAngle): BoundaryCorn
 	}
 }
 
-export const addAlignment = (startingElement: IsHtmlElementLike, otherElement: Omit<Subsequelement, 'alignment'>, angle: SupportedAngle): Subsequelement => {
+export const addAlignment = (startingElement: IsHtmlElementLike, otherElement: Omit<SubsequElement, 'alignment'>, angle: SupportedAngle): SubsequElement => {
 
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.e.getBoundingClientRect()
 	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()
-	console.log(`calculating alignment for element: ${otherElement.e.id}`);
 
 
 	if (angle.valueOf() === 90) {

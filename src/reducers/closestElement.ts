@@ -1,9 +1,20 @@
-import { Subsequelement } from "../Subsequelement";
-import { IsHtmlElementLike } from "../types";
+import { HasOverlap, IsHtmlElementLike, SubsequElement } from "../types";
 
-export const closestElement2 =
-	(otherElements: Subsequelement[], preferAlignment: boolean = true)
+export const closestElement =
+	(otherElements: SubsequElement[], preferAlignment: boolean = true)
 		: IsHtmlElementLike | undefined => {
+
+
+		const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
+
+		const mostOverlappingElement = overlappingElements.length ? overlappingElements.reduce((acc, curr) =>
+			curr.overlap > acc.overlap ? curr : acc
+		).e : undefined
+
+		if (mostOverlappingElement) {
+			return mostOverlappingElement
+		}
+
 
 		if (preferAlignment) {
 			let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]

@@ -1,5 +1,4 @@
-import { Subsequelement } from "../Subsequelement";
-import { IsHtmlElementLike } from "../types";
+import { IsHtmlElementLike, SubsequElement } from "../types";
 const calculateOverlap = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike) => {
 	const { left: sLeft, top: sTop, height: sHeight, width: sWidth } = startingElement.getBoundingClientRect()
 	const { left: oeLeft, top: oeTop, height: oeHeight, width: oeWidth } = otherElement.getBoundingClientRect()
@@ -33,16 +32,14 @@ const calculateProximity = (startingElement: IsHtmlElementLike, otherElement: Is
 	const horizontalTotalRange = Math.abs(Math.min(oeLeft, sLeft) - Math.max(oeRight, sRight))
 	const horizontalDistance = horizontalTotalRange - sWidth - oeWidth
 	const totalProximity = horizontalDistance + verticalDistance
-	const overlap = checkOverlap(startingElement, otherElement) ? calculateOverlap(startingElement, otherElement) : undefined
 
-	return overlap || totalProximity
+	return totalProximity
 }
 
 
 
 
-// export const addProximity = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike, bearing: keyof typeof Bearing): Omit<Subsequelement, 'alignment'> => {
-export const addProximity = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike): Omit<Subsequelement, 'alignment'> => {
+export const addProximity = (startingElement: IsHtmlElementLike, otherElement: IsHtmlElementLike): Omit<SubsequElement, 'alignment'> => {
 	return {
 		e: otherElement, proximity: calculateProximity(startingElement, otherElement)
 	}
