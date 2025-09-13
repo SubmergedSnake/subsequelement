@@ -4,6 +4,8 @@ export const closestElement =
 	(otherElements: SubsequElement[], preferAlignment: boolean = true)
 		: Element | undefined => {
 
+		if (otherElements.length === 0) return undefined
+
 		const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
 
 		const mostOverlappingElement = overlappingElements.length > 0 ? overlappingElements.reduce((acc, curr) =>

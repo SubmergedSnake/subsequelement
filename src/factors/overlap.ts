@@ -1,4 +1,4 @@
-import { IsHtmlElementLike, SubsequElement } from "../types";
+import { SubsequElement } from "../types";
 
 const calculateOverlap = (startingElement: Element, otherElement: SubsequElement) => {
 	const { left: sLeft, top: sTop, height: sHeight, width: sWidth } = startingElement.getBoundingClientRect()
