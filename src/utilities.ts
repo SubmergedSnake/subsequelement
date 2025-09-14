@@ -1,10 +1,10 @@
 import { Options, Bearing } from "../src/types"
 
-export const validateSubsequelementArgs = (startingElement: Element, bearing: keyof typeof Bearing, options: Options | undefined) => {
+export const validateSubsequelementArgs = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[] | undefined) => {
 
 	const providedArguments = {
 		startingElement: startingElement.getBoundingClientRect || false,
-		selectors: typeof options?.selectors === "undefined" ? true : Array.isArray(options?.selectors) && options?.selectors.every(s => typeof s === "string"),
+		selectors: typeof selectors === "undefined" ? true : Array.isArray(selectors) && selectors.every(s => typeof s === "string"),
 		bearing: Object.keys(Bearing).includes(bearing as keyof typeof Bearing)
 	}
 

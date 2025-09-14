@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { Bearing, Options } from "../../../src/types"
+import { Bearing } from "../../../src/types"
 import { closest } from '../../../src/main';
 
 type ElementIdTest = {
@@ -18,15 +18,10 @@ export const assertClosestElementIds = (tests: ElementIdTest[], layout: string) 
 
       const startingElement = document.getElementById(args.startingElementId)
 
-      const options: Options = {
-        selectors: ['article'],
-        preferAlignment: args.preferAlignment
-      }
-
       let element
 
       if (startingElement) {
-        element = closest(startingElement, args.bearing, options)
+        element = closest(startingElement, args.bearing, ['article'], args.preferAlignment)
       }
 
       return element?.id

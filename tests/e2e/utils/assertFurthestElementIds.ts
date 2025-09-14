@@ -1,6 +1,6 @@
 import { furthest } from "../../../src/main"
 import { test, expect } from '@playwright/test';
-import { Bearing, Options } from "../../../src/types"
+import { Bearing } from "../../../src/types"
 
 type ElementIdTest = {
   desc: string,
@@ -18,15 +18,10 @@ export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string)
 
       const startingElement = document.getElementById(args.startingElementId)
 
-      const options: Options = {
-        selectors: ['article'],
-        preferAlignment: args.preferAlignment
-      }
-
       let element
 
       if (startingElement) {
-        element = furthest(startingElement, args.bearing, options)
+        element = furthest(startingElement, args.bearing, ['article'], args.preferAlignment)
       }
 
       return element?.id
