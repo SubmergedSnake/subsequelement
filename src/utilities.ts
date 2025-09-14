@@ -18,3 +18,11 @@ export const validateSubsequelementArgs = (startingElement: Element, bearing: ke
 export const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
 }
+
+export const getTargetElements = (selectors: string[] | undefined): Element[] => {
+	const effectiveSelectors = Array.isArray(selectors) && selectors.length > 0
+		? selectors
+		: ['body *'];
+
+	return effectiveSelectors.flatMap(selector => Array.from(document.querySelectorAll(selector) || []));
+}
