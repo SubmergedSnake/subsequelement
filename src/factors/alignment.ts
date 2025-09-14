@@ -1,4 +1,4 @@
-import { BoundaryCorners, Corner, IsHtmlElementLike, SubsequElement, SupportedAngle } from "../types";
+import { BoundaryCorners, Corner, SubsequElement, SupportedAngle } from "../types";
 import { degreesToRadians } from "../utilities";
 
 export const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]): number => {
