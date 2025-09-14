@@ -1,6 +1,6 @@
 
-import { Bearing } from '../../../src/types';
-import { assertClosestElementIds } from '../utils/assertClosestElementIds';
+import { Bearing } from '../../../../src/types';
+import { assertClosestElementIds } from '../../utils/assertClosestElementIds';
 
 const irregularGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, preferAlignment?: boolean, expectedId: string }[] = [
   { desc: 'C is north of B', startingElementId: 'B', bearing: 'n', preferAlignment: true, expectedId: 'C' },

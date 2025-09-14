@@ -1,6 +1,6 @@
 
-import { Bearing } from '../../../src/types';
-import { assertFurthestElementIds } from '../utils/assertFurthestElementIds';
+import { Bearing } from '../../../../src/types';
+import { assertFurthestElementIds } from '../../utils/assertFurthestElementIds';
 
 const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, preferAlignment?: boolean, expectedId: string }[] = [
   { desc: 'furthest element s(outh)e(ast) of A is I', startingElementId: 'A', bearing: 'se', preferAlignment: true, expectedId: 'I' },
