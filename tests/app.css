@@ -5,6 +5,21 @@
 	flex-wrap: wrap;
 }
 
+.box-wide-ultra {
+	width: 3000px;
+	border: 2px dotted rgb(96 139 168);
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.box-wide-ultra>* {
+	border: 2px solid rgb(96 139 168);
+	border-radius: 5px;
+	background-color: rgb(96 139 168 / 0.2);
+	height: 200px;
+	/* flex: 1 1 200px; */
+	width: 200px;
+}
 
 .box>* {
 	border: 2px solid rgb(96 139 168);
