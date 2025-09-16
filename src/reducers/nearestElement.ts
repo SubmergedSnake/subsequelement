@@ -2,7 +2,7 @@ import { HasOverlap, SubsequElement } from "../types";
 
 export const nearestElement =
 	(otherElements: SubsequElement[], preferAlignment: boolean = true)
-		: Element | undefined => {
+		: HTMLElement | undefined => {
 
 		if (otherElements.length === 0) return undefined
 

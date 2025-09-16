@@ -4,7 +4,7 @@ import { nearestElement } from "./reducers/nearestElement"
 import { farthestElement } from "./reducers/farthestElement"
 import { getSubsequElements } from "./getSubsequElements"
 
-export const near = (startingHTMLElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): Element | undefined => {
+export const near = (startingHTMLElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): HTMLElement | undefined => {
 
 	validateSubsequelementArgs(startingHTMLElement, bearing, selectors)
 
@@ -18,7 +18,7 @@ export const near = (startingHTMLElement: HTMLElement, bearing: keyof typeof Bea
 	return nearestElement(subs, preferAlignment)
 }
 
-export const far = (startingElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): Element | undefined => {
+export const far = (startingElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): HTMLElement | undefined => {
 
 	validateSubsequelementArgs(startingElement, bearing, selectors)
 
