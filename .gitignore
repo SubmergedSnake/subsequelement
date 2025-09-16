@@ -1,6 +1,7 @@
 node_modules
 dist
 .parcel-cache
+*.tgz
 
 # Playwright
 /test-results/
@@ -8,4 +9,3 @@ dist
 /blob-report/
 /playwright/.cache/
 
-.npmrc

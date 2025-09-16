@@ -1,64 +1,40 @@
-# Adjaycent
+# Subsequelement
 
-A small utility library for locating the closest element y to starting element x.
+A library for finding the closest/furthest element to another element on a web page.
 
-## The find -function
+## Usage
 
-The find() -function accepts a (FindArguments -configuration object)[../src/types.ts]
-that defines how elements are discovered and which elements on a web page are 
-considered. It returns the closest element that best satisfies the provided arguments.
+~~~
+import { closest, furthest } from "subsequelement";
 
-The following properties govern the behaviour of the find -function:
+const startingElement = document.querySelector('#myelement');
 
-- **startingElement** is an html element that serves as the starting point for which we want to find
-the closest element
-- **cssSelectorForTargetElements** is a valid css selector you provide to the function which determines
-what elements are eligible
-- **direction** determines the direction in which we want to look for the closest element
-- **strategy** further determines what elements in the provided direction are considered
-    - **strict** considers only elements that *overlap* (see Strategy below for details)
-    with elements in the direction in question
-    - **flow** considers all elements in the direction, whether they overlap or not\  
+const closestElementEast = closest(startingElement, 'e', ['article', '.myclass'], true)
+~~~
 
+## About the parameters
 
-## Strategy
-How element discovery works differs between the strict and flow strategies.
-Using the strict strategy, only elements that align with the startingElement are considered.
-In other words, elements that fall within the *same lane* on the virtual grid. 
+Both the **closest** and **furthest** -functions take four parameters, the last one being optional.
 
-The flow strategy is more lenient; elements dont need to align, and instead all elements 
-that are in the general direction are considered and the closest one is returned.
+The parameters are, in order:
 
-![The virtual grid](virtualgrid.png "The virtual grid")
+**startingElement** This is the element for which you want to find the closest/furthest element for.
+** 
 
+**bearing** One of 'n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw', which correspond with the compass points
+north, northeast, east, southeast, south, southwest, west and northwest.
 
-Examples when using *flow*:
+**selectors** This is an array of css selectors that you provide to control what elements on the page are considered.
 
-    startingElement: HTMLElement 1 
-    direction: right
-    returns: HTMLElement 3 
+**preferAlignment** A boolean to determine whether we prefer to get the closest or furthest element that either aligns 
+with startingElement the best OR is absolutely the closest/furthest element. Go ahead and experiment. This is feature is
+not honed to an absolute science, yet.
 
-    startingElement: HTMLElement 1 
-    direction: down
-    returns: HTMLElement 3 
+Here's the function signature for your reference:
 
-    startingElement: HTMLElement 5 
-    direction: left
-    returns: HTMLElement 22 
-
-Examples when using *strict*:
-
-    startingElement: HTMLElement 1 
-    direction: right
-    returns: HTMLElement 2 
-
-    startingElement: HTMLElement 1 
-    direction: down
-    returns: HTMLElement 4 
-
-    startingElement: HTMLElement 5 
-    direction: left
-    returns: HTMLElement 4
+```const closest = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[] | undefined = undefined, preferAlignment: boolean = true): Element | undefined ```
 
 
-If no element is found in the provided direction (for example if there are no more elements), find attempts to locate the element at the opposite end of the page that best satisfies the provided arguments. If no element is found, the **startingElement** is returned by default.
+## Return value
+
+If closest/furthest finds an element, it is returned. If there are no valid elements in the direction used, undefined is returned.

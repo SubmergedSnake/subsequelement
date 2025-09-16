@@ -1,4 +1,3 @@
-import { closest } from "../../../src/main"
 import { test, expect } from '@playwright/test';
 import { Bearing } from "../../../src/types"
 
@@ -25,9 +24,11 @@ export const assertPerformance = (performanceTest: PerformanceTest, layout: stri
       let currentElement
       do {
         if (currentElement) {
-          currentElement = closest(currentElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
+          // @ts-ignore
+          currentElement = window.closest(currentElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
         } else {
-          currentElement = closest(startingElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
+          // @ts-ignore
+          currentElement = window.closest(startingElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
         }
         currentStep++
       } while (currentElement || currentStep < steps)
