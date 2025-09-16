@@ -1,12 +1,12 @@
 import { getTargetElements, validateSubsequelementArgs } from "./utilities"
 import { Bearing } from "./types"
-import { closestElement } from "./reducers/closestElement"
-import { furthestElement } from "./reducers/furthestElement"
+import { nearestElement } from "./reducers/nearestElement"
+import { farthestElement } from "./reducers/farthestElement"
 import { getSubsequElements } from "./getSubsequElements"
 
-export const closest = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[] | undefined = undefined, preferAlignment: boolean = true): Element | undefined => {
+export const near = (startingHTMLElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): Element | undefined => {
 
-	validateSubsequelementArgs(startingElement, bearing, selectors)
+	validateSubsequelementArgs(startingHTMLElement, bearing, selectors)
 
 	const targetElements = getTargetElements(selectors)
 
@@ -14,11 +14,11 @@ export const closest = (startingElement: Element, bearing: keyof typeof Bearing,
 		return undefined
 	}
 
-	const subs = getSubsequElements(startingElement, targetElements, bearing)
-	return closestElement(subs, preferAlignment)
+	const subs = getSubsequElements(startingHTMLElement, targetElements, bearing)
+	return nearestElement(subs, preferAlignment)
 }
 
-export const furthest = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[] | undefined = undefined, preferAlignment: boolean = true): Element | undefined => {
+export const far = (startingElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): Element | undefined => {
 
 	validateSubsequelementArgs(startingElement, bearing, selectors)
 
@@ -29,7 +29,7 @@ export const furthest = (startingElement: Element, bearing: keyof typeof Bearing
 	}
 
 	const subs = getSubsequElements(startingElement, targetElements, bearing)
-	return furthestElement(subs, preferAlignment)
+	return farthestElement(subs, preferAlignment)
 }
 
 

@@ -1,9 +1,9 @@
-import { closestElement } from "../../src/reducers/closestElement"
+import { nearestElement } from "../../src/reducers/nearestElement"
 
-describe('closestElement', () => {
+describe('nearestElement', () => {
 
 	it('returns undefined if otherElements length is 0', async () => {
-		const closest = closestElement([])
+		const closest = nearestElement([])
 		expect(closest).toBeUndefined()
 	})
 

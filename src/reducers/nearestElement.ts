@@ -1,6 +1,6 @@
 import { HasOverlap, SubsequElement } from "../types";
 
-export const closestElement =
+export const nearestElement =
 	(otherElements: SubsequElement[], preferAlignment: boolean = true)
 		: Element | undefined => {
 

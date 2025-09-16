@@ -1,7 +1,7 @@
 import { SubsequElement } from "../types";
 
-const calculateProximity = (startingElement: Element, otherElement: Element): number => {
-	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom, height: sHeight, width: sWidth } = startingElement.getBoundingClientRect()
+const calculateProximity = (startingHTMLElement: HTMLElement, otherElement: HTMLElement): number => {
+	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom, height: sHeight, width: sWidth } = startingHTMLElement.getBoundingClientRect()
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom, height: oeHeight, width: oeWidth } = otherElement.getBoundingClientRect()
 
 	const verticalTotalRange = Math.abs(Math.min(oeTop, sTop) - Math.max(oeBottom, sBottom))
@@ -17,8 +17,8 @@ const calculateProximity = (startingElement: Element, otherElement: Element): nu
 
 
 
-export const addProximity = (startingElement: Element, otherElement: Element): Omit<SubsequElement, 'alignment'> => {
+export const addProximity = (startingHTMLElement: HTMLElement, otherElement: HTMLElement): Omit<SubsequElement, 'alignment'> => {
 	return {
-		e: otherElement, proximity: calculateProximity(startingElement, otherElement)
+		e: otherElement, proximity: calculateProximity(startingHTMLElement, otherElement)
 	}
 }

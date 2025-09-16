@@ -21,7 +21,7 @@ export const assertClosestElementIds = (tests: ElementIdTest[], layout: string) 
 
       if (startingElement) {
         // @ts-ignore
-        element = window.closest(startingElement, args.bearing, ['article'], args.preferAlignment)
+        element = window.near(startingElement, args.bearing, ['article'], args.preferAlignment)
       }
 
       return element?.id

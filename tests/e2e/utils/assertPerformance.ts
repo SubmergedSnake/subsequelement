@@ -25,10 +25,10 @@ export const assertPerformance = (performanceTest: PerformanceTest, layout: stri
       do {
         if (currentElement) {
           // @ts-ignore
-          currentElement = window.closest(currentElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
+          currentElement = window.near(currentElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
         } else {
           // @ts-ignore
-          currentElement = window.closest(startingElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
+          currentElement = window.near(startingElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
         }
         currentStep++
       } while (currentElement || currentStep < steps)

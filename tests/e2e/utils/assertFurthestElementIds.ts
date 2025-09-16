@@ -21,7 +21,7 @@ export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string)
 
       if (startingElement) {
         // @ts-ignore
-        element = window.furthest(startingElement, args.bearing, ['article'], args.preferAlignment)
+        element = window.far(startingElement, args.bearing, ['article'], args.preferAlignment)
       }
 
       return element?.id

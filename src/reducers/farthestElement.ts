@@ -1,6 +1,6 @@
 import { HasOverlap, SubsequElement } from "../types"
 
-export const furthestElement = (otherElements: SubsequElement[], preferAlignment: boolean = true): Element | undefined => {
+export const farthestElement = (otherElements: SubsequElement[], preferAlignment: boolean = true): HTMLElement | undefined => {
 
 	const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
 

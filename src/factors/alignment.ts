@@ -26,31 +26,31 @@ const determineElementCornersForBoundary = (angle: SupportedAngle): BoundaryCorn
 	}
 }
 
-export const addAlignment = (startingElement: Element, otherElement: Omit<SubsequElement, 'alignment'>, angle: SupportedAngle): SubsequElement => {
+export const addAlignment = (startingHTMLElement: HTMLElement, otherHTMLElement: Omit<SubsequElement, 'alignment'>, angle: SupportedAngle): SubsequElement => {
 
-	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherElement.e.getBoundingClientRect()
-	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()
+	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = otherHTMLElement.e.getBoundingClientRect()
+	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingHTMLElement.getBoundingClientRect()
 
 
 	if (angle.valueOf() === 90) {
 		const alignment = calculateAlignment([oeLeft, oeRight], [sLeft, sRight])
-		return { ...otherElement, alignment }
+		return { ...otherHTMLElement, alignment }
 	}
 	else if (angle.valueOf() === 0) {
 		const alignment = calculateAlignment([oeTop, oeBottom], [sTop, sBottom])
-		return { ...otherElement, alignment }
+		return { ...otherHTMLElement, alignment }
 	}
 
 	const { bottomBoundary: { x: bottomX, y: bottomY }, topBoundary: { x: topX, y: topY } } = determineElementCornersForBoundary(angle)
 
 
-	const startingElementYInterceptTop = getYIntercept({ x: startingElement.getBoundingClientRect()[topX], y: startingElement.getBoundingClientRect()[topY] }, angle)
-	const startingElementYInterceptBottom = getYIntercept({ x: startingElement.getBoundingClientRect()[bottomX], y: startingElement.getBoundingClientRect()[bottomY] }, angle)
+	const startingElementYInterceptTop = getYIntercept({ x: startingHTMLElement.getBoundingClientRect()[topX], y: startingHTMLElement.getBoundingClientRect()[topY] }, angle)
+	const startingElementYInterceptBottom = getYIntercept({ x: startingHTMLElement.getBoundingClientRect()[bottomX], y: startingHTMLElement.getBoundingClientRect()[bottomY] }, angle)
 
-	const otherElementYInterceptTop = getYIntercept({ x: otherElement.e.getBoundingClientRect()[topX], y: otherElement.e.getBoundingClientRect()[topY] }, angle)
-	const otherElementYInterceptBottom = getYIntercept({ x: otherElement.e.getBoundingClientRect()[bottomX], y: otherElement.e.getBoundingClientRect()[bottomY] }, angle)
+	const otherElementYInterceptTop = getYIntercept({ x: otherHTMLElement.e.getBoundingClientRect()[topX], y: otherHTMLElement.e.getBoundingClientRect()[topY] }, angle)
+	const otherElementYInterceptBottom = getYIntercept({ x: otherHTMLElement.e.getBoundingClientRect()[bottomX], y: otherHTMLElement.e.getBoundingClientRect()[bottomY] }, angle)
 
 	const alignment = calculateAlignment([otherElementYInterceptTop, otherElementYInterceptBottom], [startingElementYInterceptTop, startingElementYInterceptBottom])
 
-	return { ...otherElement, alignment }
+	return { ...otherHTMLElement, alignment }
 }
