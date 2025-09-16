@@ -13,8 +13,8 @@
     "e2e": "playwright test"
   },
   "files": [ "./dist/types.d.ts", "./dist/module.js" ],
-  "keywords": ["element", "direction", "find"],
-  "author": "Joonas Heikkinen",
+  "keywords": ["html", "element", "direction", "find"],
+  "author": "Joonas Heikkinen <solarshadow.jh@gmail.com>",
   "license": "ISC",
   "description": "A library for finding the closest/furthest element to another element on a web page.",
   "devDependencies": {
