@@ -11,6 +11,7 @@
     "watch": "parcel watch",
     "build": "parcel build",
     "test": "jest --watch",
+    "test-gha": "jest",
     "e2e": "playwright test",
     "refresh": "(npm run serve&) && npx tsx retrievehtml.ts && killall node"
   },
