@@ -19,12 +19,8 @@ export const degreesToRadians = (degrees: number) => {
 	return degrees * (Math.PI / 180);
 }
 
-export const getTargetElements = (selectors: string[] | undefined): HTMLElement[] => {
-	const effectiveSelectors = Array.isArray(selectors) && selectors.length > 0
-		? selectors
-		: ['body *'];
-
-	return effectiveSelectors.flatMap(selector => Array.from(document.querySelectorAll(selector) || []));
+export const getTargetElements = (selectors: string[]): HTMLElement[] => {
+	return selectors.flatMap(selector => Array.from(document.querySelectorAll(selector) || []));
 }
 
 export const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]): number => {
