@@ -2,15 +2,15 @@ import { HasOverlap, SubsequElement } from "../types"
 
 export const farthestElement = (otherElements: SubsequElement[], preferAlignment: boolean = true): HTMLElement | undefined => {
 
-	const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
-
-	const leastOverlappingElement = overlappingElements.length ? overlappingElements.reduce((acc, curr) =>
-		curr.overlap < acc.overlap ? curr : acc
-	).e : undefined
-
-	if (leastOverlappingElement) {
-		return leastOverlappingElement
-	}
+	// const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
+	//
+	// const leastOverlappingElement = overlappingElements.length ? overlappingElements.reduce((acc, curr) =>
+	// 	curr.overlap < acc.overlap ? curr : acc
+	// ).e : undefined
+	//
+	// if (leastOverlappingElement) {
+	// 	return leastOverlappingElement
+	// }
 
 	if (preferAlignment) {
 		let aligmentThresholds = [0.5, 0, -0.5, -1, -1.5, -2, -2.5, -3, -4, -5]

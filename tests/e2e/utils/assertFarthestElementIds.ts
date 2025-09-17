@@ -9,7 +9,7 @@ type ElementIdTest = {
   expectedId: string
 }
 
-export const assertFurthestElementIds = (tests: ElementIdTest[], layout: string) => {
+export const assertFarthestElementIds = (tests: ElementIdTest[], layout: string) => {
   tests.forEach(({ desc, startingElementId, bearing, preferAlignment, expectedId }) => test(`${desc}`, async ({ page }) => {
     await page.goto(`/${layout}`)
 
