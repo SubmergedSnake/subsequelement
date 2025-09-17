@@ -45,3 +45,16 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.bigandsmall {
+	background: green;
+	margin-top: 5px;
+	border: 2px solid grey;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}

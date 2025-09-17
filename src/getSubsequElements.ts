@@ -6,7 +6,7 @@ import { Bearing, SubsequElement } from "./types"
 
 export const getSubsequElements = (startingHTMLElement: HTMLElement, otherElements: HTMLElement[], bearing: keyof typeof Bearing): SubsequElement[] => {
 	return filterByBearing(startingHTMLElement, otherElements, bearing)
-		.map(oe => addProximity(startingHTMLElement, oe))
+		.map(oe => addProximity(startingHTMLElement, oe, bearing))
 		.map(oe => addAlignment(startingHTMLElement, oe, Bearing[bearing]))
 		.map(oe => addOverlap(startingHTMLElement, oe))
 }

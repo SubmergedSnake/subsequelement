@@ -6,6 +6,8 @@ export const nearestElement =
 
 		if (otherElements.length === 0) return undefined
 
+		otherElements.forEach(i => console.log(`${i.e.textContent}: ${i.alignment}`))
+
 		const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
 
 		const mostOverlappingElement = overlappingElements.length > 0 ? overlappingElements.reduce((acc, curr) =>
@@ -16,20 +18,15 @@ export const nearestElement =
 			return mostOverlappingElement
 		}
 
+		const elementsSortedByAlignment = otherElements.sort(({ alignment: a }, { alignment: b }) => b - a)
 
-		if (preferAlignment) {
-			let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
-			for (const threshold of aligmentThresholds) {
-				const elementsWithinThreshold = otherElements.filter(e => e.alignment >= threshold)
-				if (elementsWithinThreshold.length > 0) {
-					return elementsWithinThreshold.reduce((acc, curr) =>
-						curr.proximity < acc.proximity ? curr : acc
-					).e
-				}
+		let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
+		for (const threshold of aligmentThresholds) {
+			const elementsWithinThreshold = elementsSortedByAlignment.filter(e => e.alignment >= threshold)
+			if (elementsWithinThreshold.length > 0) {
+				return elementsWithinThreshold.reduce((acc, curr) =>
+					curr.proximity < acc.proximity ? curr : acc
+				).e
 			}
-		} else {
-			return otherElements.reduce((acc, curr) =>
-				curr.proximity < acc.proximity ? curr : acc
-			).e || undefined
 		}
 	}
