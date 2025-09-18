@@ -19,11 +19,6 @@ export const Bearing = {
 } satisfies { [key: string]: SupportedAngle }
 
 
-export type Options = {
-	selectors?: string[],
-	preferAlignment?: boolean
-}
-
 export type SubsequElement = {
 	e: Element,
 	alignment: number,
