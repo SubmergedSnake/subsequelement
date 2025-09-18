@@ -12,6 +12,8 @@ export const farthestElement = (otherElements: SubsequElement[], preferAlignment
 	// 	return leastOverlappingElement
 	// }
 
+	if (otherElements.length === 0) return undefined
+
 	if (preferAlignment) {
 		let aligmentThresholds = [0.5, 0, -0.5, -1, -1.5, -2, -2.5, -3, -4, -5]
 		for (const threshold of aligmentThresholds) {

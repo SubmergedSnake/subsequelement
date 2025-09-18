@@ -1,6 +1,6 @@
 # Subsequelement
 
-A library for finding the closest/farthest element to another element on a web page.
+A library for finding the nearest/farthest element to another element on a web page.
 
 ## Usage
 
@@ -18,7 +18,7 @@ Both the **near** and **far** -functions take four parameters, the last one bein
 
 The parameters are, in order:
 
-**startingElement** This is the element for which you want to find the closest/farthest element for.
+**startingElement** This is the element for which you want to find the nearest/farthest element for.
 ** 
 
 **bearing** One of 'n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw', which correspond with the compass points
@@ -26,8 +26,8 @@ north, northeast, east, southeast, south, southwest, west and northwest.
 
 **selectors** This is an array of css selectors that you provide to control what elements on the page are considered.
 
-**preferAlignment** A boolean to determine whether we prefer to get the closest or farthest element that either aligns 
-with startingElement the best OR is absolutely the closest/farthest element. Go ahead and experiment. This is feature is
+**preferAlignment** A boolean to determine whether we prefer to get the nearest or farthest element that either aligns 
+with startingElement the best OR is absolutely the nearest/farthest element. Go ahead and experiment. This is feature is
 not honed to an absolute science, yet.
 
 Here's the function signature again for your reference:
