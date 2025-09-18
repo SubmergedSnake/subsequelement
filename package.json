@@ -15,8 +15,13 @@
   "files": [ "./dist/types.d.ts", "./dist/module.js" ],
   "keywords": ["html", "element", "direction", "find"],
   "author": "Joonas Heikkinen <solarshadow.jh@gmail.com>",
+  "homepage": "https://github.com/SubmergedSnake/subsequelement#subsequelement",
+  "bugs":{
+    "url": "https://github.com/SubmergedSnake/subsequelement/issues",
+    "email": "solarshadow.jh@gmail.com"
+  },
   "license": "ISC",
-  "description": "A library for finding the closest/furthest element to another element on a web page.",
+  "description": "A library for finding the nearest/farthest Element to another Element in a document",
   "devDependencies": {
     "@parcel/packager-ts": "^2.15.4",
     "@parcel/transformer-typescript-types": "^2.15.4",
