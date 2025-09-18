@@ -1,12 +1,12 @@
 import { HasOverlap, SubsequElement } from "../types";
 
 export const nearestElement =
-	(otherElements: SubsequElement[], preferAlignment: boolean = true)
+	(otherHTMLElements: SubsequElement[], preferAlignment: boolean = true)
 		: HTMLElement | undefined => {
 
-		if (otherElements.length === 0) return undefined
+		if (otherHTMLElements.length === 0) return undefined
 
-		const overlappingElements = otherElements.filter((oe): oe is HasOverlap => !!oe.overlap)
+		const overlappingElements = otherHTMLElements.filter((oe): oe is HasOverlap => !!oe.overlap)
 
 		const mostOverlappingElement = overlappingElements.length > 0 ? overlappingElements.reduce((acc, curr) =>
 			curr.overlap > acc.overlap ? curr : acc
@@ -16,7 +16,7 @@ export const nearestElement =
 			return mostOverlappingElement
 		}
 
-		const elementsSortedByAlignment = otherElements.sort(({ alignment: a }, { alignment: b }) => b - a)
+		const elementsSortedByAlignment = otherHTMLElements.sort(({ alignment: a }, { alignment: b }) => b - a)
 
 		if (preferAlignment) {
 			let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
@@ -29,7 +29,7 @@ export const nearestElement =
 				}
 			}
 		} else {
-			return otherElements.reduce((acc, curr) =>
+			return otherHTMLElements.reduce((acc, curr) =>
 				curr.proximity < acc.proximity ? curr : acc
 			).e
 		}

@@ -22,13 +22,13 @@ export const addAlignment = (startingHTMLElement: HTMLElement, partialSubsequele
 	const { bottomBoundary: { x: bottomX, y: bottomY }, topBoundary: { x: topX, y: topY } } = determineElementCornersForBoundary(angle)
 
 
-	const startingElementYInterceptTop = getYIntercept({ x: startingHTMLElement.getBoundingClientRect()[topX], y: startingHTMLElement.getBoundingClientRect()[topY] }, angle)
-	const startingElementYInterceptBottom = getYIntercept({ x: startingHTMLElement.getBoundingClientRect()[bottomX], y: startingHTMLElement.getBoundingClientRect()[bottomY] }, angle)
+	const startingHTMLElementYInterceptTop = getYIntercept({ x: startingHTMLElement.getBoundingClientRect()[topX], y: startingHTMLElement.getBoundingClientRect()[topY] }, angle)
+	const startingHTMLElementYInterceptBottom = getYIntercept({ x: startingHTMLElement.getBoundingClientRect()[bottomX], y: startingHTMLElement.getBoundingClientRect()[bottomY] }, angle)
 
-	const otherElementYInterceptTop = getYIntercept({ x: partialSubsequelement.e.getBoundingClientRect()[topX], y: partialSubsequelement.e.getBoundingClientRect()[topY] }, angle)
-	const otherElementYInterceptBottom = getYIntercept({ x: partialSubsequelement.e.getBoundingClientRect()[bottomX], y: partialSubsequelement.e.getBoundingClientRect()[bottomY] }, angle)
+	const otherHTMLElementYInterceptTop = getYIntercept({ x: partialSubsequelement.e.getBoundingClientRect()[topX], y: partialSubsequelement.e.getBoundingClientRect()[topY] }, angle)
+	const otherHTMLElementYInterceptBottom = getYIntercept({ x: partialSubsequelement.e.getBoundingClientRect()[bottomX], y: partialSubsequelement.e.getBoundingClientRect()[bottomY] }, angle)
 
-	const alignment = calculateAlignment([startingElementYInterceptTop, startingElementYInterceptBottom], [otherElementYInterceptTop, otherElementYInterceptBottom])
+	const alignment = calculateAlignment([startingHTMLElementYInterceptTop, startingHTMLElementYInterceptBottom], [otherHTMLElementYInterceptTop, otherHTMLElementYInterceptBottom])
 
 	return { ...partialSubsequelement, alignment }
 }

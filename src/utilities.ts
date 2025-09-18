@@ -1,9 +1,9 @@
 import { Options, Bearing, BoundaryCorners, SupportedAngle, Corner } from "../src/types"
 
-export const validateSubsequelementArgs = (startingElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[]) => {
+export const validateSubsequelementArgs = (startingHTMLElement: HTMLElement, bearing: keyof typeof Bearing, selectors: string[]) => {
 
 	const providedArguments = {
-		startingElement: startingElement.getBoundingClientRect || false,
+		startingHTMLElement: startingHTMLElement.getBoundingClientRect || false,
 		selectors: typeof selectors === "undefined" ? false : Array.isArray(selectors) && selectors.every(s => typeof s === "string"),
 		bearing: Object.keys(Bearing).includes(bearing as keyof typeof Bearing)
 	}
@@ -23,13 +23,13 @@ export const getTargetElements = (selectors: string[]): HTMLElement[] => {
 	return selectors.flatMap(selector => Array.from(document.querySelectorAll(selector) || []));
 }
 
-export const calculateAlignment = (startingElementRange: number[], otherElementRange: number[]): number => {
-	const smallestRangeEnd = Math.min(startingElementRange[1], otherElementRange[1])
-	const largestRangeStart = Math.max(startingElementRange[0], otherElementRange[0])
+export const calculateAlignment = (startingHTMLElementRange: number[], otherHTMLElementRange: number[]): number => {
+	const smallestRangeEnd = Math.min(startingHTMLElementRange[1], otherHTMLElementRange[1])
+	const largestRangeStart = Math.max(startingHTMLElementRange[0], otherHTMLElementRange[0])
 
 	const alignment = smallestRangeEnd - largestRangeStart
-	const alignmentIndex = Math.max(alignment / Math.abs(startingElementRange[1] - startingElementRange[0])
-		, alignment / Math.abs(otherElementRange[1] - otherElementRange[0]))
+	const alignmentIndex = Math.max(alignment / Math.abs(startingHTMLElementRange[1] - startingHTMLElementRange[0])
+		, alignment / Math.abs(otherHTMLElementRange[1] - otherHTMLElementRange[0]))
 
 	return alignmentIndex
 }

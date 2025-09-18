@@ -3,15 +3,15 @@ import { Bearing, SubsequElement } from "../types";
 type DomRectSides = keyof Pick<DOMRect, 'top' | 'right' | 'bottom' | 'left'>
 
 const sidesToComparePerBearing = {
-	ne: [{ startingElementSide: 'top', otherElementSide: 'bottom' }, { startingElementSide: 'right', otherElementSide: 'left' }],
-	e: [{ startingElementSide: 'right', otherElementSide: 'left' }],
-	se: [{ startingElementSide: 'bottom', otherElementSide: 'top' }, { startingElementSide: 'right', otherElementSide: 'left' }],
-	s: [{ startingElementSide: 'bottom', otherElementSide: 'top' }],
-	sw: [{ startingElementSide: 'bottom', otherElementSide: 'top' }, { startingElementSide: 'left', otherElementSide: 'right' }],
-	w: [{ startingElementSide: 'left', otherElementSide: 'right' }],
-	nw: [{ startingElementSide: 'top', otherElementSide: 'bottom' }, { startingElementSide: 'left', otherElementSide: 'right' }],
-	n: [{ startingElementSide: 'top', otherElementSide: 'bottom' }],
-} satisfies Record<keyof typeof Bearing, { startingElementSide: DomRectSides, otherElementSide: DomRectSides }[]>
+	ne: [{ startingHTMLElementSide: 'top', otherHTMLElementSide: 'bottom' }, { startingHTMLElementSide: 'right', otherHTMLElementSide: 'left' }],
+	e: [{ startingHTMLElementSide: 'right', otherHTMLElementSide: 'left' }],
+	se: [{ startingHTMLElementSide: 'bottom', otherHTMLElementSide: 'top' }, { startingHTMLElementSide: 'right', otherHTMLElementSide: 'left' }],
+	s: [{ startingHTMLElementSide: 'bottom', otherHTMLElementSide: 'top' }],
+	sw: [{ startingHTMLElementSide: 'bottom', otherHTMLElementSide: 'top' }, { startingHTMLElementSide: 'left', otherHTMLElementSide: 'right' }],
+	w: [{ startingHTMLElementSide: 'left', otherHTMLElementSide: 'right' }],
+	nw: [{ startingHTMLElementSide: 'top', otherHTMLElementSide: 'bottom' }, { startingHTMLElementSide: 'left', otherHTMLElementSide: 'right' }],
+	n: [{ startingHTMLElementSide: 'top', otherHTMLElementSide: 'bottom' }],
+} satisfies Record<keyof typeof Bearing, { startingHTMLElementSide: DomRectSides, otherHTMLElementSide: DomRectSides }[]>
 
 export const addProximity = (startingHTMLElement: HTMLElement, otherHTMLElement: HTMLElement, bearing: keyof typeof Bearing): Omit<SubsequElement, 'alignment'> => {
 
@@ -19,14 +19,14 @@ export const addProximity = (startingHTMLElement: HTMLElement, otherHTMLElement:
 
 	let directionalProximity
 
-	const otherElementSidePosition = otherHTMLElement.getBoundingClientRect()[sides1.otherElementSide]
-	const startingElementSidePosition = startingHTMLElement.getBoundingClientRect()[sides1.startingElementSide]
-	directionalProximity = Math.abs(Math.abs(startingElementSidePosition) - Math.abs(otherElementSidePosition))
+	const otherHTMLElementSidePosition = otherHTMLElement.getBoundingClientRect()[sides1.otherHTMLElementSide]
+	const startingHTMLElementSidePosition = startingHTMLElement.getBoundingClientRect()[sides1.startingHTMLElementSide]
+	directionalProximity = Math.abs(Math.abs(startingHTMLElementSidePosition) - Math.abs(otherHTMLElementSidePosition))
 
 	if (sides2) {
-		const otherElementSidePosition = otherHTMLElement.getBoundingClientRect()[sides2.otherElementSide]
-		const startingElementSidePosition = startingHTMLElement.getBoundingClientRect()[sides2.startingElementSide]
-		directionalProximity += Math.abs(Math.abs(startingElementSidePosition) - Math.abs(otherElementSidePosition))
+		const otherHTMLElementSidePosition = otherHTMLElement.getBoundingClientRect()[sides2.otherHTMLElementSide]
+		const startingHTMLElementSidePosition = startingHTMLElement.getBoundingClientRect()[sides2.startingHTMLElementSide]
+		directionalProximity += Math.abs(Math.abs(startingHTMLElementSidePosition) - Math.abs(otherHTMLElementSidePosition))
 	}
 
 	console.log(`Proximity from ${startingHTMLElement.textContent} to ${otherHTMLElement.textContent} is ${directionalProximity}`)

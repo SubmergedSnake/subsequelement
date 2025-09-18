@@ -3,30 +3,30 @@ import { Bearing } from "../../../src/types"
 
 type ElementIdTest = {
   desc: string,
-  startingElementId: string,
+  startingHTMLElementId: string,
   bearing: keyof typeof Bearing,
   preferAlignment?: boolean,
   expectedId: string
 }
 
 export const assertClosestElementIds = (tests: ElementIdTest[], layout: string) => {
-  tests.forEach(({ desc, startingElementId, bearing, preferAlignment, expectedId }) => test(`${desc}`, async ({ page }) => {
+  tests.forEach(({ desc, startingHTMLElementId, bearing, preferAlignment, expectedId }) => test(`${desc}`, async ({ page }) => {
     await page.goto(`/${layout}`)
 
     const elementId = await page.evaluate((args) => {
 
-      const startingElement = document.getElementById(args.startingElementId)
+      const startingHTMLElement = document.getElementById(args.startingHTMLElementId)
 
       let element
 
-      if (startingElement) {
+      if (startingHTMLElement) {
         // @ts-ignore
-        element = window.near(startingElement, args.bearing, ['article'], args.preferAlignment)
+        element = window.near(startingHTMLElement, args.bearing, ['article'], args.preferAlignment)
       }
 
       return element?.id
 
-    }, { startingElementId, bearing, preferAlignment })
+    }, { startingHTMLElementId, bearing, preferAlignment })
     expect(elementId).toEqual(expectedId)
   })
   )

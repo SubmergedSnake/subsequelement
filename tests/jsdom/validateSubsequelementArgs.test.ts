@@ -8,7 +8,7 @@ describe('validateOptions', () => {
 
 	test('throws error on missing input parameters', () => {
 		// @ts-ignore
-		expect(() => near('n', ['arst'], true)).toThrow('Missing or invalid args: startingElement')
+		expect(() => near('n', ['arst'], true)).toThrow('Missing or invalid args: startingHTMLElement')
 	})
 
 
