@@ -48,7 +48,7 @@ s(outh)w(est).
 
 
 ### Alignment
-An element has strong alignment to the startingElement the closer it positioned to the "lane" 
+An element has strong alignment to the startingElement the closer it is positioned to the "lane" 
 projected by the startingElement, according to the supplied bearing. The farther it is from
 the grid, the weaker the alignment.
 
