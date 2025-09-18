@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { Bearing } from "../../../src/types"
 
 export type PerformanceTest = {
-  startingHTMLElementId: string,
+  startingElementId: string,
   bearing: keyof typeof Bearing,
   preferAlignment?: boolean,
   steps: number,
@@ -19,16 +19,16 @@ export const assertPerformance = (performanceTest: PerformanceTest, layout: stri
 
       const steps = args.steps
       let currentStep = 0
-      const startingHTMLElement = document.getElementById(args.startingHTMLElementId)
+      const startingElement = document.getElementById(args.startingElementId)
       const start = performance.now()
       let currentElement
       do {
         if (currentElement) {
           // @ts-ignore
-          currentElement = window.near(currentElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
+          currentElement = window.near(currentElement as Element, args.bearing, ['article'], args.preferAlignment) as Element
         } else {
           // @ts-ignore
-          currentElement = window.near(startingHTMLElement as HTMLElement, args.bearing, ['article'], args.preferAlignment) as HTMLElement
+          currentElement = window.near(startingElement as Element, args.bearing, ['article'], args.preferAlignment) as Element
         }
         currentStep++
       } while (currentElement || currentStep < steps)

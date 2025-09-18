@@ -4,9 +4,9 @@ import { addOverlap } from "./factors/overlap"
 import { addProximity } from "./factors/proximity"
 import { Bearing, SubsequElement } from "./types"
 
-export const getSubsequElements = (startingHTMLElement: HTMLElement, otherHTMLElements: HTMLElement[], bearing: keyof typeof Bearing): SubsequElement[] => {
-	return filterByBearing(startingHTMLElement, otherHTMLElements, bearing)
-		.map(oe => addProximity(startingHTMLElement, oe, bearing))
-		.map(oe => addAlignment(startingHTMLElement, oe, Bearing[bearing]))
-		.map(oe => addOverlap(startingHTMLElement, oe))
+export const getSubsequElements = (startingElement: Element, otherElements: Element[], bearing: keyof typeof Bearing): SubsequElement[] => {
+	return filterByBearing(startingElement, otherElements, bearing)
+		.map(oe => addProximity(startingElement, oe, bearing))
+		.map(oe => addAlignment(startingElement, oe, Bearing[bearing]))
+		.map(oe => addOverlap(startingElement, oe))
 }
