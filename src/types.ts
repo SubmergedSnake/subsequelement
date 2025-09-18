@@ -31,6 +31,9 @@ export type SubsequElement = {
 	overlap?: number
 }
 
+
+export type DomRectSides = keyof Pick<DOMRect, 'top' | 'right' | 'bottom' | 'left'>
+
 export type HasOverlap = Required<SubsequElement>
 
 

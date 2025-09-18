@@ -1,6 +1,5 @@
-import { Bearing, SubsequElement } from "../types";
+import { Bearing, DomRectSides, SubsequElement } from "../types";
 
-type DomRectSides = keyof Pick<DOMRect, 'top' | 'right' | 'bottom' | 'left'>
 
 const sidesToComparePerBearing = {
 	ne: [{ startingElementSide: 'top', otherElementSide: 'bottom' }, { startingElementSide: 'right', otherElementSide: 'left' }],
