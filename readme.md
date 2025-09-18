@@ -7,7 +7,7 @@ to another Element in a document.
 ~~~
 import { near, far } from "subsequelement";
 
-const startingElement = document.querySelector('#myelement') as Element;
+const startingElement = document.querySelector('#myelement')
 
 const nearestElementEast = near(startingElement, 'e', ['article', '.myclass'], true)
 ~~~
@@ -33,9 +33,6 @@ Here's the function signature again for your reference:
 
 ```const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): Element | undefined ```
 
-## Return value
-If near/far finds an element, it is returned. If there are no valid elements in the direction used, undefined is returned.
-
 ## Bearing and alignment
 ![Bearing and alignment](/doc/bearings_and_alignment.png)
 
@@ -54,6 +51,4 @@ s(outh)w(est).
 An element has strong alignment to the startingElement the closer it positioned to the "lane" 
 projected by the startingElement, according to the supplied bearing. The farther it is from
 the grid, the weaker the alignment.
-
-
 
