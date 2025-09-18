@@ -1,4 +1,4 @@
-import { Options, Bearing, BoundaryCorners, SupportedAngle, Corner } from "../src/types"
+import { Bearing, BoundaryCorners, SupportedAngle, Corner } from "../src/types"
 
 export const validateSubsequelementArgs = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[]) => {
 
