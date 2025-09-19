@@ -28,7 +28,7 @@ or extend towards the top left corner from the **startingElement** etc.
 
 **hasToAlign** This can be one of three enums: `HasToAlign.YES`, `HasToAlign.NO` and `HasToAlign.ASMUCHASPOSSIBLE`.
 
-`HasToAlign.YES` - means that for other elements to be considered, they need to align with the the starting element for the given 
+`HasToAlign.YES` - means that for other elements to be considered, they need to align (at least partially) with the the starting element for the given 
 bearing.
 
 `HasToAlign.NO` - means that other elements do not need to be aligned; the closest/farthest element for the given bearing is returned, regardless
