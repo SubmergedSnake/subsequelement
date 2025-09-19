@@ -32,9 +32,14 @@ export const farthestElement = (otherElements: SubsequElement[], hasToAlign: Has
 			break;
 
 		case HasToAlign.YES:
-			farthestElement = otherElements.filter(e => e.alignment > 0).reduce((acc, curr) =>
-				curr.proximity > acc.proximity || curr.proximity >= acc.proximity && curr.alignment > acc.alignment ? curr : acc
-			).e || undefined
+			const elementsWithAlignment = otherElements.filter(e => e.alignment > 0)
+			if (elementsWithAlignment.length > 0) {
+				farthestElement = otherElements.filter(e => e.alignment > 0).reduce((acc, curr) =>
+					curr.proximity > acc.proximity || curr.proximity >= acc.proximity && curr.alignment > acc.alignment ? curr : acc
+				).e || undefined
+			} else {
+				farthestElement = undefined
+			}
 			break;
 
 		default:

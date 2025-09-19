@@ -40,14 +40,18 @@ export const nearestElement =
 					nearestElement = otherElements.filter(e => e.alignment < -5).reduce((acc, curr) =>
 						curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
 					).e
-
 				}
 				break;
 
 			case HasToAlign.YES:
-				nearestElement = otherElements.filter(e => e.alignment > 0).reduce((acc, curr) =>
-					curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
-				).e
+				const elementsWithAlignment = otherElements.filter(e => e.alignment > 0)
+				if (elementsWithAlignment.length > 0) {
+					nearestElement = elementsWithAlignment.reduce((acc, curr) =>
+						curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
+					).e
+				} else {
+					nearestElement = undefined
+				}
 				break;
 
 			default:
