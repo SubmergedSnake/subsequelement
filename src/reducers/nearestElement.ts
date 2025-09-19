@@ -16,7 +16,6 @@ export const nearestElement =
 			return mostOverlappingElement
 		}
 
-
 		let nearestElement: Element | undefined
 		switch (hasToAlign) {
 			case HasToAlign.NO:
@@ -36,6 +35,12 @@ export const nearestElement =
 						).e
 						break;
 					}
+				}
+				if (!nearestElement) {
+					nearestElement = otherElements.filter(e => e.alignment < -5).reduce((acc, curr) =>
+						curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
+					).e
+
 				}
 				break;
 

@@ -6,8 +6,6 @@ export const farthestElement = (otherElements: SubsequElement[], hasToAlign: Has
 
 	let farthestElement: Element | undefined
 
-	otherElements.forEach(i => console.log(`${i.e.textContent}: ${i.alignment}, ${i.proximity}`))
-
 	switch (hasToAlign) {
 		case HasToAlign.NO:
 			farthestElement = otherElements.reduce((acc, curr) =>
@@ -25,6 +23,11 @@ export const farthestElement = (otherElements: SubsequElement[], hasToAlign: Has
 					).e
 					break;
 				}
+			}
+			if (!farthestElement) {
+				farthestElement = otherElements.filter(e => e.alignment < -5).reduce((acc, curr) =>
+					curr.proximity > acc.proximity || curr.proximity >= acc.proximity && curr.alignment > acc.alignment ? curr : acc
+				).e
 			}
 			break;
 

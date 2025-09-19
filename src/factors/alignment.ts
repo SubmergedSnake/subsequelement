@@ -1,13 +1,11 @@
-import { BoundaryCorners, Corner, SubsequElement, SupportedAngle } from "../types";
-import { calculateAlignment, degreesToRadians, determineElementCornersForBoundary, getYIntercept } from "../utilities";
+import { SubsequElement, SupportedAngle } from "../types";
+import { calculateAlignment, determineElementCornersForBoundary, getYIntercept } from "../utilities";
 
 
 export const addAlignment = (startingElement: Element, partialSubsequelement: Omit<SubsequElement, 'alignment'>, angle: SupportedAngle): SubsequElement => {
 
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = partialSubsequelement.e.getBoundingClientRect()
 	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()
-
-	// console.log(`Adding alignment between ${startingElement.textContent} and ${partialSubsequelement.e.textContent}`)
 
 	if (angle.valueOf() === 90) {
 		const alignment = calculateAlignment([sLeft, sRight], [oeLeft, oeRight])
