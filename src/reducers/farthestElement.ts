@@ -6,16 +6,16 @@ export const farthestElement = (otherElements: SubsequElement[], hasToAlign: Has
 
 	let farthestElement: Element | undefined
 
+	otherElements.forEach(i => console.log(`${i.e.textContent}: ${i.alignment}, ${i.proximity}`))
+
 	switch (hasToAlign) {
 		case HasToAlign.NO:
-			console.log(`No alignment necessary.`)
 			farthestElement = otherElements.reduce((acc, curr) =>
 				curr.proximity > acc.proximity ? curr : acc
 			).e || undefined
 			break;
 
 		case HasToAlign.ASMUCHASPOSSIBLE:
-			console.log(`Align as much as possible`)
 			let alignmentThresholds = [0.5, 0, -0.5, -1, -1.5, -2, -2.5, -3, -4, -5]
 			for (const threshold of alignmentThresholds) {
 				const elementsWithinThreshold = otherElements.filter(e => e.alignment >= threshold)

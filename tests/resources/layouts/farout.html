@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../app.css" />
+   <script type="module">
+      import { near, far } from '../../../src/main.ts'
+      window.near = near
+      window.far = far
+    </script>
+    <title>Irregular Grid</title>
+  </head>
+  <body>
+    <div class="box-wide" id="irregular-grid">
+      <article id="A">Item A</article>
+      <article id="B" style="width:300px; height: 90px; margin-left:2000px; margin-top: 1200px">Item B</article>
+      <article id="C" style="width:300px; height: 90px; margin-left:1000px; margin-top: 1200px">Item C</article>
+      <article id="D" style="width:100px; height: 50px; margin-left:400px; margin-top: 2360px">Item D</article>
+    </div>
+  </body>
+</html>
