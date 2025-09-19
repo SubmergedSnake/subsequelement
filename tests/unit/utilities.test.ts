@@ -33,4 +33,11 @@ describe('calculateAlignment', () => {
 		expect(result).toEqual(1)
 	})
 
+	it('when ranges overlap by one, it should not be considered overlap', async () => {
+		const range1: number[] = [5, 10]
+		const range2: number[] = [10, 15]
+		const result = calculateAlignment(range1, range2)
+		expect(result).toEqual(0)
+	})
+
 })
