@@ -13,7 +13,7 @@
     "e2e": "playwright test"
   },
   "files": [ "./dist/types.d.ts", "./dist/module.js" ],
-  "keywords": ["html", "element", "direction", "find"],
+  "keywords": ["html", "element", "direction", "find", "diagonal", "document"],
   "author": "Joonas Heikkinen <solarshadow.jh@gmail.com>",
   "homepage": "https://github.com/SubmergedSnake/subsequelement#subsequelement",
   "bugs":{
