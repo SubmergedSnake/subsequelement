@@ -26,7 +26,6 @@ export const nearestElement =
 				break;
 
 			case 'preferred':
-				// const elementsSortedByAlignment = otherElements.sort(({ alignment: a }, { alignment: b }) => b - a)
 				let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
 				for (const threshold of aligmentThresholds) {
 					const elementsWithinThreshold = otherElements.filter(e => e.alignment >= threshold)
