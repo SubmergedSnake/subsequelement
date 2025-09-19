@@ -1,16 +1,16 @@
 import { test, expect } from '@playwright/test';
-import { AlignmentOption, Bearing } from "../../../src/types"
+import { HasToAlign, Bearing } from "../../../src/types"
 
 type ElementIdTest = {
   desc: string,
   startingElementId: string,
   bearing: keyof typeof Bearing,
-  alignmentOption?: AlignmentOption,
+  hasToAlign?: HasToAlign,
   expectedId: string
 }
 
 export const assertNearestElementIds = (tests: ElementIdTest[], layout: string) => {
-  tests.forEach(({ desc, startingElementId, bearing, alignmentOption, expectedId }) => test(`${desc}`, async ({ page }) => {
+  tests.forEach(({ desc, startingElementId, bearing, hasToAlign, expectedId }) => test(`${desc}`, async ({ page }) => {
     await page.goto(`/${layout}`)
 
     const elementId = await page.evaluate((args) => {
@@ -21,12 +21,12 @@ export const assertNearestElementIds = (tests: ElementIdTest[], layout: string) 
 
       if (startingElement) {
         // @ts-ignore
-        element = window.near(startingElement, args.bearing, ['article'], args.alignmentOption)
+        element = window.near(startingElement, args.bearing, ['article'], args.hasToAlign)
       }
 
       return element?.id
 
-    }, { startingElementId, bearing, alignmentOption })
+    }, { startingElementId, bearing, hasToAlign })
     expect(elementId).toEqual(expectedId)
   })
   )

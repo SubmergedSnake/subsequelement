@@ -1,7 +1,7 @@
-import { AlignmentOption, HasOverlap, SubsequElement } from "../types";
+import { HasToAlign, HasOverlap, SubsequElement } from "../types";
 
 export const nearestElement =
-	(otherElements: SubsequElement[], alignmentOption: AlignmentOption)
+	(otherElements: SubsequElement[], hasToAlign: HasToAlign = HasToAlign.ASMUCHASPOSSIBLE)
 		: Element | undefined => {
 
 		if (otherElements.length === 0) return undefined
@@ -18,14 +18,14 @@ export const nearestElement =
 
 
 		let nearestElement: Element | undefined
-		switch (alignmentOption) {
-			case 'indifferent':
+		switch (hasToAlign) {
+			case HasToAlign.NO:
 				nearestElement = otherElements.reduce((acc, curr) =>
 					curr.proximity < acc.proximity ? curr : acc
 				).e
 				break;
 
-			case 'preferred':
+			case HasToAlign.ASMUCHASPOSSIBLE:
 				let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
 				for (const threshold of aligmentThresholds) {
 					const elementsWithinThreshold = otherElements.filter(e => e.alignment >= threshold)
@@ -39,7 +39,7 @@ export const nearestElement =
 				}
 				break;
 
-			case 'required':
+			case HasToAlign.YES:
 				nearestElement = otherElements.filter(e => e.alignment > 0).reduce((acc, curr) =>
 					curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
 				).e

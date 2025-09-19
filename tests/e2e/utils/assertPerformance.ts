@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { AlignmentOption, Bearing } from "../../../src/types"
+import { HasToAlign, Bearing } from "../../../src/types"
 
 export type PerformanceTest = {
   startingElementId: string,
   bearing: keyof typeof Bearing,
-  alignmentOption?: AlignmentOption,
+  hasToAlign?: HasToAlign,
   steps: number,
   desc: string,
   maxDuration: number
@@ -25,10 +25,10 @@ export const assertPerformance = (performanceTest: PerformanceTest, layout: stri
       do {
         if (currentElement) {
           // @ts-ignore
-          currentElement = window.near(currentElement as Element, args.bearing, ['article'], args.alignmentOption) as Element
+          currentElement = window.near(currentElement as Element, args.bearing, ['article'], args.HasToAlign) as Element
         } else {
           // @ts-ignore
-          currentElement = window.near(startingElement as Element, args.bearing, ['article'], args.alignmentOption) as Element
+          currentElement = window.near(startingElement as Element, args.bearing, ['article'], args.HasToAlign) as Element
         }
         currentStep++
       } while (currentElement || currentStep < steps)

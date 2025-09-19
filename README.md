@@ -9,7 +9,7 @@ import { near, far } from "subsequelement";
 
 const startingElement = document.querySelector('#myelement')
 
-const nearestElementEast = near(startingElement, 'e', ['article', '.myclass'], true)
+const nearestElementEast = near(startingElement, 'e', ['article', '.myclass'], HasToAlign.ASMUCHASPOSSIBLE)
 ~~~
 
 ## Parameters
@@ -26,12 +26,20 @@ top left corner from the **startingElement** etc.
 
 **selectors** This is an array of css selectors that you provide to control what elements on the page are considered.
 
-**alignmentOption** A boolean to determine whether we prefer to get the nearest or farthest element that aligns 
-with startingElement the best OR is absolutely the nearest/farthest element *for the given bearing*.
+**hasToAlign** This can be one of three enums: `HasToAlign.YES`, `HasToAlign.NO` and `HasToAlign.ASMUCHASPOSSIBLE`.
+
+HasToAlign.YES - means that for other elements to be considered, they need to align with the the starting element for the given 
+bearing.
+
+HasToAlign.NO - means that other elements do not need to be aligned; the closest element for the given bearing is returned, regardless
+of alignment.
+
+HasToAlign.ASMUCHASPOSSIBLE - other elements are first searched for within the projected "lane" for the given bearing and incrementally
+further away from it.
 
 Here's the function signature again for your reference:
 
-```const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], alignmentOption: boolean = true): Element | undefined ```
+```const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], HasToAlign: boolean = true): Element | undefined ```
 
 ## Bearing and alignment
 ![Bearing and alignment](/doc/bearings_and_alignment.png)

@@ -3,6 +3,7 @@
  */
 
 import { near } from '../../src/main'
+import { HasToAlign } from '../../src/types'
 
 describe('validateOptions', () => {
 
@@ -18,6 +19,6 @@ describe('validateOptions', () => {
 	})
 
 	test('does not throw error with valid inputs', () => {
-		expect(() => near(document.createElement('div'), 'n', ['.class'], true)).not.toThrow()
+		expect(() => near(document.createElement('div'), 'n', ['.class'], HasToAlign.ASMUCHASPOSSIBLE)).not.toThrow()
 	})
 })

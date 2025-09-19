@@ -1,10 +1,10 @@
 import { getTargetElements, validateSubsequelementArgs } from "./utilities"
-import { AlignmentOption, Bearing } from "./types"
+import { HasToAlign, Bearing } from "./types"
 import { nearestElement } from "./reducers/nearestElement"
 import { farthestElement } from "./reducers/farthestElement"
 import { getSubsequElements } from "./getSubsequElements"
 
-export const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], alignmentOption: AlignmentOption = 'preferred'): Element | undefined => {
+export const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], hasToAlign: HasToAlign = HasToAlign.ASMUCHASPOSSIBLE): Element | undefined => {
 
 	validateSubsequelementArgs(startingElement, bearing, selectors)
 
@@ -15,10 +15,10 @@ export const near = (startingElement: Element, bearing: keyof typeof Bearing, se
 	}
 
 	const subs = getSubsequElements(startingElement, targetElements, bearing)
-	return nearestElement(subs, alignmentOption)
+	return nearestElement(subs, hasToAlign)
 }
 
-export const far = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], alignmentOption: AlignmentOption = 'preferred'): Element | undefined => {
+export const far = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], hasToAlign: HasToAlign = HasToAlign.ASMUCHASPOSSIBLE): Element | undefined => {
 
 	validateSubsequelementArgs(startingElement, bearing, selectors)
 
@@ -29,7 +29,7 @@ export const far = (startingElement: Element, bearing: keyof typeof Bearing, sel
 	}
 
 	const subs = getSubsequElements(startingElement, targetElements, bearing)
-	return farthestElement(subs, alignmentOption)
+	return farthestElement(subs, hasToAlign)
 }
 
 
