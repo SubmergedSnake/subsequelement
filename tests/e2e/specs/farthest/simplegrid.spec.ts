@@ -1,8 +1,9 @@
 
 import { HasToAlign, Bearing } from '../../../../src/types';
 import { assertFarthestElementIds } from '../../utils/assertFarthestElementIds';
+import { ElementIdTest } from '../testtypes';
 
-const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, hasToAlign?: HasToAlign, expectedId: string }[] = [
+const simpleGridTests: ElementIdTest[] = [
   { desc: 'farthest element s(outh)e(ast) of A is I (simplegrid)', startingElementId: 'A', bearing: 'se', hasToAlign: HasToAlign.ASMUCHASPOSSIBLE, expectedId: 'I' },
   { desc: 'farthest element n(orth)e(ast) of G is C (simplegrid)', startingElementId: 'G', bearing: 'ne', hasToAlign: HasToAlign.ASMUCHASPOSSIBLE, expectedId: 'C' },
   { desc: 'farthest element n(orth)w(est) of R is A (simplegrid)', startingElementId: 'R', bearing: 'nw', expectedId: 'A', hasToAlign: HasToAlign.NO },

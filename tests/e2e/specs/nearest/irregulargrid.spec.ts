@@ -1,7 +1,7 @@
-import { HasToAlign, Bearing } from '../../../../src/types';
 import { assertNearestElementIds } from '../../utils/assertNearestElementIds';
+import { ElementIdTest } from '../testtypes';
 
-const irregularGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, HasToAlign?: HasToAlign, expectedId: string }[] = [
+const irregularGridTests: ElementIdTest[] = [
   { desc: 'n(orth) of D is C (irregulargrid)', startingElementId: 'D', bearing: 'n', expectedId: 'C' },
   { desc: 'w(est) of B is A (irregulargrid)', startingElementId: 'B', bearing: 'w', expectedId: 'A' },
   { desc: 's(outh) of E is D (irregulargrid)', startingElementId: 'E', bearing: 's', expectedId: 'D' },

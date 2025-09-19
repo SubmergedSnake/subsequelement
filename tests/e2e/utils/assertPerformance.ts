@@ -1,14 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { HasToAlign, Bearing } from "../../../src/types"
+import { PerformanceTest } from '../specs/testtypes';
 
-export type PerformanceTest = {
-  startingElementId: string,
-  bearing: keyof typeof Bearing,
-  hasToAlign?: HasToAlign,
-  steps: number,
-  desc: string,
-  maxDuration: number
-}
 
 export const assertPerformance = (performanceTest: PerformanceTest, layout: string) => {
 

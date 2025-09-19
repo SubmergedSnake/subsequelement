@@ -1,13 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { HasToAlign, Bearing } from "../../../src/types"
+import { ElementIdTest } from '../specs/testtypes';
 
-type ElementIdTest = {
-  desc: string,
-  startingElementId: string,
-  bearing: keyof typeof Bearing,
-  hasToAlign?: HasToAlign,
-  expectedId: string
-}
 
 export const assertFarthestElementIds = (tests: ElementIdTest[], layout: string) => {
   tests.forEach(({ desc, startingElementId, bearing, hasToAlign, expectedId }) => test(`${desc}`, async ({ page }) => {

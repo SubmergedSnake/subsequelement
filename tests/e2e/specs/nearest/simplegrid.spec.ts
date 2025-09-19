@@ -1,7 +1,8 @@
-import { HasToAlign, Bearing } from '../../../../src/types';
+import { HasToAlign } from '../../../../src/types';
 import { assertNearestElementIds } from '../../utils/assertNearestElementIds';
+import { ElementIdTest } from '../testtypes';
 
-const simpleGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, hasToAlign: HasToAlign, expectedId: string }[] = [
+const simpleGridTests: ElementIdTest[] = [
   { desc: 'n(orth) of K is H', startingElementId: 'K', bearing: 'n', hasToAlign: HasToAlign.ASMUCHASPOSSIBLE, expectedId: 'H' },
   { desc: 'n(orth)e(ast) of G is E', startingElementId: 'G', bearing: 'ne', hasToAlign: HasToAlign.ASMUCHASPOSSIBLE, expectedId: 'E' },
   { desc: 'e(ast) of E is F', startingElementId: 'E', bearing: 'e', hasToAlign: HasToAlign.ASMUCHASPOSSIBLE, expectedId: 'F' },

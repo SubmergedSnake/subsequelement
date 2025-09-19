@@ -1,7 +1,8 @@
-import { HasToAlign, Bearing } from '../../../../src/types';
+import { HasToAlign } from '../../../../src/types';
 import { assertFarthestElementIds } from '../../utils/assertFarthestElementIds';
+import { ElementIdTest } from '../testtypes';
 
-const varyingSizesGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, hasToAlign?: HasToAlign, expectedId: string }[] = [
+const varyingSizesGridTests: ElementIdTest[] = [
   { desc: 'absolutely farthest n(orth) of G is C (varyingsizes)', startingElementId: 'G', bearing: 'n', hasToAlign: HasToAlign.NO, expectedId: 'C' },
 ]
 
