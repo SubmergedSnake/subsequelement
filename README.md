@@ -3,7 +3,9 @@
 A library for finding the nearest/farthest [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 to another Element in a document.
 
+
 ## Usage
+
 ~~~
 import { near, far } from "subsequelement";
 
@@ -12,7 +14,9 @@ const startingElement = document.querySelector('#myelement')
 const nearestElementEast = near(startingElement, 'e', ['article', '.myclass'], HasToAlign.ASMUCHASPOSSIBLE)
 ~~~
 
+
 ## Parameters
+
 Both the **near** and **far** -functions take four parameters, the last one being optional.
 
 The parameters are, in order:
@@ -41,6 +45,7 @@ Here's the function signature again for your reference:
 
 ```const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], hasToAlign: HasToAlign = HasToAlign.ASMUCHASPOSSIBLE): Element | undefined ```
 
+
 ## Bearing and alignment
 ![Bearing and alignment](/doc/bearings_and_alignment.png)
 
@@ -48,6 +53,7 @@ The dashed lines in the above image aim to describe both the bearings and what a
 in the context of this library.
 
 ### Bearing
+
 Bearing determines in which direction, or within which area of the image above we want to look 
 for the nearest or farthest element. For example, all other elements that are positioned or extend
 above the top of the startingElement are considered to be n(orth). And all elements that are
@@ -56,6 +62,7 @@ s(outh)w(est).
 
 
 ### Alignment
+
 An element has strong alignment to the startingElement the closer it is positioned to the "lane" 
 projected by the startingElement, according to the supplied bearing. The farther it is from
 the grid, the weaker the alignment.
