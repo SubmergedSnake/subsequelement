@@ -1,11 +1,11 @@
 
-import { Bearing } from '../../../../src/types';
-import { assertClosestElementIds } from '../../utils/assertClosestElementIds';
+import { AlignmentOption, Bearing } from '../../../../src/types';
+import { assertNearestElementIds } from '../../utils/assertNearestElementIds';
 
-const irregularGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, preferAlignment?: boolean, expectedId: string }[] = [
-  { desc: 'C is north of B', startingElementId: 'B', bearing: 'n', preferAlignment: true, expectedId: 'C' },
-  { desc: 'C is south of A', startingElementId: 'A', bearing: 's', preferAlignment: false, expectedId: 'C' },
+const irregularGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, alignmentOption?: AlignmentOption, expectedId: string }[] = [
+  { desc: 'C is north of B', startingElementId: 'B', bearing: 'n', alignmentOption: 'preferred', expectedId: 'C' },
+  { desc: 'C is south of A', startingElementId: 'A', bearing: 's', alignmentOption: 'indifferent', expectedId: 'C' },
 ]
 
 
-assertClosestElementIds(irregularGridTests, 'overlappinggrid')
+assertNearestElementIds(irregularGridTests, 'overlappinggrid')

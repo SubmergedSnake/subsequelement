@@ -28,7 +28,7 @@ export const addProximity = (startingElement: Element, otherElement: Element, be
 		directionalProximity += Math.abs(Math.abs(startingElementSidePosition) - Math.abs(otherElementSidePosition))
 	}
 
-	console.log(`Proximity from ${startingElement.textContent} to ${otherElement.textContent} is ${directionalProximity}`)
+	// console.log(`Proximity from ${startingElement.textContent} to ${otherElement.textContent} is ${directionalProximity}`)
 
 	return {
 		e: otherElement, proximity: directionalProximity

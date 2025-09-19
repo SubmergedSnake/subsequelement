@@ -1,7 +1,7 @@
-import { HasOverlap, SubsequElement } from "../types";
+import { AlignmentOption, HasOverlap, SubsequElement } from "../types";
 
 export const nearestElement =
-	(otherElements: SubsequElement[], preferAlignment: boolean = true)
+	(otherElements: SubsequElement[], alignmentOption: AlignmentOption)
 		: Element | undefined => {
 
 		if (otherElements.length === 0) return undefined
@@ -16,21 +16,38 @@ export const nearestElement =
 			return mostOverlappingElement
 		}
 
-		const elementsSortedByAlignment = otherElements.sort(({ alignment: a }, { alignment: b }) => b - a)
+		let nearestElement: Element | undefined
 
-		if (preferAlignment) {
-			let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
-			for (const threshold of aligmentThresholds) {
-				const elementsWithinThreshold = elementsSortedByAlignment.filter(e => e.alignment >= threshold)
-				if (elementsWithinThreshold.length > 0) {
-					return elementsWithinThreshold.reduce((acc, curr) =>
-						curr.proximity < acc.proximity ? curr : acc
-					).e
+		switch (alignmentOption) {
+			case 'indifferent':
+				nearestElement = otherElements.reduce((acc, curr) =>
+					curr.proximity < acc.proximity ? curr : acc
+				).e
+				break;
+
+			case 'preferred':
+				const elementsSortedByAlignment = otherElements.sort(({ alignment: a }, { alignment: b }) => b - a)
+				let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
+				for (const threshold of aligmentThresholds) {
+					const elementsWithinThreshold = elementsSortedByAlignment.filter(e => e.alignment >= threshold)
+					if (elementsWithinThreshold.length > 0) {
+						nearestElement = elementsWithinThreshold.reduce((acc, curr) =>
+							curr.proximity < acc.proximity ? curr : acc
+						).e
+					}
 				}
-			}
-		} else {
-			return otherElements.reduce((acc, curr) =>
-				curr.proximity < acc.proximity ? curr : acc
-			).e
+				break;
+
+			case 'required':
+				nearestElement = otherElements.filter(e => e.alignment > 0).reduce((acc, curr) =>
+					curr.proximity < acc.proximity ? curr : acc
+				).e
+				break;
+
+			default:
+				nearestElement = undefined
+				break;
 		}
+
+		return nearestElement
 	}

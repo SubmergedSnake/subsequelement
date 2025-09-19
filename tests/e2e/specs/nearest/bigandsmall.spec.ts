@@ -1,9 +1,9 @@
-import { Bearing } from '../../../../src/types';
-import { assertClosestElementIds } from '../../utils/assertClosestElementIds';
+import { AlignmentOption, Bearing } from '../../../../src/types';
+import { assertNearestElementIds } from '../../utils/assertNearestElementIds';
 
-const bigAndSmallTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, preferAlignment?: boolean, expectedId: string }[] = [
-  { desc: 's(outh) of A is B', startingElementId: 'A', bearing: 's', preferAlignment: true, expectedId: 'B' },
+const bigAndSmallTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, alignmentOption?: AlignmentOption, expectedId: string }[] = [
+  { desc: 's(outh) of A is B', startingElementId: 'A', bearing: 's', alignmentOption: 'preferred', expectedId: 'B' },
 ]
 
 
-assertClosestElementIds(bigAndSmallTests, 'bigandsmall')
+assertNearestElementIds(bigAndSmallTests, 'bigandsmall')

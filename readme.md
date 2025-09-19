@@ -26,12 +26,12 @@ top left corner from the **startingElement** etc.
 
 **selectors** This is an array of css selectors that you provide to control what elements on the page are considered.
 
-**preferAlignment** A boolean to determine whether we prefer to get the nearest or farthest element that aligns 
+**alignmentOption** A boolean to determine whether we prefer to get the nearest or farthest element that aligns 
 with startingElement the best OR is absolutely the nearest/farthest element *for the given bearing*.
 
 Here's the function signature again for your reference:
 
-```const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], preferAlignment: boolean = true): Element | undefined ```
+```const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], alignmentOption: boolean = true): Element | undefined ```
 
 ## Bearing and alignment
 ![Bearing and alignment](/doc/bearings_and_alignment.png)

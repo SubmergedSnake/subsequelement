@@ -29,6 +29,8 @@ export type SubsequElement = {
 
 export type DomRectSides = keyof Pick<DOMRect, 'top' | 'right' | 'bottom' | 'left'>
 
+export type AlignmentOption = 'indifferent' | 'preferred' | 'required'
+
 export type HasOverlap = Required<SubsequElement>
 
 

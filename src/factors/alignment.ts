@@ -7,7 +7,7 @@ export const addAlignment = (startingElement: Element, partialSubsequelement: Om
 	const { left: oeLeft, right: oeRight, top: oeTop, bottom: oeBottom } = partialSubsequelement.e.getBoundingClientRect()
 	const { left: sLeft, right: sRight, top: sTop, bottom: sBottom } = startingElement.getBoundingClientRect()
 
-	console.log(`Adding alignment between ${startingElement.textContent} and ${partialSubsequelement.e.textContent}`)
+	// console.log(`Adding alignment between ${startingElement.textContent} and ${partialSubsequelement.e.textContent}`)
 
 	if (angle.valueOf() === 90) {
 		const alignment = calculateAlignment([sLeft, sRight], [oeLeft, oeRight])

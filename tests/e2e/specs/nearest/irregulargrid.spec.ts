@@ -1,18 +1,18 @@
-import { Bearing } from '../../../../src/types';
-import { assertClosestElementIds } from '../../utils/assertClosestElementIds';
+import { AlignmentOption, Bearing } from '../../../../src/types';
+import { assertNearestElementIds } from '../../utils/assertNearestElementIds';
 
-const irregularGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, preferAlignment?: boolean, expectedId: string }[] = [
-  { desc: 'n(orth) of D is C', startingElementId: 'D', bearing: 'n', preferAlignment: true, expectedId: 'C' },
-  { desc: 'w(est) of B is A', startingElementId: 'B', bearing: 'w', preferAlignment: true, expectedId: 'A' },
-  { desc: 's(outh) of E is D', startingElementId: 'E', bearing: 's', expectedId: 'D' },
-  { desc: 's(outh)w(est) of E is C', startingElementId: 'E', bearing: 'sw', preferAlignment: true, expectedId: 'C' },
-  { desc: 'n(orth)e(ast) of C is E', startingElementId: 'C', bearing: 'ne', preferAlignment: true, expectedId: 'E' },
-  { desc: 'n(orth)w(est) of B is A', startingElementId: 'B', bearing: 'nw', preferAlignment: true, expectedId: 'A' },
-  { desc: 'n(orth)w(est) of C is B', startingElementId: 'C', bearing: 'nw', preferAlignment: true, expectedId: 'B' },
-  { desc: 's(outh) of B is C', startingElementId: 'B', bearing: 's', preferAlignment: true, expectedId: 'C' },
-  { desc: 's(outh)e(ast) of B is C', startingElementId: 'B', bearing: 'se', preferAlignment: true, expectedId: 'C' },
+const irregularGridTests: { desc: string, startingElementId: string, bearing: keyof typeof Bearing, alignmentOption?: AlignmentOption, expectedId: string }[] = [
+  { desc: 'n(orth) of D is C (irregulargrid)', startingElementId: 'D', bearing: 'n', expectedId: 'C' },
+  { desc: 'w(est) of B is A (irregulargrid)', startingElementId: 'B', bearing: 'w', expectedId: 'A' },
+  { desc: 's(outh) of E is D (irregulargrid)', startingElementId: 'E', bearing: 's', expectedId: 'D' },
+  { desc: 's(outh)w(est) of E is C (irregulargrid)', startingElementId: 'E', bearing: 'sw', expectedId: 'C' },
+  { desc: 'n(orth)e(ast) of C is E (irregulargrid)', startingElementId: 'C', bearing: 'ne', expectedId: 'E' },
+  { desc: 'n(orth)w(est) of B is A (irregulargrid)', startingElementId: 'B', bearing: 'nw', expectedId: 'A' },
+  { desc: 'n(orth)w(est) of C is B (irregulargrid)', startingElementId: 'C', bearing: 'nw', expectedId: 'B' },
+  { desc: 's(outh) of B is C (irregulargrid)', startingElementId: 'B', bearing: 's', expectedId: 'C' },
+  { desc: 's(outh)e(ast) of B is C (irregulargrid)', startingElementId: 'B', bearing: 'se', expectedId: 'C' },
 ]
 
 
-assertClosestElementIds(irregularGridTests, 'irregulargrid')
+assertNearestElementIds(irregularGridTests, 'irregulargrid')
 
