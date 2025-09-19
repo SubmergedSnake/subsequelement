@@ -16,8 +16,8 @@ export const nearestElement =
 			return mostOverlappingElement
 		}
 
-		let nearestElement: Element | undefined
 
+		let nearestElement: Element | undefined
 		switch (alignmentOption) {
 			case 'indifferent':
 				nearestElement = otherElements.reduce((acc, curr) =>
@@ -26,21 +26,23 @@ export const nearestElement =
 				break;
 
 			case 'preferred':
-				const elementsSortedByAlignment = otherElements.sort(({ alignment: a }, { alignment: b }) => b - a)
+				// const elementsSortedByAlignment = otherElements.sort(({ alignment: a }, { alignment: b }) => b - a)
 				let aligmentThresholds = [0.5, 0, -1, -2, -3, -4, -5]
 				for (const threshold of aligmentThresholds) {
-					const elementsWithinThreshold = elementsSortedByAlignment.filter(e => e.alignment >= threshold)
+					const elementsWithinThreshold = otherElements.filter(e => e.alignment >= threshold)
+
 					if (elementsWithinThreshold.length > 0) {
 						nearestElement = elementsWithinThreshold.reduce((acc, curr) =>
-							curr.proximity < acc.proximity ? curr : acc
+							curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
 						).e
+						break;
 					}
 				}
 				break;
 
 			case 'required':
 				nearestElement = otherElements.filter(e => e.alignment > 0).reduce((acc, curr) =>
-					curr.proximity < acc.proximity ? curr : acc
+					curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
 				).e
 				break;
 
