@@ -30,7 +30,7 @@ const nearestElementEast = near(startingElement, 'e', ['article', '.myclass'], H
 Both near() and far() return either `Element` if found or `undefined` otherwise.
 
 ## About bearing and alignment
-![Bearing and alignment](/doc/bearings_and_alignment.png)
+![Bearing and alignment](https://github.com/SubmergedSnake/subsequelement/blob/main/doc/bearings_and_alignment.png)
 
 The dashed lines in the above image aim to describe both the bearings and what alignment means 
 in the context of this library.
