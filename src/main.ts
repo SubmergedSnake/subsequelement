@@ -1,35 +1,4 @@
-import { getTargetElements, validateSubsequelementArgs } from "./utilities"
-import { HasToAlign, Bearing } from "./types"
-import { nearestElement } from "./reducers/nearestElement"
-import { farthestElement } from "./reducers/farthestElement"
-import { getSubsequElements } from "./getSubsequElements"
+import { near, far } from "./subsequelement";
+import { HasToAlign } from "./types";
 
-export const near = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], hasToAlign: HasToAlign = HasToAlign.ASMUCHASPOSSIBLE): Element | undefined => {
-
-	validateSubsequelementArgs(startingElement, bearing, selectors)
-
-	const targetElements = getTargetElements(selectors)
-
-	if (targetElements.length === 0) {
-		return undefined
-	}
-
-	const subs = getSubsequElements(startingElement, targetElements, bearing)
-	return nearestElement(subs, hasToAlign)
-}
-
-export const far = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[], hasToAlign: HasToAlign = HasToAlign.ASMUCHASPOSSIBLE): Element | undefined => {
-
-	validateSubsequelementArgs(startingElement, bearing, selectors)
-
-	const targetElements = getTargetElements(selectors)
-
-	if (targetElements.length === 0) {
-		return undefined
-	}
-
-	const subs = getSubsequElements(startingElement, targetElements, bearing)
-	return farthestElement(subs, hasToAlign)
-}
-
-
+export { near, far, HasToAlign }
