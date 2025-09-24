@@ -36,6 +36,7 @@
     "typescript": "^5.8.3"
   },
   "exports": {
-    "subsequelement": "./dist/main.js"
+    "import": "./dist/module.js",
+    "require": "./dist/main.js"
   }
 }
