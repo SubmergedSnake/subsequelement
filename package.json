@@ -6,7 +6,7 @@
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
   "scripts": {
-    "serve": "parcel serve \"tests/resources/layouts/*.html\"",
+    "serve": "rm -rf .parcel-cache && parcel serve \"tests/resources/layouts/*.html\"",
     "build": "parcel build",
     "test": "jest --watch",
     "test-gha": "jest",

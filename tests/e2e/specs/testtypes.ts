@@ -15,5 +15,6 @@ export type ElementIdTest = {
 	startingElementId: string,
 	bearing: keyof typeof Bearing,
 	hasToAlign?: HasToAlign,
-	expectedId: string | undefined
+	expectedId: string | undefined,
+	scroll?: boolean
 }
