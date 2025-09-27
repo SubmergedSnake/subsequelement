@@ -16,16 +16,14 @@ export const addProximity = (startingElement: Element, otherElement: Element, be
 
 	const [sides1, sides2] = sidesToComparePerBearing[bearing]
 
-	let directionalProximity
-
 	const otherElementSidePosition = otherElement.getBoundingClientRect()[sides1.otherElementSide]
 	const startingElementSidePosition = startingElement.getBoundingClientRect()[sides1.startingElementSide]
-	directionalProximity = Math.abs(Math.abs(startingElementSidePosition) - Math.abs(otherElementSidePosition))
+	let directionalProximity = Math.abs(otherElementSidePosition - startingElementSidePosition);
 
 	if (sides2) {
 		const otherElementSidePosition = otherElement.getBoundingClientRect()[sides2.otherElementSide]
 		const startingElementSidePosition = startingElement.getBoundingClientRect()[sides2.startingElementSide]
-		directionalProximity += Math.abs(Math.abs(startingElementSidePosition) - Math.abs(otherElementSidePosition))
+		directionalProximity += Math.abs(otherElementSidePosition - startingElementSidePosition);
 	}
 
 	return {
