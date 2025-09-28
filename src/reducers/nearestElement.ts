@@ -45,7 +45,6 @@ export const nearestElement =
 
 			case HasToAlign.YES:
 				const elementsWithAlignment = otherElements.filter(e => e.alignment > 0)
-				elementsWithAlignment.forEach(e => console.log(`${e.e.textContent}, ${e.alignment}`))
 				if (elementsWithAlignment.length > 0) {
 					nearestElement = elementsWithAlignment.reduce((acc, curr) =>
 						curr.proximity < acc.proximity || curr.proximity <= acc.proximity && curr.alignment > acc.alignment ? curr : acc
