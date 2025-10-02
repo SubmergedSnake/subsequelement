@@ -1,6 +1,6 @@
 {
   "name": "subsequelement",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "source": "src/main.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",
@@ -12,11 +12,22 @@
     "test-gha": "jest",
     "e2e": "playwright test"
   },
-  "files": [ "./dist/types.d.ts", "./dist/module.js" ],
-  "keywords": ["html", "element", "direction", "find", "diagonal", "document", "coordinates"],
+  "files": [
+    "./dist/types.d.ts",
+    "./dist/module.js"
+  ],
+  "keywords": [
+    "html",
+    "element",
+    "direction",
+    "find",
+    "diagonal",
+    "document",
+    "coordinates"
+  ],
   "author": "Joonas Heikkinen <solarshadow.jh@gmail.com>",
   "homepage": "https://github.com/SubmergedSnake/subsequelement#subsequelement",
-  "bugs":{
+  "bugs": {
     "url": "https://github.com/SubmergedSnake/subsequelement/issues",
     "email": "solarshadow.jh@gmail.com"
   },
