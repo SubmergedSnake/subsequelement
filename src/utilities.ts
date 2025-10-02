@@ -1,4 +1,4 @@
-import { Bearing, BoundaryCorners, SupportedAngle, Corner } from "../src/types"
+import { Bearing, BoundaryCorners, Point, SupportedAngle } from "../src/types"
 
 export const validateSubsequelementArgs = (startingElement: Element, bearing: keyof typeof Bearing, selectors: string[]) => {
 
@@ -34,7 +34,7 @@ export const calculateAlignment = (startingElementRange: number[], otherElementR
 	return alignmentIndex
 }
 
-export const getYIntercept = (origin: Corner, degrees: number): number => {
+export const getYIntercept = (origin: Point, degrees: number): number => {
 	const m = degreesToRadians(degrees)
 	const yIntercept = origin.y - m * origin.x
 	return yIntercept

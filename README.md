@@ -1,21 +1,28 @@
 # <sub>subsequ</sub>element
 
-A library for finding the nearest/farthest [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
-to another Element in a document.
+A library for finding [Elements](https://developer.mozilla.org/en-US/docs/Web/API/Element)
+based on their coordinates.
 
 
 ## Usage
 
 ~~~
-import { near, far } from "subsequelement";
+import { near, far, nearestElementToPoint } from "subsequelement";
 
 const startingElement = document.querySelector('#myelement')
-
 const nearestElementEast = near(startingElement, 'e', ['article', '.myclass'], HasToAlign.ASMUCHASPOSSIBLE)
+const farthestElementSouth = far(startingElement, 's', ['article', '.myclass'], HasToAlign.ASMUCHASPOSSIBLE)
+
+
+const point = { x: 50, y: 120 }
+const elementAtX50Y120 = nearestElementToPoint(point, ['article'])
 ~~~
 
 
-## Parameters for near() and far()
+
+## Near and far
+
+### Parameters
 
 | Parameter         | Description |
 |-------------------|-------------|
@@ -25,9 +32,22 @@ const nearestElementEast = near(startingElement, 'e', ['article', '.myclass'], H
 | **hasToAlign**     | This can be one of three enums: `HasToAlign.YES`, `HasToAlign.NO` and `HasToAlign.ASMUCHASPOSSIBLE`.<br><br> `HasToAlign.YES` - means that for other elements to be considered, they need to align (at least partially) with the the starting element for the given bearing.<br><br> `HasToAlign.NO` - means that other elements do not need to be aligned; the closest/farthest element for the given bearing is returned, regardless of alignment. <br><br>`HasToAlign.ASMUCHASPOSSIBLE` - other elements are first searched for within the projected "lane" for the given bearing and incrementally further away from it. |
 
 
-## Return value
+### Return value
 
 Both near() and far() return either `Element` if found or `undefined` otherwise.
+
+## nearestElementToPoint
+
+### Parameters
+| Parameter         | Description |
+|-------------------|-------------|
+| **point** | A Point that has the x an y coordinates (eg. {x: 400, y:900}|
+| **selectors**        | An array of css selectors for elements we want to consider.|
+
+
+### Return value
+Returns the either Element, if found, undefined otherwise.
+
 
 ## About bearing and alignment
 ![Bearing and alignment](https://github.com/SubmergedSnake/subsequelement/blob/main/doc/bearings_and_alignment.png)

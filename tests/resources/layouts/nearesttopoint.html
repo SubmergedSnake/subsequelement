@@ -10,6 +10,7 @@
       window.nearestElementToPoint = nearestElementToPoint
 
       document.addEventListener('DOMContentLoaded', () => {
+        console.log('Loaded')
         document.addEventListener('click', (e) => {
 
           const { clientX: x, clientY:y } = e
@@ -21,14 +22,14 @@
         })
       })
     </script>
-    <title>Overlapping grid</title>
+    <title>Irregular Grid</title>
   </head>
   <body>
     <div class="box-wide" id="irregular-grid">
-      <article id="C" style="margin-top: 125px">Item C</article>
-      <article id="B" style="position: absolute; top: -30px; width:300px; height: 90px;  margin-top: 200px">Item B</article>
-      <article id="A" style="position: absolute; top: -140px; width:300px; height: 90px;  margin-top: 200px">Item A</article>
-      <article id="D" style="position: absolute; top: -180px; width:300px; height: 90px; left: 275px;  margin-top: 350px">Item D</article>
+      <article id="A">Item A</article>
+      <article id="B" style="width:300px; height: 90px; margin-left:100px; margin-top: 120px">Item B</article>
+      <article id="C" style="width:300px; height: 90px; margin-left:300px; margin-top: 200px">Item C</article>
+      <article id="D" style="width:100px; height: 50px; margin-left:400px; margin-top: 360px">Item D</article>
     </div>
   </body>
 </html>

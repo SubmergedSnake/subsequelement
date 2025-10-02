@@ -1,9 +1,12 @@
+export type Point = {
+	x: number,
+	y: number
+}
+
 export type BoundaryCorners = {
 	bottomBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
 	topBoundary: { x: 'left' | 'right', y: 'top' | 'bottom' }
 }
-
-export type Corner = { x: number, y: number }
 
 export type SupportedAngle = 0 | 45 | 90 | -45
 

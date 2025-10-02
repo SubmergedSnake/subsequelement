@@ -1,5 +1,5 @@
 import { Bearing } from "../../../dist/types"
-import { HasToAlign } from "../../../src/types"
+import { HasToAlign, Point } from "../../../src/types"
 
 export type PerformanceTest = {
 	startingElementId: string,
@@ -17,4 +17,11 @@ export type ElementIdTest = {
 	hasToAlign?: HasToAlign,
 	expectedId: string | undefined,
 	scroll?: boolean
+}
+
+export type NearestElementToPointTest = {
+	desc: string
+	point: Point
+	selectors: string[]
+	expectedId: string
 }
